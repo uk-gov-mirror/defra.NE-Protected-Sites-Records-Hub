@@ -1,0 +1,265 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Search_Designated_Sites" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_strSiteName" Type="InArgument(x:String)" />
+    <x:Property Name="out_dtOccupiersOwners" Type="OutArgument(sd:DataTable)" />
+  </x:Members>
+  <this:Search_Designated_Sites.in_strSiteName>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Search_Designated_Sites.in_strSiteName>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap2010:WorkflowViewState.IdRef>Search_Designated_Sites_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Platform.SyncObjects</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Services.RuntimeAnalyze</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.ExtractData</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Database.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Form.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Persistence.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Search_Designated_Sites" sap:VirtualizedContainerService.HintSize="1451.6000000000001,3350.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Application/Browser - designated sites" sap:VirtualizedContainerService.HintSize="502,3327.2" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InUiElement="[g_browserDesignatedSites]" InteractionMode="Simulate" OpenMode="Never" ScopeGuid="8ce7ceea-988f-4fad-9a24-a2ff1e4b9914" Version="V2">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="468,3166" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="sd:DataTable" Name="dtOccupierContacts" />
+              <Variable x:TypeArguments="sd:DataTable" Name="dtOwnerContacts" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="None" DisplayName="Type Site Name" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="434,252.8" sap2010:WorkflowViewState.IdRef="NTypeInto_1" InteractionMode="DebuggerApi" ScopeIdentifier="8ce7ceea-988f-4fad-9a24-a2ff1e4b9914" Text="[in_strSiteName]" Version="V4">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable BrowserURL="designatedsites.naturalengland.org.uk/SiteSearch.aspx" ContentHash="5E5pqKU-FUSHWqu3fO9SGg" DesignTimeRectangle="1040, 929, 409, 52" DesignTimeScaleFactor="2.5" ElementType="InputBox" FullSelectorArgument="&lt;webctrl tag='DIV' class='row' visibleinnertext='Site Name:' /&gt;&lt;webctrl tag='INPUT' type='text' /&gt;" Guid="c8b5f591-e023-498e-863f-ac31c1a1e19d" InformativeScreenshot="b04c7c9a5d1e84d119b1046a036f7917.png" Reference="u70FNKxx7EOHPBwkfez66Q/O72Skmyrbka8Y1IXmnxHdA" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Site Search' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
+              </uix:NTypeInto.Target>
+            </uix:NTypeInto>
+            <uix:NSelectItem DisplayName="Select designation type" sap:VirtualizedContainerService.HintSize="434,190" sap2010:WorkflowViewState.IdRef="NSelectItem_1" Item="Sites of Special Scientific Interest (SSSI)" ScopeIdentifier="8ce7ceea-988f-4fad-9a24-a2ff1e4b9914" Version="V4">
+              <uix:NSelectItem.Items>
+                <scg:List x:TypeArguments="x:String" Capacity="9">
+                  <x:String>All</x:String>
+                  <x:String>Local Nature Reserve (LNR)</x:String>
+                  <x:String>Marine Conservation Zone (MCZ)</x:String>
+                  <x:String>National Nature Reserves (NNR)</x:String>
+                  <x:String>Ramsar</x:String>
+                  <x:String>Sites of Special Scientific Interest (SSSI)</x:String>
+                  <x:String>Special Areas of Conservation (SAC)</x:String>
+                  <x:String>Special Protection Areas (SPA)</x:String>
+                  <x:String>Proposed Sites of Special Scientific Interest (SSSIP)</x:String>
+                </scg:List>
+              </uix:NSelectItem.Items>
+              <uix:NSelectItem.Target>
+                <uix:TargetAnchorable BrowserURL="designatedsites.naturalengland.org.uk/SiteSearch.aspx" ContentHash="xyki7eB8dEuMInzT9rpjLw" DesignTimeRectangle="1040, 1017, 798, 44" DesignTimeScaleFactor="2.5" ElementType="DropDown" FullSelectorArgument="&lt;webctrl tag='DIV' class='row' visibleinnertext='Designation type:*' /&gt;&lt;webctrl tag='SELECT' /&gt;" Guid="17c70c4c-34ea-47f8-84dd-36fd808f08ad" InformativeScreenshot="fcfbe87c52080bd440aae06787001476.png" Reference="u70FNKxx7EOHPBwkfez66Q/l7fh3lzqfku0sJRYM2qwCg" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Site Search' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
+              </uix:NSelectItem.Target>
+            </uix:NSelectItem>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Search'" sap:VirtualizedContainerService.HintSize="434,190" sap2010:WorkflowViewState.IdRef="NClick_1" InteractionMode="DebuggerApi" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="8ce7ceea-988f-4fad-9a24-a2ff1e4b9914" Version="V4">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="designatedsites.naturalengland.org.uk" CVScreenId="fc501b8a-2458-4145-9fc1-f8017a0d12b5" ContentHash="0di9SZc7t0GFSxt8HWnBFw" DesignTimeRectangle="126, 1134, 141, 52" DesignTimeScaleFactor="2.5" ElementType="Button" FullSelectorArgument="&lt;webctrl tag='INPUT' type='submit' /&gt;" Guid="0dfe4f82-71bb-4595-bc60-85d545eab4b7" InformativeScreenshot="44890c5ea0780e303a80ce3b2b837a2e.png" Reference="u70FNKxx7EOHPBwkfez66Q/aSpapAsW00SjAHgHMByXeQ" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Site Search' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
+              </uix:NClick.Target>
+            </uix:NClick>
+            <uix:NClick ActivateBefore="True" sap2010:Annotation.AnnotationText="NOTE: WHICH ROW?? Exact match on Site Name?" ClickType="Single" DisplayName="Click 'View details'" sap:VirtualizedContainerService.HintSize="434,221.2" sap2010:WorkflowViewState.IdRef="NClick_2" InteractionMode="DebuggerApi" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="8ce7ceea-988f-4fad-9a24-a2ff1e4b9914" Version="V4">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="designatedsites.naturalengland.org.uk/SiteList.aspx" ContentHash="H35thJbhuUSjWvc6VwqpcA" DesignTimeRectangle="3616, 972, 169, 43" DesignTimeScaleFactor="2.5" ElementType="Text" FullSelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl aaname='View details' tableRow='2' tag='A' /&gt;" Guid="aab3a53a-1d43-4da4-aeae-4bc313e3b567" InformativeScreenshot="dc9b9f1dc31f0e5b353e2f8eb06e9e73.png" Reference="u70FNKxx7EOHPBwkfez66Q/JfgmE0P5kEKL6wzTtNISHg" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Site list' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
+              </uix:NClick.Target>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </uix:NClick>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click Occupier contacts" sap:VirtualizedContainerService.HintSize="434,190" sap2010:WorkflowViewState.IdRef="NClick_3" InteractionMode="DebuggerApi" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="8ce7ceea-988f-4fad-9a24-a2ff1e4b9914" Version="V4">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="designatedsites.naturalengland.org.uk/SiteDetail.aspx" ContentHash="1mL3uDC8YUCfUewJHi7CMA" DesignTimeRectangle="1120, 1294, 219, 43" DesignTimeScaleFactor="2.5" ElementType="Text" FullSelectorArgument="&lt;webctrl tag='DIV' class='row' visibleinnertext='Occupier contacts:*' /&gt;&lt;webctrl tag='A' innertext='* (Archived: *)' idx='1' /&gt;" Guid="e88fbd1d-8346-48e3-afa9-a76c5a2bc2e3" InformativeScreenshot="4fcf4aa7ff235edbf5f694ac2cb985c9.png" Reference="u70FNKxx7EOHPBwkfez66Q/_ofUL87-e02JP6HJxiwbWg" ScopeSelectorArgument="&lt;html app='msedge.exe' title='SSSI detail' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
+              </uix:NClick.Target>
+            </uix:NClick>
+            <uix:NExtractData AppendResults="False" ContinueOnError="True" DataTable="[dtOccupierContacts]" DisplayName="Extract Table Data - occupier contacts" ExtractDataSettings="&lt;Table xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' Type='Table' AddCvHeader='true' IsScrollEnabled='false'&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Contact name' ReferenceIdx='0' Name='Contact name'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Archived' ReferenceIdx='1' Name='Archived'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Phone' ReferenceIdx='2' Name='Phone'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Mobile' ReferenceIdx='3' Name='Mobile'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Email' ReferenceIdx='4' Name='Email'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Address' ReferenceIdx='5' Name='Address'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&lt;/Table&gt;" ExtractMetadata="&lt;extract-table get_columns_name='1' get_empty_columns='1' columns_name_source='Longest'&gt;&lt;column name='Contact name' attr='fulltext' /&gt;&lt;column name='Archived' attr='fulltext' /&gt;&lt;column name='Phone' attr='fulltext' /&gt;&lt;column name='Mobile' attr='fulltext' /&gt;&lt;column name='Email' attr='fulltext' /&gt;&lt;column name='Address' attr='fulltext' /&gt;&lt;/extract-table&gt;" sap:VirtualizedContainerService.HintSize="434,189.6" sap2010:WorkflowViewState.IdRef="NExtractData_2" LimitExtractionTo="None" MaximumResults="0" ScopeIdentifier="8ce7ceea-988f-4fad-9a24-a2ff1e4b9914" Version="V4">
+              <uix:NExtractData.Target>
+                <uix:TargetAnchorable BrowserURL="https://designatedsites.naturalengland.org.uk/SiteDetail.aspx?SiteCode=S1003801&amp;SiteName=cotswold&amp;countyCode=&amp;responsiblePerson=&amp;SeaArea=&amp;IFCAArea=" DesignTimeRectangle="335, 584, 3125, 2736" DesignTimeScaleFactor="2.5" FullSelectorArgument="&lt;webctrl tag='TABLE' /&gt;" Guid="fe04219c-497d-4db5-ad14-03eeac0c0cbf" InformativeScreenshot="8c7bfbf66a43df1a03d08b87a97a7d4f.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='SSSI detail' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
+              </uix:NExtractData.Target>
+            </uix:NExtractData>
+            <ui:AddDataColumn x:TypeArguments="x:String" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="Source" DataTable="[dtOccupierContacts]" DefaultValue="Occupier" DisplayName="Add source column - Occupier" sap:VirtualizedContainerService.HintSize="434,222" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_4" />
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click Close occupier contacts" sap:VirtualizedContainerService.HintSize="434,190" sap2010:WorkflowViewState.IdRef="NClick_4" InteractionMode="DebuggerApi" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="8ce7ceea-988f-4fad-9a24-a2ff1e4b9914" Version="V4">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="designatedsites.naturalengland.org.uk/SiteDetail.aspx" ContentHash="GwTh_FcrJUy5U4NMpv01Qg" DesignTimeRectangle="3499, 429, 90, 90" DesignTimeScaleFactor="2.5" ElementType="Button" FullSelectorArgument="&lt;webctrl tag='INPUT' type='submit' aria-label='Close' class='popupButton' name='ctl00$ContentPlaceHolder1$ucSiteDetail1$btn' /&gt;" Guid="b6bf0573-13c9-4f22-9b4b-b1d55d446b31" InformativeScreenshot="9026f9098664656cd4b1ccd9db69c623.png" Reference="u70FNKxx7EOHPBwkfez66Q/mf_u2tbjsU6RkWBLryz1CQ" ScopeSelectorArgument="&lt;html app='msedge.exe' title='SSSI detail' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
+              </uix:NClick.Target>
+            </uix:NClick>
+            <ui:FilterDataTable DataTable="[dtOccupierContacts]" DisplayName="Remove archived occupiers" FilterRowsMode="Remove" sap:VirtualizedContainerService.HintSize="434,196" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[dtOccupierContacts]" SelectColumnsMode="Remove">
+              <ui:FilterDataTable.Filters>
+                <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+                  <ui:FilterOperationArgument Operand="{x:Null}" BooleanOperator="And" Operator="NOTEMPTY">
+                    <ui:FilterOperationArgument.Column>
+                      <InArgument x:TypeArguments="x:String">["Archived"]</InArgument>
+                    </ui:FilterOperationArgument.Column>
+                  </ui:FilterOperationArgument>
+                </scg:List>
+              </ui:FilterDataTable.Filters>
+              <ui:FilterDataTable.SelectColumns>
+                <scg:List x:TypeArguments="InArgument" Capacity="4">
+                  <x:Null />
+                </scg:List>
+              </ui:FilterDataTable.SelectColumns>
+            </ui:FilterDataTable>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click Owner contacts" sap:VirtualizedContainerService.HintSize="434,190" sap2010:WorkflowViewState.IdRef="NClick_5" InteractionMode="DebuggerApi" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="8ce7ceea-988f-4fad-9a24-a2ff1e4b9914" Version="V4">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="designatedsites.naturalengland.org.uk/SiteDetail.aspx" DesignTimeRectangle="2789, 1398, 236, 43" DesignTimeScaleFactor="2.5" ElementType="Text" FullSelectorArgument="&lt;webctrl tag='DIV' class='row' visibleinnertext='*Owner contacts:*' /&gt;&lt;webctrl aaname='* (Archived: *)' tag='A' idx='2' /&gt;" Guid="7d5ee286-d3ad-4332-b9c3-cfaa43edddef" ImageBase64="" InformativeScreenshot="9fa760354c1f010a964b42674ac45fed.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='SSSI detail' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
+              </uix:NClick.Target>
+            </uix:NClick>
+            <uix:NExtractData AppendResults="False" ContinueOnError="True" DataTable="[dtOwnerContacts]" DisplayName="Extract Table Data - owner contacts" ExtractDataSettings="&lt;Table xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' Type='Table' AddCvHeader='true' IsScrollEnabled='false'&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Contact name' ReferenceIdx='0' Name='Contact name'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Archived' ReferenceIdx='1' Name='Archived'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Phone' ReferenceIdx='2' Name='Phone'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Mobile' ReferenceIdx='3' Name='Mobile'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Email' ReferenceIdx='4' Name='Email'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Address' ReferenceIdx='5' Name='Address'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&lt;/Table&gt;" ExtractMetadata="&lt;extract-table get_columns_name='1' get_empty_columns='1' columns_name_source='Longest'&gt;&lt;column name='Contact name' attr='fulltext' /&gt;&lt;column name='Archived' attr='fulltext' /&gt;&lt;column name='Phone' attr='fulltext' /&gt;&lt;column name='Mobile' attr='fulltext' /&gt;&lt;column name='Email' attr='fulltext' /&gt;&lt;column name='Address' attr='fulltext' /&gt;&lt;/extract-table&gt;" sap:VirtualizedContainerService.HintSize="434,189.6" sap2010:WorkflowViewState.IdRef="NExtractData_3" LimitExtractionTo="None" MaximumResults="0" ScopeIdentifier="8ce7ceea-988f-4fad-9a24-a2ff1e4b9914" Version="V4">
+              <uix:NExtractData.Target>
+                <uix:TargetAnchorable BrowserURL="https://designatedsites.naturalengland.org.uk/SiteDetail.aspx?SiteCode=S1003801&amp;SiteName=cotswold&amp;countyCode=&amp;responsiblePerson=&amp;SeaArea=&amp;IFCAArea=" DesignTimeRectangle="335, 584, 3125, 3849" DesignTimeScaleFactor="2.5" FullSelectorArgument="&lt;webctrl tag='TABLE' /&gt;" Guid="40804a23-284d-40a9-8ce0-1d94ec424a0d" InformativeScreenshot="7ae9462be9aa354635f2b4e3a6a852aa.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='SSSI detail' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
+              </uix:NExtractData.Target>
+            </uix:NExtractData>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click Close owner contacts" sap:VirtualizedContainerService.HintSize="434,190" sap2010:WorkflowViewState.IdRef="NClick_6" InteractionMode="DebuggerApi" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="8ce7ceea-988f-4fad-9a24-a2ff1e4b9914" Version="V4">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="designatedsites.naturalengland.org.uk/SiteDetail.aspx" ContentHash="GwTh_FcrJUy5U4NMpv01Qg" DesignTimeRectangle="3499, 429, 90, 90" DesignTimeScaleFactor="2.5" ElementType="Button" FullSelectorArgument="&lt;webctrl tag='INPUT' type='submit' aria-label='Close' class='popupButton' name='ctl00$ContentPlaceHolder1$ucSiteDetail1$btn' /&gt;" Guid="b6bf0573-13c9-4f22-9b4b-b1d55d446b31" InformativeScreenshot="9026f9098664656cd4b1ccd9db69c623.png" Reference="u70FNKxx7EOHPBwkfez66Q/mf_u2tbjsU6RkWBLryz1CQ" ScopeSelectorArgument="&lt;html app='msedge.exe' title='SSSI detail' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
+              </uix:NClick.Target>
+            </uix:NClick>
+            <ui:FilterDataTable DataTable="[dtOwnerContacts]" DisplayName="Remove archived owners" FilterRowsMode="Remove" sap:VirtualizedContainerService.HintSize="434,196" sap2010:WorkflowViewState.IdRef="FilterDataTable_2" OutputDataTable="[dtOwnerContacts]" SelectColumnsMode="Remove">
+              <ui:FilterDataTable.Filters>
+                <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+                  <ui:FilterOperationArgument Operand="{x:Null}" BooleanOperator="And" Operator="NOTEMPTY">
+                    <ui:FilterOperationArgument.Column>
+                      <InArgument x:TypeArguments="x:String">["Archived"]</InArgument>
+                    </ui:FilterOperationArgument.Column>
+                  </ui:FilterOperationArgument>
+                </scg:List>
+              </ui:FilterDataTable.Filters>
+              <ui:FilterDataTable.SelectColumns>
+                <scg:List x:TypeArguments="InArgument" Capacity="4">
+                  <x:Null />
+                </scg:List>
+              </ui:FilterDataTable.SelectColumns>
+            </ui:FilterDataTable>
+            <ui:AddDataColumn x:TypeArguments="x:String" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="Source" DataTable="[dtOwnerContacts]" DefaultValue="Owner" DisplayName="Add source column - owner" sap:VirtualizedContainerService.HintSize="434,222" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_3" />
+            <Assign DisplayName="Initialise output datatable" sap:VirtualizedContainerService.HintSize="434,114.8" sap2010:WorkflowViewState.IdRef="Assign_1">
+              <Assign.To>
+                <OutArgument x:TypeArguments="sd:DataTable">[out_dtOccupiersOwners]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="sd:DataTable">[dtOccupierContacts.Copy]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:MergeDataTable Destination="[out_dtOccupiersOwners]" DisplayName="Merge owner and occupiers" sap:VirtualizedContainerService.HintSize="434,160.4" sap2010:WorkflowViewState.IdRef="MergeDataTable_1" MissingSchemaAction="Add" Source="[dtOwnerContacts]" />
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="0, 0, 0, 0" Version="V1" />
+      </uix:NApplicationCard.TargetApp>
+    </uix:NApplicationCard>
+  </Sequence>
+</Activity>

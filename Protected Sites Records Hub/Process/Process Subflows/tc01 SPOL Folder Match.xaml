@@ -182,12 +182,13 @@
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="SPOL Folder Match - Invoke Workflow File (SPOL Folder Match.xaml)" sap:VirtualizedContainerService.HintSize="416,177.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="SPOL Folder Match.xaml">
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="SPOL Folder Match - Invoke Workflow File (SPOL Folder Match.xaml)" sap:VirtualizedContainerService.HintSize="416,177.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Process\Process Subflows\SPOL Folder Match.xaml">
         <ui:InvokeWorkflowFile.Arguments>
           <OutArgument x:TypeArguments="x:String" x:Key="out_strDestinationFolder">[strDestinationFolder]</OutArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="in_strParentFolder">2023</InArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="in_strFolderName">aeraererg</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_strParentFolder">184 testing</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_strFolderName">Miller, Rob</InArgument>
           <InArgument x:TypeArguments="x:Boolean" x:Key="in_boolConfirmMatch">False</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_strListID">[g_Config("SharepointListID").ToString]</InArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
       <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="416,114.4" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[strDestinationFolder]" />
