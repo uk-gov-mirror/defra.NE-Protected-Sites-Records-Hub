@@ -1,0 +1,14 @@
+﻿{
+  "Name": "Download file",
+  "Type": "Element",
+  "TaxonomyType": "Button",
+  "Id": "urvP8SmyGU6WwBABTTqDLw",
+  "Reference": "u70FNKxx7EOHPBwkfez66Q/urvP8SmyGU6WwBABTTqDLw",
+  "ParentRef": "u70FNKxx7EOHPBwkfez66Q/hIVbG_5DcEyL5UvvIYFOvA",
+  "Created": "2026-07-03T06:59:46.9972873Z",
+  "Updated": "2026-07-03T06:59:46.9972873Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=24.10.16.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=25.6.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

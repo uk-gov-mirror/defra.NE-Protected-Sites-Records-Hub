@@ -5,14 +5,14 @@
   "main": "Main.xaml",
   "dependencies": {
     "DRACOE.Logging.64": "[1.0.17]",
-    "DRACOE.Microsoft.Graph.64": "[1.0.51]",
+    "DRACOE.Microsoft.Graph.64": "[1.0.55]",
     "DRACOE.PopUps.64": "[1.0.9]",
     "UiPath.Excel.Activities": "[2.23.5]",
     "UiPath.Mail.Activities": "[1.23.11]",
     "UiPath.System.Activities": "[24.10.8]",
     "UiPath.Testing.Activities": "[23.10.1]",
     "UiPath.UIAutomation.Activities": "[24.10.16]",
-    "UiPath.WebAPI.Activities": "[2.3.2]"
+    "UiPath.WebAPI.Activities": "[2.5.1]"
   },
   "webServices": [],
   "entitiesStores": [],
@@ -61,6 +61,48 @@
         "testCaseType": "TestCase",
         "executionTemplateInvokeIsolated": false,
         "fileName": "Process\\Process Subflows\\tc01 Search For Owner Occupier.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "577f71f5-c06b-449b-a37e-77e729a63244",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "TestCase.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "b877d76a-1903-4c21-b0c1-4717f31c8923",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "Process\\Process Subflows\\tc01 Get Defra Forms Attachments.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "8cfacbcc-c260-4805-ba00-1ca521917c61",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "Process\\Process Subflows\\tc01 Find Companion CWT Receipt.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "25009ea4-af60-4c3e-8c3e-837b82ab353f",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "Process\\Process Subflows\\tc01 Get Form Details CSV.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "497810ea-68a1-4786-8907-d1885b2f51dd",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "Process\\Process Subflows\\tc01 Extract Form Details.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "1be6e84e-185a-473a-b0c9-592a1f0a1296",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "Process\\Process Subflows\\tc01 Search Designated Sites.xaml"
       }
     ],
     "saveToCloud": false

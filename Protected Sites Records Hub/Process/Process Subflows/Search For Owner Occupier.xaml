@@ -133,7 +133,7 @@
       <AssemblyReference>UiPath.Form.Activities</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Search_For_Owner_Occupier" sap:VirtualizedContainerService.HintSize="1451.6000000000001,1636.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Search_For_Owner_Occupier" sap:VirtualizedContainerService.HintSize="1451.6000000000001,2072" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strNameVariation1" />
       <Variable x:TypeArguments="s:String[]" Name="arrNameParts" />
@@ -150,7 +150,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:MultipleAssign DisplayName="Create name variations" sap:VirtualizedContainerService.HintSize="508,212" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+    <ui:MultipleAssign DisplayName="Create name variations" sap:VirtualizedContainerService.HintSize="524,212" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
@@ -180,7 +180,7 @@
         </scg:List>
       </ui:MultipleAssign.AssignOperations>
     </ui:MultipleAssign>
-    <ui:FilterDataTable sap2010:Annotation.AnnotationText="Lots of OR conditions here. I think there's too much variability in the provided data tbh, so don't anticipate this returning a perfect 1 result very often." DataTable="[in_dtOwnerOccupiers]" DisplayName="Filter Owner/Occupiers on Defra form info" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="508,257.2" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[dtFiltered]" SelectColumnsMode="Remove">
+    <ui:FilterDataTable sap2010:Annotation.AnnotationText="Lots of OR conditions here. I think there's too much variability in the provided data tbh, so don't anticipate this returning a perfect 1 result very often." DataTable="[in_dtOwnerOccupiers]" DisplayName="Filter Owner/Occupiers on Defra form info" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="524,257.2" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[dtFiltered]" SelectColumnsMode="Remove">
       <ui:FilterDataTable.Filters>
         <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="8">
           <ui:FilterOperationArgument BooleanOperator="And" Operator="EQ">
@@ -260,15 +260,15 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:FilterDataTable>
-    <Switch x:TypeArguments="x:Int32" DisplayName="Switch - owner/occupiers returned" Expression="[dtFiltered.RowCount]" sap:VirtualizedContainerService.HintSize="508,1038.8" sap2010:WorkflowViewState.IdRef="Switch`1_1">
+    <Switch x:TypeArguments="x:Int32" DisplayName="Switch - owner/occupiers returned" Expression="[dtFiltered.RowCount]" sap:VirtualizedContainerService.HintSize="524,1474" sap2010:WorkflowViewState.IdRef="Switch`1_1">
       <Switch.Default>
-        <Sequence DisplayName="Multiple matches" sap:VirtualizedContainerService.HintSize="468,794" sap2010:WorkflowViewState.IdRef="Sequence_4">
+        <Sequence DisplayName="Multiple matches" sap:VirtualizedContainerService.HintSize="484,1230" sap2010:WorkflowViewState.IdRef="Sequence_4">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Assign DisplayName="Assign multiple matches pop-up text" sap:VirtualizedContainerService.HintSize="434,115.6" sap2010:WorkflowViewState.IdRef="Assign_6">
+          <Assign DisplayName="Assign multiple matches pop-up text" sap:VirtualizedContainerService.HintSize="450,115.6" sap2010:WorkflowViewState.IdRef="Assign_6">
             <Assign.To>
               <OutArgument x:TypeArguments="x:String">[strPopUpText]</OutArgument>
             </Assign.To>
@@ -281,12 +281,12 @@
 "&lt;strong&gt;Phone:&lt;/strong&gt;&amp;ensp;"+in_strPhone+"&lt;/p&gt;"]</InArgument>
             </Assign.Value>
           </Assign>
-          <InvokeMethod DisplayName="Stop timer - select owner/occupier - multiple matches" sap:VirtualizedContainerService.HintSize="434,168.8" sap2010:WorkflowViewState.IdRef="InvokeMethod_4" MethodName="Stop">
+          <InvokeMethod DisplayName="Stop timer - select owner/occupier - multiple matches" sap:VirtualizedContainerService.HintSize="450,168.8" sap2010:WorkflowViewState.IdRef="InvokeMethod_4" MethodName="Stop">
             <InvokeMethod.TargetObject>
               <InArgument x:TypeArguments="sd1:Stopwatch">[g_swProcessingTimer]</InArgument>
             </InvokeMethod.TargetObject>
           </InvokeMethod>
-          <ufa:FormActivity CreateFormActivityFileName="{x:Null}" CreateFormActivityFilePath="{x:Null}" FormFieldsInputData="{x:Null}" FormFieldsOutputData="{x:Null}" IconPath="{x:Null}" TimeoutInSeconds="{x:Null}" WindowPositionLeft="{x:Null}" WindowPositionTop="{x:Null}" CreateFormId="df5dfef4-0aa4-4e3b-bfe0-aa2b77595120" DevTools="False" DisableMaximizeButton="False" DisableMinimizeButton="False" DisableSanitize="False" Dismissed="[boolDismissed]" DisplayName="Select owner/occupier" EnableAccessibility="False" FormHeight="800" FormSchema="%[{&quot;label&quot;:&quot;HTML&quot;,&quot;attrs&quot;:[{&quot;attr&quot;:&quot;&quot;,&quot;value&quot;:&quot;&quot;}],&quot;content&quot;:&quot;{{data.PopupMessage}}&quot;,&quot;refreshOnChange&quot;:true,&quot;key&quot;:&quot;html&quot;,&quot;type&quot;:&quot;htmlelement&quot;,&quot;input&quot;:false,&quot;tableView&quot;:false},{&quot;label&quot;:&quot;Select Owner/Occupier&quot;,&quot;optionsLabelPosition&quot;:&quot;right&quot;,&quot;inline&quot;:false,&quot;tableView&quot;:false,&quot;values&quot;:[{&quot;label&quot;:&quot;&quot;,&quot;value&quot;:&quot;1&quot;,&quot;shortcut&quot;:&quot;&quot;}],&quot;key&quot;:&quot;selectOwnerOccupier&quot;,&quot;type&quot;:&quot;radio&quot;,&quot;input&quot;:true},{&quot;label&quot;:&quot;Container&quot;,&quot;customClass&quot;:&quot;box_continue&quot;,&quot;key&quot;:&quot;container1&quot;,&quot;type&quot;:&quot;container&quot;,&quot;input&quot;:true,&quot;tableView&quot;:false,&quot;components&quot;:[{&quot;label&quot;:&quot;Stop&quot;,&quot;theme&quot;:&quot;danger&quot;,&quot;leftIcon&quot;:&quot;fa fa-close&quot;,&quot;customClass&quot;:&quot;btn&quot;,&quot;tableView&quot;:false,&quot;key&quot;:&quot;no&quot;,&quot;custom&quot;:&quot;instance.emit('executeDoBlock', instance.component);&quot;,&quot;input&quot;:true,&quot;type&quot;:&quot;button&quot;,&quot;isResetData&quot;:false},{&quot;label&quot;:&quot;Continue&quot;,&quot;theme&quot;:&quot;success&quot;,&quot;leftIcon&quot;:&quot;fa fa-check&quot;,&quot;customClass&quot;:&quot;btn&quot;,&quot;tableView&quot;:false,&quot;key&quot;:&quot;continue&quot;,&quot;custom&quot;:&quot;instance.emit('executeDoBlock', instance.component);&quot;,&quot;input&quot;:true,&quot;type&quot;:&quot;button&quot;,&quot;isResetData&quot;:false}]}]" FormTheme="{}{&quot;Activities&quot;:[&quot;FORMS&quot;],&quot;Id&quot;:&quot;1642693326066&quot;,&quot;Name&quot;:&quot;Standard&quot;,&quot;BaseCss&quot;:&quot;../../assets/css/themes/uipath.bootstrap.min.css&quot;,&quot;ImageSrc&quot;:&quot;../../assets/themeicons/uipath.png&quot;,&quot;OverrideCssUrl&quot;:&quot;../../assets/css/themes/uipath.custom.css&quot;,&quot;UserStyleOverrides&quot;:&quot;body , h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {\n                      font-family : Calibri !important;\n                    }table, .btn, .form-control {\n                      font-size : 20px !important;\n                     }h1 {\n                      font-size : 42px !important;\n                    }h2 {\n                      font-size : 36px !important;\n                    }h3 {\n                      font-size : 30px !important;\n                    }h4 {\n                      font-size : 24px !important;\n                    }h5 {\n                      font-size : 20px !important;\n                    }h6 {\n                      font-size : 18px !important;\n                    }body {\n      background:  #ffffff !important;\n      font-size : 20px !important;\n      font-family : Calibri !important;\n      color : #000000 !important\n    } .panel-default {\n                        background:   !important;\n                        border-color :   !important;\n                      }\n                 .panel-default &gt; .panel-heading {\n                        background-color:  !important;\n                        color : #000000 !important\n                      }.btn-primary {\n                          background:  #ffffff !important;\n                          border-color:  #ffffff !important;\n                          color:  #000000 !important;\n                      } .btn-primary:hover {\n                          background:  #ffffff !important;\n                          color:  #000000 !important;\n                      } .btn-default {\n                        background:   !important;\n                        border-color:   !important;\n                        color:   !important;\n                      } .btn-default:hover {\n                        background:   !important;\n                        color:   !important;\n                      } &quot;,&quot;Properties&quot;:&quot;&quot;,&quot;IsCustomTheme&quot;:true,&quot;Version&quot;:1,&quot;ThemeVersion&quot;:1}" FormTitle="Enter folder name" FormWidth="1200" GenerateInputFields="False" sap:VirtualizedContainerService.HintSize="434,175.2" sap2010:WorkflowViewState.IdRef="FormActivity_2" IsReadOnly="False" LocalCSSFilePath="[&quot;/file://&quot; + Directory.GetCurrentDirectory + &quot;\Assets\Generic\PausePoint.css&quot;]" MaxColumnsForSchemaGeneration="6" RunDoBlockFirst="False" RunInIsolatedMode="False" SelectedButton="[strButtonSelected]" StartAsMinimized="False">
+          <ufa:FormActivity CreateFormActivityFileName="{x:Null}" CreateFormActivityFilePath="{x:Null}" FormFieldsInputData="{x:Null}" FormFieldsOutputData="{x:Null}" IconPath="{x:Null}" TimeoutInSeconds="{x:Null}" WindowPositionLeft="{x:Null}" WindowPositionTop="{x:Null}" CreateFormId="df5dfef4-0aa4-4e3b-bfe0-aa2b77595120" DevTools="False" DisableMaximizeButton="False" DisableMinimizeButton="False" DisableSanitize="False" Dismissed="[boolDismissed]" DisplayName="Select owner/occupier" EnableAccessibility="False" FormHeight="800" FormSchema="%[{&quot;label&quot;:&quot;HTML&quot;,&quot;attrs&quot;:[{&quot;attr&quot;:&quot;&quot;,&quot;value&quot;:&quot;&quot;}],&quot;content&quot;:&quot;{{data.PopupMessage}}&quot;,&quot;refreshOnChange&quot;:true,&quot;key&quot;:&quot;html&quot;,&quot;type&quot;:&quot;htmlelement&quot;,&quot;input&quot;:false,&quot;tableView&quot;:false},{&quot;label&quot;:&quot;Select Owner/Occupier&quot;,&quot;optionsLabelPosition&quot;:&quot;right&quot;,&quot;inline&quot;:false,&quot;tableView&quot;:false,&quot;values&quot;:[{&quot;label&quot;:&quot;&quot;,&quot;value&quot;:&quot;1&quot;,&quot;shortcut&quot;:&quot;&quot;}],&quot;key&quot;:&quot;selectOwnerOccupier&quot;,&quot;type&quot;:&quot;radio&quot;,&quot;input&quot;:true},{&quot;label&quot;:&quot;Container&quot;,&quot;customClass&quot;:&quot;box_continue&quot;,&quot;key&quot;:&quot;container1&quot;,&quot;type&quot;:&quot;container&quot;,&quot;input&quot;:true,&quot;tableView&quot;:false,&quot;components&quot;:[{&quot;label&quot;:&quot;Stop&quot;,&quot;theme&quot;:&quot;danger&quot;,&quot;leftIcon&quot;:&quot;fa fa-close&quot;,&quot;customClass&quot;:&quot;btn&quot;,&quot;tableView&quot;:false,&quot;key&quot;:&quot;no&quot;,&quot;custom&quot;:&quot;instance.emit('executeDoBlock', instance.component);&quot;,&quot;input&quot;:true,&quot;type&quot;:&quot;button&quot;,&quot;isResetData&quot;:false},{&quot;label&quot;:&quot;Continue&quot;,&quot;theme&quot;:&quot;success&quot;,&quot;leftIcon&quot;:&quot;fa fa-check&quot;,&quot;customClass&quot;:&quot;btn&quot;,&quot;tableView&quot;:false,&quot;key&quot;:&quot;continue&quot;,&quot;custom&quot;:&quot;instance.emit('executeDoBlock', instance.component);&quot;,&quot;input&quot;:true,&quot;type&quot;:&quot;button&quot;,&quot;isResetData&quot;:false}]}]" FormTheme="{}{&quot;Activities&quot;:[&quot;FORMS&quot;],&quot;Id&quot;:&quot;1642693326066&quot;,&quot;Name&quot;:&quot;Standard&quot;,&quot;BaseCss&quot;:&quot;../../assets/css/themes/uipath.bootstrap.min.css&quot;,&quot;ImageSrc&quot;:&quot;../../assets/themeicons/uipath.png&quot;,&quot;OverrideCssUrl&quot;:&quot;../../assets/css/themes/uipath.custom.css&quot;,&quot;UserStyleOverrides&quot;:&quot;body , h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {\n                      font-family : Calibri !important;\n                    }table, .btn, .form-control {\n                      font-size : 20px !important;\n                     }h1 {\n                      font-size : 42px !important;\n                    }h2 {\n                      font-size : 36px !important;\n                    }h3 {\n                      font-size : 30px !important;\n                    }h4 {\n                      font-size : 24px !important;\n                    }h5 {\n                      font-size : 20px !important;\n                    }h6 {\n                      font-size : 18px !important;\n                    }body {\n      background:  #ffffff !important;\n      font-size : 20px !important;\n      font-family : Calibri !important;\n      color : #000000 !important\n    } .panel-default {\n                        background:   !important;\n                        border-color :   !important;\n                      }\n                 .panel-default &gt; .panel-heading {\n                        background-color:  !important;\n                        color : #000000 !important\n                      }.btn-primary {\n                          background:  #ffffff !important;\n                          border-color:  #ffffff !important;\n                          color:  #000000 !important;\n                      } .btn-primary:hover {\n                          background:  #ffffff !important;\n                          color:  #000000 !important;\n                      } .btn-default {\n                        background:   !important;\n                        border-color:   !important;\n                        color:   !important;\n                      } .btn-default:hover {\n                        background:   !important;\n                        color:   !important;\n                      } &quot;,&quot;Properties&quot;:&quot;&quot;,&quot;IsCustomTheme&quot;:true,&quot;Version&quot;:1,&quot;ThemeVersion&quot;:1}" FormTitle="Enter folder name" FormWidth="1200" GenerateInputFields="False" sap:VirtualizedContainerService.HintSize="450,175.2" sap2010:WorkflowViewState.IdRef="FormActivity_2" IsReadOnly="False" LocalCSSFilePath="[&quot;/file://&quot; + Directory.GetCurrentDirectory + &quot;\Assets\Generic\PausePoint.css&quot;]" MaxColumnsForSchemaGeneration="6" RunDoBlockFirst="False" RunInIsolatedMode="False" SelectedButton="[strButtonSelected]" StartAsMinimized="False">
             <ufa:FormActivity.Body>
               <ActivityAction x:TypeArguments="scg:Dictionary(x:String, x:Object)" />
             </ufa:FormActivity.Body>
@@ -306,12 +306,33 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ufa:FormActivity>
-          <InvokeMethod DisplayName="Start timer - select owner/occupier - multiple matches" sap:VirtualizedContainerService.HintSize="434,168.8" sap2010:WorkflowViewState.IdRef="InvokeMethod_5" MethodName="Start">
+          <InvokeMethod DisplayName="Start timer - select owner/occupier - multiple matches" sap:VirtualizedContainerService.HintSize="450,168.8" sap2010:WorkflowViewState.IdRef="InvokeMethod_5" MethodName="Start">
             <InvokeMethod.TargetObject>
               <InArgument x:TypeArguments="sd1:Stopwatch">[g_swProcessingTimer]</InArgument>
             </InvokeMethod.TargetObject>
           </InvokeMethod>
-          <Assign DisplayName="Get selected row - multiple matches" sap:VirtualizedContainerService.HintSize="434,105.6" sap2010:WorkflowViewState.IdRef="Assign_7">
+          <If Condition="[boolDismissed or strButtonSelected=&quot;no&quot;]" DisplayName="Form dismissed? - multiple matches" sap:VirtualizedContainerService.HintSize="450,436" sap2010:WorkflowViewState.IdRef="If_1">
+            <If.Then>
+              <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,174.4" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <Throw DisplayName="Throw BRE - form dismissed - multiple matches" Exception="[new BusinessRuleException(&quot;User dismissed form where multiple matches were found in Designated Sites.&quot;)]" sap:VirtualizedContainerService.HintSize="382,114.4" sap2010:WorkflowViewState.IdRef="Throw_1" />
+              </Sequence>
+            </If.Then>
+            <If.Else>
+              <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,90.4" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </Sequence>
+            </If.Else>
+          </If>
+          <Assign DisplayName="Get selected row - multiple matches" sap:VirtualizedContainerService.HintSize="450,105.6" sap2010:WorkflowViewState.IdRef="Assign_7">
             <Assign.To>
               <OutArgument x:TypeArguments="sd:DataRow">[rowOwnerOccupier]</OutArgument>
             </Assign.To>
@@ -321,13 +342,13 @@
           </Assign>
         </Sequence>
       </Switch.Default>
-      <Sequence x:Key="0" DisplayName="No matches" sap:VirtualizedContainerService.HintSize="468,794" sap2010:WorkflowViewState.IdRef="Sequence_3">
+      <Sequence x:Key="0" DisplayName="No matches" sap:VirtualizedContainerService.HintSize="484,1230" sap2010:WorkflowViewState.IdRef="Sequence_3">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <Assign DisplayName="Assign no-matches pop-up text" sap:VirtualizedContainerService.HintSize="434,115.6" sap2010:WorkflowViewState.IdRef="Assign_1">
+        <Assign DisplayName="Assign no-matches pop-up text" sap:VirtualizedContainerService.HintSize="450,115.6" sap2010:WorkflowViewState.IdRef="Assign_1">
           <Assign.To>
             <OutArgument x:TypeArguments="x:String">[strPopUpText]</OutArgument>
           </Assign.To>
@@ -341,12 +362,12 @@
 "&lt;strong&gt;Phone:&lt;/strong&gt;&amp;ensp;"+in_strPhone+"&lt;/p&gt;"]</InArgument>
           </Assign.Value>
         </Assign>
-        <InvokeMethod DisplayName="Stop timer - select owner/occupier - no matches" sap:VirtualizedContainerService.HintSize="434,168.8" sap2010:WorkflowViewState.IdRef="InvokeMethod_2" MethodName="Stop">
+        <InvokeMethod DisplayName="Stop timer - select owner/occupier - no matches" sap:VirtualizedContainerService.HintSize="450,168.8" sap2010:WorkflowViewState.IdRef="InvokeMethod_2" MethodName="Stop">
           <InvokeMethod.TargetObject>
             <InArgument x:TypeArguments="sd1:Stopwatch">[g_swProcessingTimer]</InArgument>
           </InvokeMethod.TargetObject>
         </InvokeMethod>
-        <ufa:FormActivity CreateFormActivityFileName="{x:Null}" CreateFormActivityFilePath="{x:Null}" FormFieldsInputData="{x:Null}" FormFieldsOutputData="{x:Null}" IconPath="{x:Null}" TimeoutInSeconds="{x:Null}" WindowPositionLeft="{x:Null}" WindowPositionTop="{x:Null}" CreateFormId="df5dfef4-0aa4-4e3b-bfe0-aa2b77595120" DevTools="False" DisableMaximizeButton="False" DisableMinimizeButton="False" DisableSanitize="False" Dismissed="[boolDismissed]" DisplayName="Select owner/occupier" EnableAccessibility="False" FormHeight="800" FormSchema="%[{&quot;label&quot;:&quot;HTML&quot;,&quot;attrs&quot;:[{&quot;attr&quot;:&quot;&quot;,&quot;value&quot;:&quot;&quot;}],&quot;content&quot;:&quot;{{data.PopupMessage}}&quot;,&quot;refreshOnChange&quot;:true,&quot;key&quot;:&quot;html&quot;,&quot;type&quot;:&quot;htmlelement&quot;,&quot;input&quot;:false,&quot;tableView&quot;:false},{&quot;label&quot;:&quot;Select Owner/Occupier&quot;,&quot;optionsLabelPosition&quot;:&quot;right&quot;,&quot;inline&quot;:false,&quot;tableView&quot;:false,&quot;values&quot;:[{&quot;label&quot;:&quot;&quot;,&quot;value&quot;:&quot;1&quot;,&quot;shortcut&quot;:&quot;&quot;}],&quot;key&quot;:&quot;selectOwnerOccupier&quot;,&quot;type&quot;:&quot;radio&quot;,&quot;input&quot;:true},{&quot;label&quot;:&quot;Container&quot;,&quot;customClass&quot;:&quot;box_continue&quot;,&quot;key&quot;:&quot;container1&quot;,&quot;type&quot;:&quot;container&quot;,&quot;input&quot;:true,&quot;tableView&quot;:false,&quot;components&quot;:[{&quot;label&quot;:&quot;Stop&quot;,&quot;theme&quot;:&quot;danger&quot;,&quot;leftIcon&quot;:&quot;fa fa-close&quot;,&quot;customClass&quot;:&quot;btn&quot;,&quot;tableView&quot;:false,&quot;key&quot;:&quot;no&quot;,&quot;custom&quot;:&quot;instance.emit('executeDoBlock', instance.component);&quot;,&quot;input&quot;:true,&quot;type&quot;:&quot;button&quot;,&quot;isResetData&quot;:false},{&quot;label&quot;:&quot;Continue&quot;,&quot;theme&quot;:&quot;success&quot;,&quot;leftIcon&quot;:&quot;fa fa-check&quot;,&quot;customClass&quot;:&quot;btn&quot;,&quot;tableView&quot;:false,&quot;key&quot;:&quot;continue&quot;,&quot;custom&quot;:&quot;instance.emit('executeDoBlock', instance.component);&quot;,&quot;input&quot;:true,&quot;type&quot;:&quot;button&quot;,&quot;isResetData&quot;:false}]}]" FormTheme="{}{&quot;Activities&quot;:[&quot;FORMS&quot;],&quot;Id&quot;:&quot;1642693326066&quot;,&quot;Name&quot;:&quot;Standard&quot;,&quot;BaseCss&quot;:&quot;../../assets/css/themes/uipath.bootstrap.min.css&quot;,&quot;ImageSrc&quot;:&quot;../../assets/themeicons/uipath.png&quot;,&quot;OverrideCssUrl&quot;:&quot;../../assets/css/themes/uipath.custom.css&quot;,&quot;UserStyleOverrides&quot;:&quot;body , h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {\n                      font-family : Calibri !important;\n                    }table, .btn, .form-control {\n                      font-size : 20px !important;\n                     }h1 {\n                      font-size : 42px !important;\n                    }h2 {\n                      font-size : 36px !important;\n                    }h3 {\n                      font-size : 30px !important;\n                    }h4 {\n                      font-size : 24px !important;\n                    }h5 {\n                      font-size : 20px !important;\n                    }h6 {\n                      font-size : 18px !important;\n                    }body {\n      background:  #ffffff !important;\n      font-size : 20px !important;\n      font-family : Calibri !important;\n      color : #000000 !important\n    } .panel-default {\n                        background:   !important;\n                        border-color :   !important;\n                      }\n                 .panel-default &gt; .panel-heading {\n                        background-color:  !important;\n                        color : #000000 !important\n                      }.btn-primary {\n                          background:  #ffffff !important;\n                          border-color:  #ffffff !important;\n                          color:  #000000 !important;\n                      } .btn-primary:hover {\n                          background:  #ffffff !important;\n                          color:  #000000 !important;\n                      } .btn-default {\n                        background:   !important;\n                        border-color:   !important;\n                        color:   !important;\n                      } .btn-default:hover {\n                        background:   !important;\n                        color:   !important;\n                      } &quot;,&quot;Properties&quot;:&quot;&quot;,&quot;IsCustomTheme&quot;:true,&quot;Version&quot;:1,&quot;ThemeVersion&quot;:1}" FormTitle="Enter folder name" FormWidth="1200" GenerateInputFields="False" sap:VirtualizedContainerService.HintSize="434,175.2" sap2010:WorkflowViewState.IdRef="FormActivity_1" IsReadOnly="False" LocalCSSFilePath="[&quot;/file://&quot; + Directory.GetCurrentDirectory + &quot;\Assets\Generic\PausePoint.css&quot;]" MaxColumnsForSchemaGeneration="6" RunDoBlockFirst="False" RunInIsolatedMode="False" SelectedButton="[strButtonSelected]" StartAsMinimized="False">
+        <ufa:FormActivity CreateFormActivityFileName="{x:Null}" CreateFormActivityFilePath="{x:Null}" FormFieldsInputData="{x:Null}" FormFieldsOutputData="{x:Null}" IconPath="{x:Null}" TimeoutInSeconds="{x:Null}" WindowPositionLeft="{x:Null}" WindowPositionTop="{x:Null}" CreateFormId="df5dfef4-0aa4-4e3b-bfe0-aa2b77595120" DevTools="False" DisableMaximizeButton="False" DisableMinimizeButton="False" DisableSanitize="False" Dismissed="[boolDismissed]" DisplayName="Select owner/occupier" EnableAccessibility="False" FormHeight="800" FormSchema="%[{&quot;label&quot;:&quot;HTML&quot;,&quot;attrs&quot;:[{&quot;attr&quot;:&quot;&quot;,&quot;value&quot;:&quot;&quot;}],&quot;content&quot;:&quot;{{data.PopupMessage}}&quot;,&quot;refreshOnChange&quot;:true,&quot;key&quot;:&quot;html&quot;,&quot;type&quot;:&quot;htmlelement&quot;,&quot;input&quot;:false,&quot;tableView&quot;:false},{&quot;label&quot;:&quot;Select Owner/Occupier&quot;,&quot;optionsLabelPosition&quot;:&quot;right&quot;,&quot;inline&quot;:false,&quot;tableView&quot;:false,&quot;values&quot;:[{&quot;label&quot;:&quot;&quot;,&quot;value&quot;:&quot;1&quot;,&quot;shortcut&quot;:&quot;&quot;}],&quot;key&quot;:&quot;selectOwnerOccupier&quot;,&quot;type&quot;:&quot;radio&quot;,&quot;input&quot;:true},{&quot;label&quot;:&quot;Container&quot;,&quot;customClass&quot;:&quot;box_continue&quot;,&quot;key&quot;:&quot;container1&quot;,&quot;type&quot;:&quot;container&quot;,&quot;input&quot;:true,&quot;tableView&quot;:false,&quot;components&quot;:[{&quot;label&quot;:&quot;Stop&quot;,&quot;theme&quot;:&quot;danger&quot;,&quot;leftIcon&quot;:&quot;fa fa-close&quot;,&quot;customClass&quot;:&quot;btn&quot;,&quot;tableView&quot;:false,&quot;key&quot;:&quot;no&quot;,&quot;custom&quot;:&quot;instance.emit('executeDoBlock', instance.component);&quot;,&quot;input&quot;:true,&quot;type&quot;:&quot;button&quot;,&quot;isResetData&quot;:false},{&quot;label&quot;:&quot;Continue&quot;,&quot;theme&quot;:&quot;success&quot;,&quot;leftIcon&quot;:&quot;fa fa-check&quot;,&quot;customClass&quot;:&quot;btn&quot;,&quot;tableView&quot;:false,&quot;key&quot;:&quot;continue&quot;,&quot;custom&quot;:&quot;instance.emit('executeDoBlock', instance.component);&quot;,&quot;input&quot;:true,&quot;type&quot;:&quot;button&quot;,&quot;isResetData&quot;:false}]}]" FormTheme="{}{&quot;Activities&quot;:[&quot;FORMS&quot;],&quot;Id&quot;:&quot;1642693326066&quot;,&quot;Name&quot;:&quot;Standard&quot;,&quot;BaseCss&quot;:&quot;../../assets/css/themes/uipath.bootstrap.min.css&quot;,&quot;ImageSrc&quot;:&quot;../../assets/themeicons/uipath.png&quot;,&quot;OverrideCssUrl&quot;:&quot;../../assets/css/themes/uipath.custom.css&quot;,&quot;UserStyleOverrides&quot;:&quot;body , h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {\n                      font-family : Calibri !important;\n                    }table, .btn, .form-control {\n                      font-size : 20px !important;\n                     }h1 {\n                      font-size : 42px !important;\n                    }h2 {\n                      font-size : 36px !important;\n                    }h3 {\n                      font-size : 30px !important;\n                    }h4 {\n                      font-size : 24px !important;\n                    }h5 {\n                      font-size : 20px !important;\n                    }h6 {\n                      font-size : 18px !important;\n                    }body {\n      background:  #ffffff !important;\n      font-size : 20px !important;\n      font-family : Calibri !important;\n      color : #000000 !important\n    } .panel-default {\n                        background:   !important;\n                        border-color :   !important;\n                      }\n                 .panel-default &gt; .panel-heading {\n                        background-color:  !important;\n                        color : #000000 !important\n                      }.btn-primary {\n                          background:  #ffffff !important;\n                          border-color:  #ffffff !important;\n                          color:  #000000 !important;\n                      } .btn-primary:hover {\n                          background:  #ffffff !important;\n                          color:  #000000 !important;\n                      } .btn-default {\n                        background:   !important;\n                        border-color:   !important;\n                        color:   !important;\n                      } .btn-default:hover {\n                        background:   !important;\n                        color:   !important;\n                      } &quot;,&quot;Properties&quot;:&quot;&quot;,&quot;IsCustomTheme&quot;:true,&quot;Version&quot;:1,&quot;ThemeVersion&quot;:1}" FormTitle="Enter folder name" FormWidth="1200" GenerateInputFields="False" sap:VirtualizedContainerService.HintSize="450,175.2" sap2010:WorkflowViewState.IdRef="FormActivity_1" IsReadOnly="False" LocalCSSFilePath="[&quot;/file://&quot; + Directory.GetCurrentDirectory + &quot;\Assets\Generic\PausePoint.css&quot;]" MaxColumnsForSchemaGeneration="6" RunDoBlockFirst="False" RunInIsolatedMode="False" SelectedButton="[strButtonSelected]" StartAsMinimized="False">
           <ufa:FormActivity.Body>
             <ActivityAction x:TypeArguments="scg:Dictionary(x:String, x:Object)" />
           </ufa:FormActivity.Body>
@@ -366,12 +387,33 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
         </ufa:FormActivity>
-        <InvokeMethod DisplayName="Start timer - select owner/occupier - no matches" sap:VirtualizedContainerService.HintSize="434,168.8" sap2010:WorkflowViewState.IdRef="InvokeMethod_3" MethodName="Start">
+        <InvokeMethod DisplayName="Start timer - select owner/occupier - no matches" sap:VirtualizedContainerService.HintSize="450,168.8" sap2010:WorkflowViewState.IdRef="InvokeMethod_3" MethodName="Start">
           <InvokeMethod.TargetObject>
             <InArgument x:TypeArguments="sd1:Stopwatch">[g_swProcessingTimer]</InArgument>
           </InvokeMethod.TargetObject>
         </InvokeMethod>
-        <Assign DisplayName="Get selected row - no matches" sap:VirtualizedContainerService.HintSize="434,105.6" sap2010:WorkflowViewState.IdRef="Assign_3">
+        <If Condition="[boolDismissed or strButtonSelected=&quot;no&quot;]" DisplayName="Form dismissed? - multiple matches" sap:VirtualizedContainerService.HintSize="450,436" sap2010:WorkflowViewState.IdRef="If_2">
+          <If.Then>
+            <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,174.4" sap2010:WorkflowViewState.IdRef="Sequence_7">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <Throw DisplayName="Throw BRE - form dismissed - multiple matches" Exception="[new BusinessRuleException(&quot;User dismissed form where multiple matches were found in Designated Sites.&quot;)]" sap:VirtualizedContainerService.HintSize="382,114.4" sap2010:WorkflowViewState.IdRef="Throw_2" />
+            </Sequence>
+          </If.Then>
+          <If.Else>
+            <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,90.4" sap2010:WorkflowViewState.IdRef="Sequence_8">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </Sequence>
+          </If.Else>
+        </If>
+        <Assign DisplayName="Get selected row - no matches" sap:VirtualizedContainerService.HintSize="450,105.6" sap2010:WorkflowViewState.IdRef="Assign_3">
           <Assign.To>
             <OutArgument x:TypeArguments="sd:DataRow">[rowOwnerOccupier]</OutArgument>
           </Assign.To>
@@ -380,14 +422,14 @@
           </Assign.Value>
         </Assign>
       </Sequence>
-      <Sequence x:Key="1" DisplayName="Log single owner occupier returned and store" sap:VirtualizedContainerService.HintSize="542,455.6" sap2010:WorkflowViewState.IdRef="Sequence_2">
+      <Sequence x:Key="1" DisplayName="Log single owner occupier returned and store" sap:VirtualizedContainerService.HintSize="468,455.6" sap2010:WorkflowViewState.IdRef="Sequence_2">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <ui:LogMessage DisplayName="LogMessage - result found" sap:VirtualizedContainerService.HintSize="508,175.6" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;One matching Owner/Occupier result returned.&quot;]" />
-        <Assign DisplayName="Store as row" sap:VirtualizedContainerService.HintSize="508,114.4" sap2010:WorkflowViewState.IdRef="Assign_5">
+        <ui:LogMessage DisplayName="LogMessage - result found" sap:VirtualizedContainerService.HintSize="434,175.6" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;One matching Owner/Occupier result returned.&quot;]" />
+        <Assign DisplayName="Store as row" sap:VirtualizedContainerService.HintSize="434,114.4" sap2010:WorkflowViewState.IdRef="Assign_5">
           <Assign.To>
             <OutArgument x:TypeArguments="sd:DataRow">[rowOwnerOccupier]</OutArgument>
           </Assign.To>
@@ -395,7 +437,7 @@
             <InArgument x:TypeArguments="sd:DataRow">[dtFiltered(0)]</InArgument>
           </Assign.Value>
         </Assign>
-        <Assign DisplayName="Cast Datarow to output Dictionary" sap:VirtualizedContainerService.HintSize="508,105.6" sap2010:WorkflowViewState.IdRef="Assign_9">
+        <Assign DisplayName="Cast Datarow to output Dictionary" sap:VirtualizedContainerService.HintSize="434,105.6" sap2010:WorkflowViewState.IdRef="Assign_9">
           <Assign.To>
             <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[out_dictOwnerOccupier]</OutArgument>
           </Assign.To>
@@ -405,7 +447,7 @@
         </Assign>
       </Sequence>
     </Switch>
-    <Assign DisplayName="Cast Datarow to output Dictionary" sap:VirtualizedContainerService.HintSize="508,105.6" sap2010:WorkflowViewState.IdRef="Assign_4">
+    <Assign DisplayName="Cast Datarow to output Dictionary" sap:VirtualizedContainerService.HintSize="524,105.6" sap2010:WorkflowViewState.IdRef="Assign_4">
       <Assign.To>
         <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[out_dictOwnerOccupier]</OutArgument>
       </Assign.To>

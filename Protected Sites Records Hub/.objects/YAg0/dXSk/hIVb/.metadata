@@ -1,0 +1,13 @@
+﻿{
+  "Name": "Edge You have a file to download - Forms desi",
+  "Type": "Screen",
+  "Id": "hIVbG_5DcEyL5UvvIYFOvA",
+  "Reference": "u70FNKxx7EOHPBwkfez66Q/hIVbG_5DcEyL5UvvIYFOvA",
+  "ParentRef": "u70FNKxx7EOHPBwkfez66Q/dXSkL1u60EmIxmBVVpIuMw",
+  "Created": "2026-07-03T06:58:18.4445857Z",
+  "Updated": "2026-07-03T06:58:18.4445857Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=24.10.16.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=25.6.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

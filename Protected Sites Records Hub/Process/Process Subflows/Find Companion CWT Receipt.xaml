@@ -151,7 +151,7 @@
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Find Companion CWT Receipt" sap:VirtualizedContainerService.HintSize="1451.6000000000001,1291.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Find Companion CWT Receipt" sap:VirtualizedContainerService.HintSize="1451.6000000000001,1922.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strAppID" />
       <Variable x:TypeArguments="ss:SecureString" Name="sstrSecret" />
@@ -166,6 +166,33 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
+    <If sap2010:Annotation.AnnotationText="Remove this and add ReceiptFolderID asset to Orchestrator for improved speed." Condition="[not g_Config.ContainsKey(&quot;ReceiptFolderID&quot;)]" DisplayName="If &quot;ReceiptFolder&quot; ID not already retrieved" sap:VirtualizedContainerService.HintSize="450,631.2" sap2010:WorkflowViewState.IdRef="If_3">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If.Then>
+        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,331.6" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <de:Get_Folder_ID DisplayName="Get &quot;Receipt Folder&quot; folder ID" sap:VirtualizedContainerService.HintSize="382,271.6" sap2010:WorkflowViewState.IdRef="Get_Folder_ID_1" in_strBearerToken="[g_BearerToken]" in_strEmailAccount="[g_Config(&quot;AccountName&quot;).ToString]" in_strFolderPath="[g_Config(&quot;ReceiptFolder&quot;).ToString]" out_strFolderID="[g_Config(&quot;ReceiptFolderID&quot;)]" />
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,83.6" sap2010:WorkflowViewState.IdRef="Sequence_5">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </Sequence>
+      </If.Else>
+    </If>
     <de:Get_Emails in_strEmailID="{x:Null}" DisplayName="Get Emails from CWT receipt folder" sap:VirtualizedContainerService.HintSize="450,437.6" sap2010:WorkflowViewState.IdRef="Get_Emails_1" in_booGetAttachmentNames="False" in_strBearerToken="[g_BearerToken]" in_strEmailAccount="[g_Config(&quot;AccountName&quot;).ToString]" in_strFolder="[g_Config(&quot;ReceiptFolderID&quot;).ToString]" in_strQueryParameters="[&quot;$search=&quot;&quot;body:&quot;+in_strDefraFormsID+&quot;&quot;&quot;&quot;]" out_dtEmails="[dtEmails]" />
     <If Condition="[dtEmails.RowCount&lt;&gt;1]" DisplayName="If non-singular email returned" sap:VirtualizedContainerService.HintSize="450,436" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
@@ -193,7 +220,7 @@
         <OutArgument x:TypeArguments="x:String">[out_strCompanionEmailID]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:String">[dtEmails(0)("ID").ToString]</InArgument>
+        <InArgument x:TypeArguments="x:String">[dtEmails(0)("EmailID").ToString]</InArgument>
       </Assign.Value>
     </Assign>
     <Assign DisplayName="Extract JSON from email body" sap:VirtualizedContainerService.HintSize="450,114.4" sap2010:WorkflowViewState.IdRef="Assign_1">
@@ -201,9 +228,9 @@
         <OutArgument x:TypeArguments="x:String">[strJSON]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:String">[Regex.Match(dtEmails(0)("Body").ToString,"\{.*?\}").Value.Replace("&amp;quot;","""")]</InArgument>
+        <InArgument x:TypeArguments="x:String">[Regex.Match(dtEmails(0)("Body").ToString,"\{.*?CWT.*?\}").Value.Replace("&amp;quot;","""")]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:DeserializeJson x:TypeArguments="njl:JObject" JsonSample="{x:Null}" Settings="{x:Null}" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="450,165.6" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_1" JsonObject="[GlobalVariablesNamespace.GlobalVariables.g_jobCWTReceipt]" JsonString="[strJSON]" />
+    <ui:DeserializeJson x:TypeArguments="njl:JObject" JsonSample="{x:Null}" Settings="{x:Null}" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="450,165.6" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_1" JsonObject="[g_jobCWTReceipt]" JsonString="[strJSON]" />
   </Sequence>
 </Activity>
