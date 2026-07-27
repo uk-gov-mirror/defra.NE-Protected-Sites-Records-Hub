@@ -151,7 +151,7 @@
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Find Companion CWT Receipt" sap:VirtualizedContainerService.HintSize="1451.6000000000001,1922.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Find Companion CWT Receipt" sap:VirtualizedContainerService.HintSize="1451.6000000000001,2290" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strAppID" />
       <Variable x:TypeArguments="ss:SecureString" Name="sstrSecret" />
@@ -166,7 +166,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <If sap2010:Annotation.AnnotationText="Remove this and add ReceiptFolderID asset to Orchestrator for improved speed." Condition="[not g_Config.ContainsKey(&quot;ReceiptFolderID&quot;)]" DisplayName="If &quot;ReceiptFolder&quot; ID not already retrieved" sap:VirtualizedContainerService.HintSize="450,631.2" sap2010:WorkflowViewState.IdRef="If_3">
+    <If sap2010:Annotation.AnnotationText="Remove this and add ReceiptFolderID asset to Orchestrator for improved speed." Condition="[not g_Config.ContainsKey(&quot;ReceiptFolderID&quot;)]" DisplayName="If &quot;ReceiptFolder&quot; ID not already retrieved" sap:VirtualizedContainerService.HintSize="450,572.4" sap2010:WorkflowViewState.IdRef="If_3">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -183,7 +183,7 @@
         </Sequence>
       </If.Then>
       <If.Else>
-        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,83.6" sap2010:WorkflowViewState.IdRef="Sequence_5">
+        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,24.8" sap2010:WorkflowViewState.IdRef="Sequence_5">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -193,8 +193,9 @@
         </Sequence>
       </If.Else>
     </If>
+    <ui:LogMessage DisplayName="Log Message - searching CWT receipts" sap:VirtualizedContainerService.HintSize="450,175.6" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Searching for CWT receipt with Defra Form ID &quot;+in_strDefraFormsID]" />
     <de:Get_Emails in_strEmailID="{x:Null}" DisplayName="Get Emails from CWT receipt folder" sap:VirtualizedContainerService.HintSize="450,437.6" sap2010:WorkflowViewState.IdRef="Get_Emails_1" in_booGetAttachmentNames="False" in_strBearerToken="[g_BearerToken]" in_strEmailAccount="[g_Config(&quot;AccountName&quot;).ToString]" in_strFolder="[g_Config(&quot;ReceiptFolderID&quot;).ToString]" in_strQueryParameters="[&quot;$search=&quot;&quot;body:&quot;+in_strDefraFormsID+&quot;&quot;&quot;&quot;]" out_dtEmails="[dtEmails]" />
-    <If Condition="[dtEmails.RowCount&lt;&gt;1]" DisplayName="If non-singular email returned" sap:VirtualizedContainerService.HintSize="450,436" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[dtEmails.RowCount&lt;&gt;1]" DisplayName="If non-singular email returned" sap:VirtualizedContainerService.HintSize="450,572.4" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
         <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,174.4" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <sap:WorkflowViewStateService.ViewState>
@@ -206,12 +207,13 @@
         </Sequence>
       </If.Then>
       <If.Else>
-        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,90.4" sap2010:WorkflowViewState.IdRef="Sequence_3">
+        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,226.8" sap2010:WorkflowViewState.IdRef="Sequence_3">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
+          <ui:LogMessage DisplayName="Log Message - found" sap:VirtualizedContainerService.HintSize="382,166.8" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;CWT Receipt found&quot;]" />
         </Sequence>
       </If.Else>
     </If>
@@ -231,6 +233,14 @@
         <InArgument x:TypeArguments="x:String">[Regex.Match(dtEmails(0)("Body").ToString,"\{.*?CWT.*?\}").Value.Replace("&amp;quot;","""")]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:DeserializeJson x:TypeArguments="njl:JObject" JsonSample="{x:Null}" Settings="{x:Null}" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="450,165.6" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_1" JsonObject="[g_jobCWTReceipt]" JsonString="[strJSON]" />
+    <ui:DeserializeJson x:TypeArguments="njl:JObject" JsonSample="{x:Null}" Settings="{x:Null}" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="450,174.4" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_1" JsonObject="[g_jobCWTReceipt]" JsonString="[strJSON]" />
+    <Assign DisplayName="Add authority name key if missing" sap:VirtualizedContainerService.HintSize="450,105.6" sap2010:WorkflowViewState.IdRef="Assign_3">
+      <Assign.To>
+        <OutArgument x:TypeArguments="njl:JToken">[g_jobCWTReceipt("Authority_Name")]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="njl:JToken">[if(g_jobCWTReceipt.ContainsKey("Authority_Name"),g_jobCWTReceipt("Authority_Name"),"(no authority name provided)")]</InArgument>
+      </Assign.Value>
+    </Assign>
   </Sequence>
 </Activity>

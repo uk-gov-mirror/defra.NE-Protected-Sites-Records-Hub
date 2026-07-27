@@ -133,7 +133,7 @@
       <AssemblyReference>UiPath.Form.Activities</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Search_For_Owner_Occupier" sap:VirtualizedContainerService.HintSize="1451.6000000000001,2072" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Search_For_Owner_Occupier" sap:VirtualizedContainerService.HintSize="1451.6000000000001,972.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strNameVariation1" />
       <Variable x:TypeArguments="s:String[]" Name="arrNameParts" />
@@ -150,7 +150,8 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:MultipleAssign DisplayName="Create name variations" sap:VirtualizedContainerService.HintSize="524,212" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+    <ui:LogMessage DisplayName="Log Message - checking for matching Owner Occupier" sap:VirtualizedContainerService.HintSize="497.6,175.6" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Checking for matching contact details in Owner Occupier data&quot;]" />
+    <ui:MultipleAssign DisplayName="Create name variations" sap:VirtualizedContainerService.HintSize="497.6,212" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
@@ -180,7 +181,7 @@
         </scg:List>
       </ui:MultipleAssign.AssignOperations>
     </ui:MultipleAssign>
-    <ui:FilterDataTable sap2010:Annotation.AnnotationText="Lots of OR conditions here. I think there's too much variability in the provided data tbh, so don't anticipate this returning a perfect 1 result very often." DataTable="[in_dtOwnerOccupiers]" DisplayName="Filter Owner/Occupiers on Defra form info" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="524,257.2" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[dtFiltered]" SelectColumnsMode="Remove">
+    <ui:FilterDataTable sap2010:Annotation.AnnotationText="Lots of OR conditions here. I think there's too much variability in the provided data tbh, so don't anticipate this returning a perfect 1 result very often." DataTable="[in_dtOwnerOccupiers]" DisplayName="Filter Owner/Occupiers on Defra form info" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="497.6,257.2" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[dtFiltered]" SelectColumnsMode="Remove">
       <ui:FilterDataTable.Filters>
         <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="8">
           <ui:FilterOperationArgument BooleanOperator="And" Operator="EQ">
@@ -260,7 +261,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:FilterDataTable>
-    <Switch x:TypeArguments="x:Int32" DisplayName="Switch - owner/occupiers returned" Expression="[dtFiltered.RowCount]" sap:VirtualizedContainerService.HintSize="524,1474" sap2010:WorkflowViewState.IdRef="Switch`1_1">
+    <Switch x:TypeArguments="x:Int32" DisplayName="Switch - owner/occupiers returned" Expression="[dtFiltered.RowCount]" sap:VirtualizedContainerService.HintSize="497.6,198.8" sap2010:WorkflowViewState.IdRef="Switch`1_1">
       <Switch.Default>
         <Sequence DisplayName="Multiple matches" sap:VirtualizedContainerService.HintSize="484,1230" sap2010:WorkflowViewState.IdRef="Sequence_4">
           <sap:WorkflowViewStateService.ViewState>
@@ -447,7 +448,7 @@
         </Assign>
       </Sequence>
     </Switch>
-    <Assign DisplayName="Cast Datarow to output Dictionary" sap:VirtualizedContainerService.HintSize="524,105.6" sap2010:WorkflowViewState.IdRef="Assign_4">
+    <Assign DisplayName="Cast Datarow to output Dictionary" sap:VirtualizedContainerService.HintSize="497.6,105.6" sap2010:WorkflowViewState.IdRef="Assign_4">
       <Assign.To>
         <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[out_dictOwnerOccupier]</OutArgument>
       </Assign.To>

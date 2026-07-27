@@ -18,7 +18,7 @@
   "entitiesStores": [],
   "schemaVersion": "4.0",
   "studioVersion": "24.10.15.0",
-  "projectVersion": "1.0.0",
+  "projectVersion": "1.0.1-alpha.4",
   "runtimeOptions": {
     "autoDispose": false,
     "netFrameworkLazyLoading": false,
@@ -64,13 +64,6 @@
       },
       {
         "editingStatus": "InProgress",
-        "testCaseId": "577f71f5-c06b-449b-a37e-77e729a63244",
-        "testCaseType": "TestCase",
-        "executionTemplateInvokeIsolated": false,
-        "fileName": "TestCase.xaml"
-      },
-      {
-        "editingStatus": "InProgress",
         "testCaseId": "b877d76a-1903-4c21-b0c1-4717f31c8923",
         "testCaseType": "TestCase",
         "executionTemplateInvokeIsolated": false,
@@ -103,6 +96,13 @@
         "testCaseType": "TestCase",
         "executionTemplateInvokeIsolated": false,
         "fileName": "Process\\Process Subflows\\tc01 Search Designated Sites.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "c133c8a0-7cb0-4bb8-ae7d-dc363377d998",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "Process\\Process Subflows\\tc01 Update NE Tracker Link.xaml"
       }
     ],
     "saveToCloud": false
