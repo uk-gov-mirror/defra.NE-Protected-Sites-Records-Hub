@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ZPKHt1kycXouhUvGYleilGMsxdlYMOKAEBSQE59EDk9/EVZeiE/6RGPpsA/qxYhjiOZHQzFPCrAuflI53tA7+Q==",
+  "dgSpecHash": "nk2qWYyQg49s5p8o4+80Udi8HFwoJ5NPSh6VCS7rHYl4HQnymLFJlxahnE7fD7quv9yXF5VEJYgPSTKRpLCXyQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\rm000121\\OneDrive - Defra\\UiPath\\NE-Protected-Sites-Records-Hub\\Protected Sites Records Hub\\.local\\",
   "expectedPackageFiles": [
@@ -13,7 +13,7 @@
     "C:\\Users\\rm000121\\.nuget\\packages\\csvhelper\\16.0.0\\csvhelper.16.0.0.nupkg.sha512",
     "C:\\Users\\rm000121\\.nuget\\packages\\documentformat.openxml\\2.16.0\\documentformat.openxml.2.16.0.nupkg.sha512",
     "C:\\Users\\rm000121\\.nuget\\packages\\dracoe.logging.64\\1.0.17\\dracoe.logging.64.1.0.17.nupkg.sha512",
-    "C:\\Users\\rm000121\\.nuget\\packages\\dracoe.microsoft.graph.64\\1.0.55\\dracoe.microsoft.graph.64.1.0.55.nupkg.sha512",
+    "C:\\Users\\rm000121\\.nuget\\packages\\dracoe.microsoft.graph.64\\1.0.56\\dracoe.microsoft.graph.64.1.0.56.nupkg.sha512",
     "C:\\Users\\rm000121\\.nuget\\packages\\dracoe.popups.64\\1.0.9\\dracoe.popups.64.1.0.9.nupkg.sha512",
     "C:\\Users\\rm000121\\.nuget\\packages\\dynamicexpresso.core\\2.12.0\\dynamicexpresso.core.2.12.0.nupkg.sha512",
     "C:\\Users\\rm000121\\.nuget\\packages\\excelnumberformat\\1.1.0\\excelnumberformat.1.1.0.nupkg.sha512",

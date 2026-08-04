@@ -210,6 +210,7 @@
       <Assign.Value>
         <InArgument x:TypeArguments="x:String" xml:space="preserve">["&lt;h1&gt;Casework folder name&lt;/h1&gt;"+
 "&lt;p&gt;Please provide a short description to name this casework folder. A sample name has been provided&lt;/p&gt;"+
+"&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; the Casework Tracker ID, NE reference and Defra Forms ID will all be added to the folder title automatically.&lt;/p&gt;"+
 "&lt;p&gt;Once you are happy with the submitted folder name, please click 'Continue'. Otherwise, please click 'Stop' and process the rest of this transaction manually.&lt;/p&gt;"+
 "&lt;p&gt;The complete Defra Forms information has also been provided to assist in describing this case.&lt;/p&gt;"]</InArgument>
       </Assign.Value>
@@ -275,7 +276,7 @@
         <OutArgument x:TypeArguments="x:String">[out_strCaseworkFolderName]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:String">[g_jobCWTReceipt("NE_Reference_Number").ToString+" - ID "+g_jobCWTReceipt("CWT_case_ID").ToString+" - "+in_strDefraFormsID+" - "+in_strFolderDescription]</InArgument>
+        <InArgument x:TypeArguments="x:String">["ID "+g_jobCWTReceipt("CWT_case_ID").ToString+" - "+g_jobCWTReceipt("NE_Reference_Number").ToString+" - "+in_strDefraFormsID+" - "+in_strFolderDescription]</InArgument>
       </Assign.Value>
     </Assign>
     <Assign DisplayName="Final folder path" sap:VirtualizedContainerService.HintSize="502,114.4" sap2010:WorkflowViewState.IdRef="Assign_8">
@@ -286,7 +287,7 @@
         <InArgument x:TypeArguments="x:String">[in_strParentFolder+"/"+out_strCaseworkFolderName]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:LogMessage DisplayName="Log Message - create casework folder" sap:VirtualizedContainerService.HintSize="502,175.6" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;Creating casework folder: &quot;+in_strFolderDescription]" />
+    <ui:LogMessage DisplayName="Log Message - create casework folder" sap:VirtualizedContainerService.HintSize="502,175.6" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Creating casework folder: &quot;+out_strCaseworkFolderName]" />
     <ds:Create_Folder DisplayName="Create Casework Folder" sap:VirtualizedContainerService.HintSize="502,385.2" sap2010:WorkflowViewState.IdRef="Create_Folder_1" in_strBearerToken="[g_BearerToken]" in_strConflictBehavior="fail" in_strFolderName="[out_strCaseworkFolderName]" in_strListID="[in_strListID]" in_strParentFolderFilePath="[in_strParentFolder]" in_strSiteID="[g_Config(&quot;SharepointSiteID&quot;).ToString]" />
     <Assign DisplayName="Email save path" sap:VirtualizedContainerService.HintSize="502,114.4" sap2010:WorkflowViewState.IdRef="Assign_9">
       <Assign.To>
@@ -297,7 +298,7 @@
       </Assign.Value>
     </Assign>
     <de:Generate_Email_Object DisplayName="Save email" sap:VirtualizedContainerService.HintSize="502,332.8" IN_strBearerToken="[g_BearerToken]" IN_strEmailAccount="[g_Config(&quot;AccountName&quot;).ToString]" IN_strEmailID="[g_TransactionItem(&quot;EmailID&quot;).ToString]" IO_strSavePath="[strEmailSavePath]" sap2010:WorkflowViewState.IdRef="Generate_Email_Object_1" in_strMailFolderID="[g_Config(&quot;InProgressID&quot;).ToString]" />
-    <ui:LogMessage DisplayName="Log Message - uploading email" sap:VirtualizedContainerService.HintSize="502,175.6" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Upload transaction email&quot;]" />
+    <ui:LogMessage DisplayName="Log Message - uploading email" sap:VirtualizedContainerService.HintSize="502,175.6" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Uploading transaction email&quot;]" />
     <ds:Upload_Small_File DisplayName="Upload email" sap:VirtualizedContainerService.HintSize="502,332.8" sap2010:WorkflowViewState.IdRef="Upload_Small_File_2" in_DestinationFilePath="[out_strCaseworkFolderPath+&quot;/&quot;+new FileInfo(strEmailSavePath).Name]" in_LocalFilePath="[strEmailSavePath]" in_strBearerToken="[g_BearerToken]" in_strListID="[in_strListID]" in_strSiteID="[g_Config(&quot;SharepointSiteID&quot;).ToString]" />
     <ui:ForEach x:TypeArguments="si:FileInfo" CurrentIndex="{x:Null}" DisplayName="For each attachment" sap:VirtualizedContainerService.HintSize="502,698" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[in_ieFormAttachments]">
       <ui:ForEach.Body>
