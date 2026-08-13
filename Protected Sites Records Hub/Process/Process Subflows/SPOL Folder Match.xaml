@@ -14,6 +14,8 @@
     </x:Property>
     <x:Property Name="out_boolValidate" Type="OutArgument(x:Boolean)" />
     <x:Property sap2010:Annotation.AnnotationText="Extra information for the user to distinguish what part of the path the bot is searching for or looking to create." Name="in_strExtraSearchInfo" Type="InArgument(x:String)" />
+    <x:Property sap2010:Annotation.AnnotationText="Only used in pop-up when checking root folder of list." Name="in_strLibraryName" Type="InArgument(x:String)" />
+    <x:Property sap2010:Annotation.AnnotationText="HTML string of additional fields displayed when the user must confirm a folder match. Optional field." Name="in_strAdditionalFields" Type="InArgument(x:String)" />
   </x:Members>
   <this:SPOL_Folder_Match.in_boolConfirmMatch>
     <InArgument x:TypeArguments="x:Boolean" />
@@ -21,6 +23,9 @@
   <this:SPOL_Folder_Match.in_strListID>
     <InArgument x:TypeArguments="x:String" />
   </this:SPOL_Folder_Match.in_strListID>
+  <this:SPOL_Folder_Match.in_strAdditionalFields>
+    <InArgument x:TypeArguments="x:String" />
+  </this:SPOL_Folder_Match.in_strAdditionalFields>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
@@ -175,19 +180,19 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <Flowchart.StartNode>
-      <x:Reference>__ReferenceID27</x:Reference>
+      <x:Reference>__ReferenceID28</x:Reference>
     </Flowchart.StartNode>
-    <FlowStep x:Name="__ReferenceID14" sap2010:WorkflowViewState.IdRef="FlowStep_1">
+    <FlowStep x:Name="__ReferenceID15" sap2010:WorkflowViewState.IdRef="FlowStep_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <av:Point x:Key="ShapeLocation">595,315</av:Point>
+          <av:Point x:Key="ShapeLocation">595,275</av:Point>
           <av:Size x:Key="ShapeSize">110,70</av:Size>
-          <av:PointCollection x:Key="ConnectorLocation">650,385 650,405</av:PointCollection>
+          <av:PointCollection x:Key="ConnectorLocation">650,345 650,405</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <ds:Get_Folder_Contents DisplayName="Get Folder Contents" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="Get_Folder_Contents_1" in_strBearerToken="[g_BearerToken]" in_strFolderPath="[io_strParentPath]" in_strListID="[in_strListID]" in_strSiteID="[g_Config(&quot;SharepointSiteID&quot;).ToString]" out_dtContents="[dtContents]" />
       <FlowStep.Next>
-        <FlowStep x:Name="__ReferenceID3" sap2010:WorkflowViewState.IdRef="FlowStep_2">
+        <FlowStep x:Name="__ReferenceID4" sap2010:WorkflowViewState.IdRef="FlowStep_2">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <av:Point x:Key="ShapeLocation">595,405</av:Point>
@@ -209,7 +214,7 @@
             </sap:WorkflowViewStateService.ViewState>
           </Assign>
           <FlowStep.Next>
-            <FlowStep x:Name="__ReferenceID11" sap2010:WorkflowViewState.IdRef="FlowStep_3">
+            <FlowStep x:Name="__ReferenceID12" sap2010:WorkflowViewState.IdRef="FlowStep_3">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <av:Point x:Key="ShapeLocation">595,495</av:Point>
@@ -226,7 +231,7 @@
                 </Assign.Value>
               </Assign>
               <FlowStep.Next>
-                <FlowDecision x:Name="__ReferenceID4" Condition="[arrFolderMatches.Count=1]" DisplayName="Matching folder?" sap:VirtualizedContainerService.HintSize="60,60" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
+                <FlowDecision x:Name="__ReferenceID5" Condition="[arrFolderMatches.Count=1]" DisplayName="Matching folder?" sap:VirtualizedContainerService.HintSize="60,60" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -237,7 +242,7 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                   <FlowDecision.True>
-                    <FlowStep x:Name="__ReferenceID8" sap2010:WorkflowViewState.IdRef="FlowStep_1">
+                    <FlowStep x:Name="__ReferenceID9" sap2010:WorkflowViewState.IdRef="FlowStep_1">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <av:Point x:Key="ShapeLocation">495,655</av:Point>
@@ -253,7 +258,7 @@
                         </sap:WorkflowViewStateService.ViewState>
                       </ui:LogMessage>
                       <FlowStep.Next>
-                        <FlowDecision x:Name="__ReferenceID10" Condition="[not in_boolConfirmMatch]" DisplayName="No confirmation required?" sap:VirtualizedContainerService.HintSize="60,60" sap2010:WorkflowViewState.IdRef="FlowDecision_4">
+                        <FlowDecision x:Name="__ReferenceID11" Condition="[not in_boolConfirmMatch]" DisplayName="No confirmation required?" sap:VirtualizedContainerService.HintSize="60,60" sap2010:WorkflowViewState.IdRef="FlowDecision_4">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -269,6 +274,7 @@
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <av:Point x:Key="ShapeLocation">545,1325</av:Point>
                                   <av:Size x:Key="ShapeSize">110,70</av:Size>
+                                  <av:PointCollection x:Key="ConnectorLocation">600,1395 600,1520 1055,1520</av:PointCollection>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
                               <Assign DisplayName="Output searched folder" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="Assign_2">
@@ -284,10 +290,28 @@
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
                               </Assign>
+                              <FlowStep.Next>
+                                <FlowStep x:Name="__ReferenceID1">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <av:Point x:Key="ShapeLocation">1055,1485</av:Point>
+                                      <av:Size x:Key="ShapeSize">110,70</av:Size>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <ui:LogMessage sap2010:Annotation.AnnotationText="Check whether any weird bits have entered the path" DisplayName="Log Message - path progress" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[&quot;SPOL path progress: &quot;+io_strParentPath]">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                  </ui:LogMessage>
+                                </FlowStep>
+                              </FlowStep.Next>
                             </FlowStep>
                           </FlowDecision.True>
                           <FlowDecision.False>
-                            <FlowStep x:Name="__ReferenceID13" sap2010:WorkflowViewState.IdRef="FlowStep_5">
+                            <FlowStep x:Name="__ReferenceID14" sap2010:WorkflowViewState.IdRef="FlowStep_5">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <av:Point x:Key="ShapeLocation">575,825</av:Point>
@@ -319,11 +343,14 @@
                                   </Assign.To>
                                   <Assign.Value>
                                     <InArgument x:TypeArguments="x:String" xml:space="preserve">["&lt;h1&gt;Select upload folder&lt;/h1&gt;"+
-"&lt;p&gt;Folder name &lt;strong&gt;"+in_strFolderName+"&lt;/strong&gt; was successfully found within "+If(String.IsNullOrEmpty(io_strParentPath),"root folder","&lt;strong&gt;"+io_strParentPath+"&lt;/strong&gt;")+".&lt;br&gt;"+
+"&lt;p&gt;Folder name &lt;strong&gt;"+in_strFolderName+"&lt;/strong&gt; was successfully found within "+If(String.IsNullOrEmpty(io_strParentPath),"&lt;strong&gt;"+in_strLibraryName+"&lt;/strong&gt;","&lt;strong&gt;"+io_strParentPath+"&lt;/strong&gt;")+".&lt;br&gt;"+
 "&lt;strong&gt;Folder name context:&lt;/strong&gt;&amp;ensp;"+in_strExtraSearchInfo+"&lt;/p&gt;"+
 "&lt;p&gt;If you wish to use this folder, please select &lt;strong&gt;...Use This Folder&lt;/strong&gt;.&lt;br&gt;"+
 "If you wish to create a new folder, please select &lt;strong&gt;...Create Custom Folder&lt;/strong&gt;.&lt;br&gt;"+
 "If you wish to use a different existing folder in this location, please select an appropriate folder from those available.&lt;/p&gt;"+
+If(Not String.IsNullOrEmpty(in_strAdditionalFields),
+	"&lt;p&gt;Additional info to help selection:&lt;br&gt;"+
+	in_strAdditionalFields+"&lt;/p&gt;","")+
 "&lt;p&gt;Once you are happy with your selection, please click 'Continue'.&lt;br&gt;"+
 If(in_boolIncludeValidateOption,"To validate this Owner-Occupier name against Designated Sites data, please click 'Stop'.&lt;br&gt;","Otherwise, please click 'Stop' and process this transaction manually.&lt;br&gt;")+
 "&lt;strong&gt;Note:&lt;/strong&gt; If the dropdown selection is limited to &lt;strong&gt;...Use This Folder&lt;/strong&gt; and &lt;strong&gt;...Create Custom Folder&lt;/strong&gt;, then there are no other existing subfolders in this location.&lt;/p&gt;"]</InArgument>
@@ -336,7 +363,7 @@ If(in_boolIncludeValidateOption,"To validate this Owner-Occupier name against De
                                 </Assign>
                               </Sequence>
                               <FlowStep.Next>
-                                <FlowStep x:Name="__ReferenceID2" sap2010:WorkflowViewState.IdRef="FlowStep_6">
+                                <FlowStep x:Name="__ReferenceID3" sap2010:WorkflowViewState.IdRef="FlowStep_6">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <av:Point x:Key="ShapeLocation">675,905</av:Point>
@@ -344,7 +371,7 @@ If(in_boolIncludeValidateOption,"To validate this Owner-Occupier name against De
                                       <av:PointCollection x:Key="ConnectorLocation">730,975 730,1010</av:PointCollection>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
-                                  <Sequence DisplayName="Select folder" sap:VirtualizedContainerService.HintSize="484,1455.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
+                                  <Sequence DisplayName="Select folder" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="Sequence_1">
                                     <Sequence.Variables>
                                       <Variable x:TypeArguments="x:String" Name="strJSONOutput" />
                                       <Variable x:TypeArguments="njl:JObject" Name="jobOutput" />
@@ -396,8 +423,8 @@ If(in_boolIncludeValidateOption,"To validate this Owner-Occupier name against De
                                         <InArgument x:TypeArguments="sd1:Stopwatch">[g_swProcessingTimer]</InArgument>
                                       </InvokeMethod.TargetObject>
                                     </InvokeMethod>
-                                    <ui:DeserializeJson x:TypeArguments="njl:JObject" JsonSample="{x:Null}" Settings="{x:Null}" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="450,173.6" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_1" JsonObject="[jobOutput]" JsonString="[strJSONOutput]" />
-                                    <Assign sap2010:Annotation.AnnotationText="The output argument of the form sometimes returns blank for some reason, so we get the JSON output for reliability." DisplayName="Assign selected folder" sap:VirtualizedContainerService.HintSize="450,114" sap2010:WorkflowViewState.IdRef="Assign_10">
+                                    <ui:DeserializeJson x:TypeArguments="njl:JObject" JsonSample="{x:Null}" Settings="{x:Null}" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="450,174.4" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_1" JsonObject="[jobOutput]" JsonString="[strJSONOutput]" />
+                                    <Assign sap2010:Annotation.AnnotationText="The output argument of the form sometimes returns blank for some reason, so we get the JSON output for reliability." DisplayName="Assign selected folder" sap:VirtualizedContainerService.HintSize="450,114.4" sap2010:WorkflowViewState.IdRef="Assign_10">
                                       <Assign.To>
                                         <OutArgument x:TypeArguments="x:String">[strSelectedFolder]</OutArgument>
                                       </Assign.To>
@@ -410,19 +437,19 @@ If(in_boolIncludeValidateOption,"To validate this Owner-Occupier name against De
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
                                     </Assign>
-                                    <If Condition="[boolDismissed or strButtonSelected=&quot;no&quot;]" DisplayName="Form dismissed? - select folder" sap:VirtualizedContainerService.HintSize="450,426" sap2010:WorkflowViewState.IdRef="If_1">
+                                    <If Condition="[boolDismissed or strButtonSelected=&quot;no&quot;]" DisplayName="Form dismissed? - select folder" sap:VirtualizedContainerService.HintSize="450,427.2" sap2010:WorkflowViewState.IdRef="If_1">
                                       <If.Then>
-                                        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,174" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                                        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,174.4" sap2010:WorkflowViewState.IdRef="Sequence_2">
                                           <sap:WorkflowViewStateService.ViewState>
                                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                             </scg:Dictionary>
                                           </sap:WorkflowViewStateService.ViewState>
-                                          <Throw DisplayName="Throw BRE - folder selection dismissed" Exception="[new BusinessRuleException(&quot;User dismissed folder selection form.&quot;)]" sap:VirtualizedContainerService.HintSize="382,114" sap2010:WorkflowViewState.IdRef="Throw_1" />
+                                          <Throw DisplayName="Throw BRE - folder selection dismissed" Exception="[new BusinessRuleException(&quot;User dismissed folder selection form.&quot;)]" sap:VirtualizedContainerService.HintSize="382,114.4" sap2010:WorkflowViewState.IdRef="Throw_1" />
                                         </Sequence>
                                       </If.Then>
                                       <If.Else>
-                                        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,90" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                                        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,90.4" sap2010:WorkflowViewState.IdRef="Sequence_3">
                                           <sap:WorkflowViewStateService.ViewState>
                                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -433,9 +460,9 @@ If(in_boolIncludeValidateOption,"To validate this Owner-Occupier name against De
                                     </If>
                                   </Sequence>
                                   <FlowStep.Next>
-                                    <FlowSwitch x:TypeArguments="x:String" x:Name="__ReferenceID6" DisplayName="Selection" Expression="[strSelectedFolder]" sap:VirtualizedContainerService.HintSize="60,60" sap2010:WorkflowViewState.IdRef="FlowSwitch`1_2">
+                                    <FlowSwitch x:TypeArguments="x:String" x:Name="__ReferenceID7" DisplayName="Selection" Expression="[strSelectedFolder]" sap:VirtualizedContainerService.HintSize="60,60" sap2010:WorkflowViewState.IdRef="FlowSwitch`1_2">
                                       <FlowSwitch.Default>
-                                        <FlowStep x:Name="__ReferenceID9" sap2010:WorkflowViewState.IdRef="FlowStep_7">
+                                        <FlowStep x:Name="__ReferenceID10" sap2010:WorkflowViewState.IdRef="FlowStep_7">
                                           <sap:WorkflowViewStateService.ViewState>
                                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                               <av:Point x:Key="ShapeLocation">905,1135</av:Point>
@@ -451,7 +478,7 @@ If(in_boolIncludeValidateOption,"To validate this Owner-Occupier name against De
                                             </sap:WorkflowViewStateService.ViewState>
                                           </ui:LogMessage>
                                           <FlowStep.Next>
-                                            <FlowStep x:Name="__ReferenceID26" sap2010:WorkflowViewState.IdRef="FlowStep_2">
+                                            <FlowStep x:Name="__ReferenceID27" sap2010:WorkflowViewState.IdRef="FlowStep_2">
                                               <sap:WorkflowViewStateService.ViewState>
                                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                   <av:Point x:Key="ShapeLocation">905,1225</av:Point>
@@ -474,7 +501,7 @@ If(in_boolIncludeValidateOption,"To validate this Owner-Occupier name against De
                                                 </sap:WorkflowViewStateService.ViewState>
                                               </Assign>
                                               <FlowStep.Next>
-                                                <x:Reference>__ReferenceID1</x:Reference>
+                                                <x:Reference>__ReferenceID2</x:Reference>
                                               </FlowStep.Next>
                                             </FlowStep>
                                           </FlowStep.Next>
@@ -491,7 +518,7 @@ If(in_boolIncludeValidateOption,"To validate this Owner-Occupier name against De
                                           <av:PointCollection x:Key="...Validate in Designated SitesConnector">760,1040 840,1040 840,1315</av:PointCollection>
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
-                                      <FlowStep x:Key="...Create This Folder" x:Name="__ReferenceID7" sap2010:WorkflowViewState.IdRef="FlowStep_2">
+                                      <FlowStep x:Key="...Create This Folder" x:Name="__ReferenceID8" sap2010:WorkflowViewState.IdRef="FlowStep_2">
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                             <av:Point x:Key="ShapeLocation">545,1065</av:Point>
@@ -518,7 +545,7 @@ If(in_boolIncludeValidateOption,"To validate this Owner-Occupier name against De
                                           </sap:WorkflowViewStateService.ViewState>
                                         </ui:CommentOut>
                                         <FlowStep.Next>
-                                          <FlowStep x:Name="__ReferenceID24" sap2010:WorkflowViewState.IdRef="FlowStep_4">
+                                          <FlowStep x:Name="__ReferenceID25" sap2010:WorkflowViewState.IdRef="FlowStep_4">
                                             <sap:WorkflowViewStateService.ViewState>
                                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                 <av:Point x:Key="ShapeLocation">545,1145</av:Point>
@@ -534,7 +561,7 @@ If(in_boolIncludeValidateOption,"To validate this Owner-Occupier name against De
                                               </sap:WorkflowViewStateService.ViewState>
                                             </ui:LogMessage>
                                             <FlowStep.Next>
-                                              <FlowStep x:Name="__ReferenceID20" sap2010:WorkflowViewState.IdRef="FlowStep_2">
+                                              <FlowStep x:Name="__ReferenceID21" sap2010:WorkflowViewState.IdRef="FlowStep_2">
                                                 <sap:WorkflowViewStateService.ViewState>
                                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                     <av:Point x:Key="ShapeLocation">545,1235</av:Point>
@@ -563,7 +590,7 @@ If(in_boolIncludeValidateOption,"To validate this Owner-Occupier name against De
                                           </FlowStep>
                                         </FlowStep.Next>
                                       </FlowStep>
-                                      <FlowStep x:Key="...Create Custom Folder" x:Name="__ReferenceID5" sap2010:WorkflowViewState.IdRef="FlowStep_9">
+                                      <FlowStep x:Key="...Create Custom Folder" x:Name="__ReferenceID6" sap2010:WorkflowViewState.IdRef="FlowStep_9">
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                             <av:Point x:Key="ShapeLocation">1055,1135</av:Point>
@@ -665,7 +692,7 @@ If(in_boolIncludeValidateOption,"To validate this Owner-Occupier name against De
                                           </Assign>
                                         </Sequence>
                                         <FlowStep.Next>
-                                          <FlowStep x:Name="__ReferenceID15" sap2010:WorkflowViewState.IdRef="FlowStep_1">
+                                          <FlowStep x:Name="__ReferenceID16" sap2010:WorkflowViewState.IdRef="FlowStep_1">
                                             <sap:WorkflowViewStateService.ViewState>
                                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                 <av:Point x:Key="ShapeLocation">1055,1225</av:Point>
@@ -687,12 +714,12 @@ If(in_boolIncludeValidateOption,"To validate this Owner-Occupier name against De
                                               </sap:WorkflowViewStateService.ViewState>
                                             </Assign>
                                             <FlowStep.Next>
-                                              <FlowStep x:Name="__ReferenceID1" sap2010:WorkflowViewState.IdRef="FlowStep_3">
+                                              <FlowStep x:Name="__ReferenceID2" sap2010:WorkflowViewState.IdRef="FlowStep_3">
                                                 <sap:WorkflowViewStateService.ViewState>
                                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                     <av:Point x:Key="ShapeLocation">1055,1315</av:Point>
                                                     <av:Size x:Key="ShapeSize">110,70</av:Size>
-                                                    <av:PointCollection x:Key="ConnectorLocation">1102.6000000000001,1685.04 1102.6000000000001,1705.04</av:PointCollection>
+                                                    <av:PointCollection x:Key="ConnectorLocation">1110,1385 1110,1485</av:PointCollection>
                                                   </scg:Dictionary>
                                                 </sap:WorkflowViewStateService.ViewState>
                                                 <Assign DisplayName="Output selected folder" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="Assign_23">
@@ -708,12 +735,15 @@ If(in_boolIncludeValidateOption,"To validate this Owner-Occupier name against De
                                                     </scg:Dictionary>
                                                   </sap:WorkflowViewStateService.ViewState>
                                                 </Assign>
+                                                <FlowStep.Next>
+                                                  <x:Reference>__ReferenceID1</x:Reference>
+                                                </FlowStep.Next>
                                               </FlowStep>
                                             </FlowStep.Next>
                                           </FlowStep>
                                         </FlowStep.Next>
                                       </FlowStep>
-                                      <FlowStep x:Key="...Validate in Designated Sites" x:Name="__ReferenceID21" sap2010:WorkflowViewState.IdRef="FlowStep_5">
+                                      <FlowStep x:Key="...Validate in Designated Sites" x:Name="__ReferenceID22" sap2010:WorkflowViewState.IdRef="FlowStep_5">
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                             <av:Point x:Key="ShapeLocation">785,1315</av:Point>
@@ -729,7 +759,7 @@ If(in_boolIncludeValidateOption,"To validate this Owner-Occupier name against De
                                           </sap:WorkflowViewStateService.ViewState>
                                         </ui:LogMessage>
                                         <FlowStep.Next>
-                                          <FlowStep x:Name="__ReferenceID22" sap2010:WorkflowViewState.IdRef="FlowStep_6">
+                                          <FlowStep x:Name="__ReferenceID23" sap2010:WorkflowViewState.IdRef="FlowStep_6">
                                             <sap:WorkflowViewStateService.ViewState>
                                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                 <av:Point x:Key="ShapeLocation">785,1405</av:Point>
@@ -752,7 +782,7 @@ If(in_boolIncludeValidateOption,"To validate this Owner-Occupier name against De
                                           </FlowStep>
                                         </FlowStep.Next>
                                       </FlowStep>
-                                      <FlowStep x:Key="...Use This Folder" x:Name="__ReferenceID25" sap2010:WorkflowViewState.IdRef="FlowStep_7">
+                                      <FlowStep x:Key="...Use This Folder" x:Name="__ReferenceID26" sap2010:WorkflowViewState.IdRef="FlowStep_7">
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                             <av:Point x:Key="ShapeLocation">675,1135</av:Point>
@@ -768,7 +798,7 @@ If(in_boolIncludeValidateOption,"To validate this Owner-Occupier name against De
                                           </sap:WorkflowViewStateService.ViewState>
                                         </ui:LogMessage>
                                         <FlowStep.Next>
-                                          <FlowStep x:Name="__ReferenceID19" sap2010:WorkflowViewState.IdRef="FlowStep_3">
+                                          <FlowStep x:Name="__ReferenceID20" sap2010:WorkflowViewState.IdRef="FlowStep_3">
                                             <sap:WorkflowViewStateService.ViewState>
                                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                 <av:Point x:Key="ShapeLocation">675,1235</av:Point>
@@ -807,7 +837,7 @@ If(in_boolIncludeValidateOption,"To validate this Owner-Occupier name against De
                     </FlowStep>
                   </FlowDecision.True>
                   <FlowDecision.False>
-                    <FlowStep x:Name="__ReferenceID12" sap2010:WorkflowViewState.IdRef="FlowStep_10">
+                    <FlowStep x:Name="__ReferenceID13" sap2010:WorkflowViewState.IdRef="FlowStep_10">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <av:Point x:Key="ShapeLocation">675,665</av:Point>
@@ -871,7 +901,7 @@ If(in_boolIncludeValidateOption,"To validate this Owner-Occupier name against De
                           </Assign.To>
                           <Assign.Value>
                             <InArgument x:TypeArguments="x:String" xml:space="preserve">["&lt;h1&gt;Select upload folder&lt;/h1&gt;"+
-"&lt;p&gt;No exact match for folder name &lt;strong&gt;"+in_strFolderName+"&lt;/strong&gt; was found within "+If(String.IsNullOrEmpty(io_strParentPath),"root folder","&lt;strong&gt;"+io_strParentPath+"&lt;/strong&gt;")+".&lt;br&gt;"+
+"&lt;p&gt;No exact match for folder name &lt;strong&gt;"+in_strFolderName+"&lt;/strong&gt; was found within "+If(String.IsNullOrEmpty(io_strParentPath),"&lt;strong&gt;"+in_strLibraryName+"&lt;/strong&gt;","&lt;strong&gt;"+io_strParentPath+"&lt;/strong&gt;")+".&lt;br&gt;"+
 "&lt;strong&gt;Folder name context:&lt;/strong&gt;&amp;ensp;"+in_strExtraSearchInfo+"&lt;/p&gt;"+
 "&lt;ul&gt;"+
 If(in_boolIncludeValidateOption,"If you wish to validate the form details against Designated Sites data, please select &lt;strong&gt;...Validate in Designated Sites&lt;/strong&gt;.","")+
@@ -879,6 +909,9 @@ If(in_boolIncludeValidateOption,"If you wish to validate the form details agains
 "&lt;li&gt;If you wish to create a folder with a different name, please select &lt;strong&gt;...Create Custom Folder&lt;/strong&gt;."+
 "&lt;li&gt;If you wish to use a different existing folder in this location, please select an appropriate folder from those available."+
 "&lt;/ul&gt;"+
+If(Not String.IsNullOrEmpty(in_strAdditionalFields),
+	"&lt;p&gt;Additional info to help selection:&lt;br&gt;"+
+	in_strAdditionalFields+"&lt;/p&gt;","")+
 "&lt;p&gt;Once you are happy with your selection, please click 'Continue'. Otherwise, please click 'Stop' and process this transaction manually.&lt;/p&gt;"]</InArgument>
                           </Assign.Value>
                           <sap:WorkflowViewStateService.ViewState>
@@ -889,7 +922,7 @@ If(in_boolIncludeValidateOption,"If you wish to validate the form details agains
                         </Assign>
                       </Sequence>
                       <FlowStep.Next>
-                        <x:Reference>__ReferenceID2</x:Reference>
+                        <x:Reference>__ReferenceID3</x:Reference>
                       </FlowStep.Next>
                     </FlowStep>
                   </FlowDecision.False>
@@ -900,11 +933,10 @@ If(in_boolIncludeValidateOption,"If you wish to validate the form details agains
         </FlowStep>
       </FlowStep.Next>
     </FlowStep>
-    <x:Reference>__ReferenceID3</x:Reference>
     <x:Reference>__ReferenceID4</x:Reference>
-    <x:Reference>__ReferenceID0</x:Reference>
-    <x:Reference>__ReferenceID2</x:Reference>
     <x:Reference>__ReferenceID5</x:Reference>
+    <x:Reference>__ReferenceID0</x:Reference>
+    <x:Reference>__ReferenceID3</x:Reference>
     <x:Reference>__ReferenceID6</x:Reference>
     <x:Reference>__ReferenceID7</x:Reference>
     <x:Reference>__ReferenceID8</x:Reference>
@@ -913,7 +945,8 @@ If(in_boolIncludeValidateOption,"If you wish to validate the form details agains
     <x:Reference>__ReferenceID11</x:Reference>
     <x:Reference>__ReferenceID12</x:Reference>
     <x:Reference>__ReferenceID13</x:Reference>
-    <FlowDecision x:Name="__ReferenceID27" sap2010:Annotation.AnnotationText="If parent folder was newly created at a previous step, skip other checks as no other subfolders will exist." Condition="[io_boolPreExistingParent]" DisplayName="Pre-existing parent folder?" sap:VirtualizedContainerService.HintSize="60,60" sap2010:WorkflowViewState.IdRef="FlowDecision_5">
+    <x:Reference>__ReferenceID14</x:Reference>
+    <FlowDecision x:Name="__ReferenceID28" sap2010:Annotation.AnnotationText="If parent folder was newly created at a previous step, skip other checks as no other subfolders will exist." Condition="[io_boolPreExistingParent]" DisplayName="Pre-existing parent folder?" sap:VirtualizedContainerService.HintSize="60,60" sap2010:WorkflowViewState.IdRef="FlowDecision_5">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <av:Point x:Key="ShapeLocation">700,120</av:Point>
@@ -924,15 +957,15 @@ If(in_boolIncludeValidateOption,"If you wish to validate the form details agains
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <FlowDecision.True>
-        <FlowStep x:Name="__ReferenceID23" sap2010:WorkflowViewState.IdRef="FlowStep_1">
+        <FlowStep x:Name="__ReferenceID24" sap2010:WorkflowViewState.IdRef="FlowStep_1">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <av:Point x:Key="ShapeLocation">595,185</av:Point>
-              <av:PointCollection x:Key="ConnectorLocation">650,255 650,315</av:PointCollection>
+              <av:PointCollection x:Key="ConnectorLocation">650,255 650,275</av:PointCollection>
               <av:Size x:Key="ShapeSize">110,70</av:Size>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log Message - checking if folder exists" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="LogMessage_6" Message="[&quot;Checking if folder '&quot;+in_strFolderName+&quot;' exists within &quot;+if(String.IsNullOrEmpty(io_strParentPath),&quot;root folder&quot;,&quot;'&quot;+io_strParentPath+&quot;'&quot;)]">
+          <ui:LogMessage DisplayName="Log Message - checking if folder exists" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="LogMessage_6" Message="[&quot;Checking if folder '&quot;+in_strFolderName+&quot;' exists within &quot;+if(String.IsNullOrEmpty(io_strParentPath),&quot;'&quot;+in_strLibraryName+&quot;'&quot;,&quot;'&quot;+io_strParentPath+&quot;'&quot;)]">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -940,12 +973,12 @@ If(in_boolIncludeValidateOption,"If you wish to validate the form details agains
             </sap:WorkflowViewStateService.ViewState>
           </ui:LogMessage>
           <FlowStep.Next>
-            <x:Reference>__ReferenceID14</x:Reference>
+            <x:Reference>__ReferenceID15</x:Reference>
           </FlowStep.Next>
         </FlowStep>
       </FlowDecision.True>
       <FlowDecision.False>
-        <FlowStep x:Name="__ReferenceID16" sap2010:WorkflowViewState.IdRef="FlowStep_4">
+        <FlowStep x:Name="__ReferenceID17" sap2010:WorkflowViewState.IdRef="FlowStep_4">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <av:Point x:Key="ShapeLocation">1135,585</av:Point>
@@ -961,7 +994,7 @@ If(in_boolIncludeValidateOption,"If you wish to validate the form details agains
             </sap:WorkflowViewStateService.ViewState>
           </ui:LogMessage>
           <FlowStep.Next>
-            <FlowStep x:Name="__ReferenceID17" sap2010:WorkflowViewState.IdRef="FlowStep_5">
+            <FlowStep x:Name="__ReferenceID18" sap2010:WorkflowViewState.IdRef="FlowStep_5">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <av:Point x:Key="ShapeLocation">1135,695</av:Point>
@@ -983,7 +1016,7 @@ If(in_boolIncludeValidateOption,"If you wish to validate the form details agains
                 </sap:WorkflowViewStateService.ViewState>
               </Assign>
               <FlowStep.Next>
-                <FlowStep x:Name="__ReferenceID18" sap2010:WorkflowViewState.IdRef="FlowStep_6">
+                <FlowStep x:Name="__ReferenceID19" sap2010:WorkflowViewState.IdRef="FlowStep_6">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <av:Point x:Key="ShapeLocation">1135,815</av:Point>
@@ -1010,7 +1043,7 @@ If(in_boolIncludeValidateOption,"If you wish to validate the form details agains
                     </sap:WorkflowViewStateService.ViewState>
                   </ui:CommentOut>
                   <FlowStep.Next>
-                    <x:Reference>__ReferenceID15</x:Reference>
+                    <x:Reference>__ReferenceID16</x:Reference>
                   </FlowStep.Next>
                 </FlowStep>
               </FlowStep.Next>
@@ -1019,10 +1052,9 @@ If(in_boolIncludeValidateOption,"If you wish to validate the form details agains
         </FlowStep>
       </FlowDecision.False>
     </FlowDecision>
-    <x:Reference>__ReferenceID16</x:Reference>
     <x:Reference>__ReferenceID17</x:Reference>
-    <x:Reference>__ReferenceID15</x:Reference>
     <x:Reference>__ReferenceID18</x:Reference>
+    <x:Reference>__ReferenceID16</x:Reference>
     <x:Reference>__ReferenceID19</x:Reference>
     <x:Reference>__ReferenceID20</x:Reference>
     <x:Reference>__ReferenceID21</x:Reference>
@@ -1031,6 +1063,8 @@ If(in_boolIncludeValidateOption,"If you wish to validate the form details agains
     <x:Reference>__ReferenceID24</x:Reference>
     <x:Reference>__ReferenceID25</x:Reference>
     <x:Reference>__ReferenceID26</x:Reference>
+    <x:Reference>__ReferenceID27</x:Reference>
+    <x:Reference>__ReferenceID2</x:Reference>
     <x:Reference>__ReferenceID1</x:Reference>
   </Flowchart>
 </Activity>

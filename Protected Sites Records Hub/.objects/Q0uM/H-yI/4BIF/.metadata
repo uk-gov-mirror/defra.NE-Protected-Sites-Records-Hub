@@ -1,0 +1,13 @@
+﻿{
+  "Name": "Edge Site Search(2)",
+  "Type": "Screen",
+  "Id": "4BIFP2Gpo0C4fyKmUr2LwQ",
+  "Reference": "u70FNKxx7EOHPBwkfez66Q/4BIFP2Gpo0C4fyKmUr2LwQ",
+  "ParentRef": "u70FNKxx7EOHPBwkfez66Q/H-yIXKGEb0SZVZ85LVfb7g",
+  "Created": "2026-08-06T09:33:46.8312424Z",
+  "Updated": "2026-08-06T09:33:46.8312424Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=24.10.16.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=25.6.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

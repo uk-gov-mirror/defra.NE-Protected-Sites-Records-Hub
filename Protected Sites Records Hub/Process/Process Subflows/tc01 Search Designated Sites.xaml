@@ -101,21 +101,24 @@
       <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
       <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
       <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="tc01_Search_Designated_Sites" sap:VirtualizedContainerService.HintSize="1451.6000000000001,945.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="tc01_Search_Designated_Sites" sap:VirtualizedContainerService.HintSize="1451.6000000000001,1126.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence DisplayName="... Given" sap:VirtualizedContainerService.HintSize="484,425.2" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence DisplayName="... Given" sap:VirtualizedContainerService.HintSize="513.6,606" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Edge Site Search(1)" sap:VirtualizedContainerService.HintSize="450,333.2" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" OutUiElement="[g_browserDesignatedSites]" ScopeGuid="c9574cec-4058-42b9-a8a8-224aa59f7891" Version="V2">
+      <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Edge Site Search(1)" sap:VirtualizedContainerService.HintSize="479.6,342" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" OutUiElement="[g_browserDesignatedSites]" ScopeGuid="c9574cec-4058-42b9-a8a8-224aa59f7891" Version="V2">
         <uix:NApplicationCard.Body>
           <ActivityAction x:TypeArguments="x:Object">
             <ActivityAction.Argument>
@@ -134,8 +137,30 @@
           <uix:TargetApp Area="-16, -16, 3872, 2312" BrowserType="Edge" ContentHash="2EXLusfgnkqYvr9_UnZOmw" IconBase64="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" InformativeScreenshot="89e5bc786dedfeb0d7efa19a13172da8.jpg" Reference="u70FNKxx7EOHPBwkfez66Q/oMc80ofszkGlnKPOKMcb9Q" Selector="&lt;html app='msedge.exe' title='Site Search' /&gt;" Title="Site Search" Url="https://designatedsites.naturalengland.org.uk/" Version="V1" />
         </uix:NApplicationCard.TargetApp>
       </uix:NApplicationCard>
+      <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="479.6,172" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+        <ui:MultipleAssign.AssignOperations>
+          <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)">[g_Config]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)">[new Dictionary(of String, Object)]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="x:Object">[g_Config("DesignatedSitesURL")]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="x:Object">["https://designatedsites.naturalengland.org.uk/"]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+          </scg:List>
+        </ui:MultipleAssign.AssignOperations>
+      </ui:MultipleAssign>
     </Sequence>
-    <Sequence DisplayName="... When" sap:VirtualizedContainerService.HintSize="484,383.6" sap2010:WorkflowViewState.IdRef="Sequence_3">
+    <Sequence DisplayName="... When" sap:VirtualizedContainerService.HintSize="513.6,383.6" sap2010:WorkflowViewState.IdRef="Sequence_3">
       <Sequence.Variables>
         <Variable x:TypeArguments="sd:DataTable" Name="dtOccupierOwners" />
       </Sequence.Variables>
@@ -146,13 +171,13 @@
       </sap:WorkflowViewStateService.ViewState>
       <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Search Designated Sites - Invoke Workflow File (Process\Process Subflows\Search Designated Sites.xaml)" sap:VirtualizedContainerService.HintSize="416,177.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Process\Process Subflows\Search Designated Sites.xaml">
         <ui:InvokeWorkflowFile.Arguments>
-          <InArgument x:TypeArguments="x:String" x:Key="in_strSiteName">Sotterley Park</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_strSiteName">Lugg and Hampton Meadows SSSI</InArgument>
           <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dtOccupiersOwners">[dtOccupierOwners]</OutArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
       <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="416,114.4" sap2010:WorkflowViewState.IdRef="WriteLine_1" />
     </Sequence>
-    <Sequence DisplayName="... Then" sap:VirtualizedContainerService.HintSize="484,113.6" sap2010:WorkflowViewState.IdRef="Sequence_4">
+    <Sequence DisplayName="... Then" sap:VirtualizedContainerService.HintSize="513.6,113.6" sap2010:WorkflowViewState.IdRef="Sequence_4">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>

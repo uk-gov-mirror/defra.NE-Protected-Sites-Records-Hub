@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="42u6SaBxP06RAbLun-CgRw" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="designatedsites.naturalengland.org.uk/SiteList.aspx" DesignTimeRectangle="3420, 1081, 288, 48" DesignTimeScaleFactor="2.5" ElementType="Text" FullSelectorArgument="&lt;webctrl aaname='Page * of * (* items)' tag='DIV' /&gt;" Guid="90881f8e-5fc1-4a52-afbd-18f2eb73fb32" ImageBase64="" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Site list' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive">
+      <imageRef attrName="InformativeScreenshot" originalValue="bc76843a17fc01f03954f792e6484f72.png" xmlns="">0h-mm4QapEkamtcxR-e0CdA</imageRef>
+    </TargetAnchorable>
+    <x:String x:Key="ActivityType">GetAttributeGeneric</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

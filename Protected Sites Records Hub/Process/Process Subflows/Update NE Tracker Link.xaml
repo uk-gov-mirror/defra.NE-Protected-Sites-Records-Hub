@@ -124,7 +124,7 @@
       <AssemblyReference>netstandard</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Update_NE_Tracker_Link" sap:VirtualizedContainerService.HintSize="1451.6000000000001,1422.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Update_NE_Tracker_Link" sap:VirtualizedContainerService.HintSize="1451.6000000000001,1424.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="uwahm:HttpResponseSummary" Name="httpResponse" />
       <Variable x:TypeArguments="ss:SecureString" Name="sstrTrackerAPIKey" />
@@ -137,7 +137,7 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:GetRobotCredential TimeoutMS="{x:Null}" Username="{x:Null}" AssetName="TrackerAPIKey" CacheStrategy="None" DisplayName="Get Credential - tracker API key" FolderPath="NE Root/Protected Sites Records Hub" sap:VirtualizedContainerService.HintSize="450,176.4" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[sstrTrackerAPIKey]" />
-    <Assign DisplayName="Construct JSON" sap:VirtualizedContainerService.HintSize="450,115.6" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign DisplayName="Construct JSON" sap:VirtualizedContainerService.HintSize="450,117.2" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[strJSON]</OutArgument>
       </Assign.To>
@@ -165,7 +165,7 @@
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Throw DisplayName="Throw BRE - link update exception" Exception="[new BusinessRuleException(&quot;Failed to update NE tracker with link to casework folder. Error returned: &quot;+jobResponse(&quot;id&quot;).ToString)]" sap:VirtualizedContainerService.HintSize="382,114.4" sap2010:WorkflowViewState.IdRef="Throw_1" />
+          <Throw DisplayName="Throw BRE - link update exception" Exception="[new BusinessRuleException(&quot;Failed to update NE tracker with link to casework folder. Response: &quot;+Environment.NewLine+jobResponse.ToString)]" sap:VirtualizedContainerService.HintSize="382,114.4" sap2010:WorkflowViewState.IdRef="Throw_1" />
         </Sequence>
       </If.Then>
       <If.Else>

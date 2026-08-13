@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="BeaBTcqbek6w3BsnjMvlDA" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="designatedsites.naturalengland.org.uk" DesignTimeRectangle="1015, 1065, 798, 44" DesignTimeScaleFactor="2.5" ElementType="DropDown" FullSelectorArgument="&lt;webctrl tag='DIV' visibleinnertext='Designation type:*' /&gt;&lt;webctrl tag='SELECT' /&gt;" Guid="2dd44410-37cd-4092-bed7-59aa32332731" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Site Search' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive">
+      <imageRef attrName="InformativeScreenshot" originalValue="9cf4eb129eb41a174c5d9e331d1b4081.png" xmlns="">0axyYLzSbOUKnNm5EFyvfAA</imageRef>
+    </TargetAnchorable>
+    <x:String x:Key="ActivityType">TypeInto</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

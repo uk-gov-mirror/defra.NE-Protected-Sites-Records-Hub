@@ -128,7 +128,7 @@
       <AssemblyReference>System.Linq.Queryable</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Get_Defra_Forms_Attachments" sap:VirtualizedContainerService.HintSize="1451.6000000000001,3405.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Get_Defra_Forms_Attachments" sap:VirtualizedContainerService.HintSize="1451.6000000000001,3550.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="str:MatchCollection" Name="mcDownloadLinks" />
       <Variable x:TypeArguments="s:DateTime" Name="timeNow" />
@@ -139,7 +139,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign DisplayName="Get all download links from email body" sap:VirtualizedContainerService.HintSize="586,114.4" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign DisplayName="Get all download links from email body" sap:VirtualizedContainerService.HintSize="638,114.4" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="str:MatchCollection">[mcDownloadLinks]</OutArgument>
       </Assign.To>
@@ -147,7 +147,7 @@
         <InArgument x:TypeArguments="str:MatchCollection">[Regex.Matches(g_TransactionItem("Body").ToString,"(?s)\&lt;a href=\""https\:\/\/forms\.defra\.gov\.uk\/file-download\/.*?\&lt;\/a\&gt;")]</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign sap2010:Annotation.AnnotationText="Use this to confirm all downloads complete" DisplayName="Get time before downloads start" sap:VirtualizedContainerService.HintSize="586,145.6" sap2010:WorkflowViewState.IdRef="Assign_2">
+    <Assign sap2010:Annotation.AnnotationText="Use this to confirm all downloads complete" DisplayName="Get time before downloads start" sap:VirtualizedContainerService.HintSize="638,145.6" sap2010:WorkflowViewState.IdRef="Assign_2">
       <Assign.To>
         <OutArgument x:TypeArguments="s:DateTime">[timeNow]</OutArgument>
       </Assign.To>
@@ -160,13 +160,13 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </Assign>
-    <ui:ForEach x:TypeArguments="str:Match" CurrentIndex="[intIndex]" DisplayName="For Each Defra Forms link in email body" sap:VirtualizedContainerService.HintSize="586,2580.4" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[mcDownloadLinks]">
+    <ui:ForEach x:TypeArguments="str:Match" CurrentIndex="[intIndex]" DisplayName="For Each Defra Forms link in email body" sap:VirtualizedContainerService.HintSize="638,2726" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[mcDownloadLinks]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="str:Match">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="str:Match" Name="currentMatch" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="552,2433.2" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="604,2578.8" sap2010:WorkflowViewState.IdRef="Sequence_3">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:String" Name="strCurrentLink" />
               <Variable x:TypeArguments="x:String" Name="strCurrentFileName" />
@@ -177,7 +177,7 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Assign DisplayName="Extract link" sap:VirtualizedContainerService.HintSize="518,114.4" sap2010:WorkflowViewState.IdRef="Assign_5">
+            <Assign DisplayName="Extract link" sap:VirtualizedContainerService.HintSize="570,114.4" sap2010:WorkflowViewState.IdRef="Assign_5">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[strCurrentLink]</OutArgument>
               </Assign.To>
@@ -185,14 +185,14 @@
                 <InArgument x:TypeArguments="x:String">[Regex.Match(currentMatch.Value,"https\:\/\/forms\.defra\.gov\.uk\/file-download\/.*?(?&lt;=\"")").Value]</InArgument>
               </Assign.Value>
             </Assign>
-            <uast:ExtractText EndingText="{x:Null}" FirstMatch="{x:Null}" Results="{x:Null}" StartingText="{x:Null}" DisplayName="Extract file name from html" ExtractBaseURLOnly="False" ExtractOptions="FromHTML" sap:VirtualizedContainerService.HintSize="518,225.6" sap2010:WorkflowViewState.IdRef="ExtractText_1" IgnoreDuplicates="False" MatchCase="False" Result="[strCurrentFileName]" Source="[currentMatch.Value]" />
-            <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Always" DisplayName="Edge You have a file to download - Forms desi" sap:VirtualizedContainerService.HintSize="518,2033.2" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="Simulate" OpenMode="Always" ScopeGuid="ab1ab822-bbc0-4c7c-92cc-b7915921bb3e" Version="V2">
+            <uast:ExtractText EndingText="{x:Null}" FirstMatch="{x:Null}" Results="{x:Null}" StartingText="{x:Null}" DisplayName="Extract file name from html" ExtractBaseURLOnly="False" ExtractOptions="FromHTML" sap:VirtualizedContainerService.HintSize="570,225.6" sap2010:WorkflowViewState.IdRef="ExtractText_1" IgnoreDuplicates="False" MatchCase="False" Result="[strCurrentFileName]" Source="[currentMatch.Value]" />
+            <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Always" DisplayName="Edge You have a file to download - Forms desi" sap:VirtualizedContainerService.HintSize="570,2178.8" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="Simulate" OpenMode="Always" ScopeGuid="ab1ab822-bbc0-4c7c-92cc-b7915921bb3e" Version="V2">
               <uix:NApplicationCard.Body>
                 <ActivityAction x:TypeArguments="x:Object">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="Confirm download" sap:VirtualizedContainerService.HintSize="484,1792" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                  <Sequence DisplayName="Confirm download" sap:VirtualizedContainerService.HintSize="536,1937.6" sap2010:WorkflowViewState.IdRef="Sequence_2">
                     <Sequence.Variables>
                       <Variable x:TypeArguments="x:String" Name="strEmail" />
                     </Sequence.Variables>
@@ -201,13 +201,13 @@
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:LogMessage DisplayName="Log Message - downloading file" sap:VirtualizedContainerService.HintSize="450,177.2" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;Downloading file &quot;+(intIndex+1).ToString+&quot; of &quot;+mcDownloadLinks.Count.ToString]" />
-                    <Assign sap2010:Annotation.AnnotationText="If dev mode, use a different asset" DisplayName="Set email for download verification" sap:VirtualizedContainerService.HintSize="450,146" sap2010:WorkflowViewState.IdRef="Assign_4">
+                    <ui:LogMessage DisplayName="Log Message - downloading file" sap:VirtualizedContainerService.HintSize="502,177.2" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;Downloading file &quot;+(intIndex+1).ToString+&quot; of &quot;+mcDownloadLinks.Count.ToString]" />
+                    <Assign sap2010:Annotation.AnnotationText="If dev mode, use a different asset" DisplayName="Set email for download verification" sap:VirtualizedContainerService.HintSize="502,146" sap2010:WorkflowViewState.IdRef="Assign_4">
                       <Assign.To>
                         <OutArgument x:TypeArguments="x:String">[strEmail]</OutArgument>
                       </Assign.To>
                       <Assign.Value>
-                        <InArgument x:TypeArguments="x:String">[if(CBool(g_Config("IsDev")),g_Config("VerificationEmail").ToString,g_Config("AccountName").ToString)]</InArgument>
+                        <InArgument x:TypeArguments="x:String">[g_Config("VerificationEmail").ToString]</InArgument>
                       </Assign.Value>
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -215,12 +215,12 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                     </Assign>
-                    <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="None" DisplayName="Type email" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="450,252.8" sap2010:WorkflowViewState.IdRef="NTypeInto_1" ScopeIdentifier="ab1ab822-bbc0-4c7c-92cc-b7915921bb3e" Text="[strEmail]" Version="V4">
+                    <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="None" DisplayName="Type email" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="502,252.8" sap2010:WorkflowViewState.IdRef="NTypeInto_1" ScopeIdentifier="ab1ab822-bbc0-4c7c-92cc-b7915921bb3e" Text="[strEmail]" Version="V4">
                       <uix:NTypeInto.Target>
                         <uix:TargetAnchorable BrowserURL="forms.defra.gov.uk/file-download/93191c7b-e5aa-4fbb-8884-03137ca37320" ContentHash="ejjvopuf7Eml3IYZFCyvNw" DesignTimeRectangle="176, 966, 2230, 100" DesignTimeScaleFactor="2.5" ElementType="InputBox" FullSelectorArgument="&lt;webctrl id='email' tag='INPUT' /&gt;" Guid="a09f4a32-28b1-4bf4-93eb-d4109446d55f" InformativeScreenshot="f635cf8ef66f39cc671d36fcda013f90.png" Reference="u70FNKxx7EOHPBwkfez66Q/BsUSexDgskeGLS1yZKIKlw" ScopeSelectorArgument="&lt;html app='msedge.exe' title='You have a file to download - Forms designer' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
                       </uix:NTypeInto.Target>
                     </uix:NTypeInto>
-                    <ui:GetLastDownloadedFile FileResource="{x:Null}" Timeout="{x:Null}" DisplayName="Wait for Download" DownloadFolder="[g_Config(&quot;DownloadsPath&quot;).ToString]" File="[fiCurrentDownload]" sap:VirtualizedContainerService.HintSize="450,452" sap2010:WorkflowViewState.IdRef="GetLastDownloadedFile_1" IgnoreFiles="tmp,crdownload">
+                    <ui:GetLastDownloadedFile FileResource="{x:Null}" Timeout="{x:Null}" DisplayName="Wait for Download" DownloadFolder="[g_Config(&quot;DownloadsPath&quot;).ToString]" File="[fiCurrentDownload]" sap:VirtualizedContainerService.HintSize="502,452" sap2010:WorkflowViewState.IdRef="GetLastDownloadedFile_1" IgnoreFiles="tmp,crdownload">
                       <ui:GetLastDownloadedFile.Body>
                         <ActivityAction>
                           <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Download file'" sap:VirtualizedContainerService.HintSize="334,158" sap2010:WorkflowViewState.IdRef="NClick_2" InteractionMode="Simulate" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="ab1ab822-bbc0-4c7c-92cc-b7915921bb3e" Version="V4">
@@ -231,7 +231,7 @@
                         </ActivityAction>
                       </ui:GetLastDownloadedFile.Body>
                     </ui:GetLastDownloadedFile>
-                    <If sap2010:Annotation.AnnotationText="CSVs have GUID name. We rename to whatever they are listed as in the email body (e.g. Activity)" Condition="[fiCurrentDownload.Name.ToLower.EndsWith(&quot;csv&quot;)]" DisplayName="If CSV" sap:VirtualizedContainerService.HintSize="450,702.4" sap2010:WorkflowViewState.IdRef="If_2">
+                    <If sap2010:Annotation.AnnotationText="CSVs have GUID name. We rename to whatever they are listed as in the email body (e.g. Activity)" Condition="[fiCurrentDownload.Name.ToLower.EndsWith(&quot;csv&quot;)]" DisplayName="If CSV" sap:VirtualizedContainerService.HintSize="502,848" sap2010:WorkflowViewState.IdRef="If_2">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -248,13 +248,30 @@
                         </Sequence>
                       </If.Then>
                       <If.Else>
-                        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,246.8" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="468,392.4" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                          <Sequence.Variables>
+                            <Variable x:TypeArguments="si:FileInfo[]" Name="arrDuplicates" />
+                          </Sequence.Variables>
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <ui:MoveFile ContinueOnError="{x:Null}" DestinationResource="{x:Null}" PathResource="{x:Null}" Destination="[g_Config(&quot;FormAttachmentsPath&quot;).ToString+&quot;/&quot;+fiCurrentDownload.Name]" DisplayName="Move file" sap:VirtualizedContainerService.HintSize="382,186.8" sap2010:WorkflowViewState.IdRef="MoveFile_2" Path="[fiCurrentDownload.FullName]" />
+                          <Assign DisplayName="Check for duplicates" sap:VirtualizedContainerService.HintSize="434,114.4" sap2010:WorkflowViewState.IdRef="Assign_6">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="si:FileInfo[]">[arrDuplicates]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="si:FileInfo[]">[new DirectoryInfo(g_Config("FormAttachmentsPath").ToString).GetFiles(Path.GetFileNameWithoutExtension(fiCurrentDownload.Name)+"*"+fiCurrentDownload.Extension)]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <ui:MoveFile ContinueOnError="{x:Null}" DestinationResource="{x:Null}" PathResource="{x:Null}" sap2010:Annotation.AnnotationText="To argument accounts for duplicate filenames" Destination="[g_Config(&quot;FormAttachmentsPath&quot;).ToString+&quot;/&quot;+If(arrDuplicates.Count=0, fiCurrentDownload.Name, Path.GetFileNameWithoutExtension(fiCurrentDownload.Name)+arrDuplicates.Count.ToString+fiCurrentDownload.Extension)]" DisplayName="Move file" sap:VirtualizedContainerService.HintSize="434,218" sap2010:WorkflowViewState.IdRef="MoveFile_2" Path="[fiCurrentDownload.FullName]">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </ui:MoveFile>
                         </Sequence>
                       </If.Else>
                     </If>
@@ -269,7 +286,7 @@
         </ActivityAction>
       </ui:ForEach.Body>
     </ui:ForEach>
-    <Assign DisplayName="Get new files in downloads folder" sap:VirtualizedContainerService.HintSize="586,114.4" sap2010:WorkflowViewState.IdRef="Assign_3">
+    <Assign DisplayName="Get new files in downloads folder" sap:VirtualizedContainerService.HintSize="638,114.4" sap2010:WorkflowViewState.IdRef="Assign_3">
       <Assign.To>
         <OutArgument x:TypeArguments="scg:IEnumerable(si:FileInfo)">[out_ieFormAttachments]</OutArgument>
       </Assign.To>
@@ -277,7 +294,7 @@
         <InArgument x:TypeArguments="scg:IEnumerable(si:FileInfo)">[new DirectoryInfo(g_Config("FormAttachmentsPath").ToString).GetFiles.Where(function(x) x.LastWriteTime&gt;timeNow)]</InArgument>
       </Assign.Value>
     </Assign>
-    <If Condition="[mcDownloadLinks.Count&lt;&gt;out_ieFormAttachments.Count]" DisplayName="If not all expected files are present" sap:VirtualizedContainerService.HintSize="586,427.2" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[mcDownloadLinks.Count&lt;&gt;out_ieFormAttachments.Count]" DisplayName="If not all expected files are present" sap:VirtualizedContainerService.HintSize="638,427.2" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
         <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,174.4" sap2010:WorkflowViewState.IdRef="Sequence_4">
           <sap:WorkflowViewStateService.ViewState>
