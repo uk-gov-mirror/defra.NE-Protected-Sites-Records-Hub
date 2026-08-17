@@ -282,7 +282,7 @@
                                   <OutArgument x:TypeArguments="x:String">[io_strParentPath]</OutArgument>
                                 </Assign.To>
                                 <Assign.Value>
-                                  <InArgument x:TypeArguments="x:String">[io_strParentPath+"/"+in_strFolderName]</InArgument>
+                                  <InArgument x:TypeArguments="x:String">[io_strParentPath+"/"+in_strFolderName.Trim]</InArgument>
                                 </Assign.Value>
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -727,7 +727,7 @@ If(in_boolIncludeValidateOption,"To validate this Owner-Occupier name against De
                                                     <OutArgument x:TypeArguments="x:String">[io_strParentPath]</OutArgument>
                                                   </Assign.To>
                                                   <Assign.Value>
-                                                    <InArgument x:TypeArguments="x:String">[io_strParentPath+"/"+strSelectedFolder]</InArgument>
+                                                    <InArgument x:TypeArguments="x:String">[io_strParentPath+"/"+strSelectedFolder.Trim]</InArgument>
                                                   </Assign.Value>
                                                   <sap:WorkflowViewStateService.ViewState>
                                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">

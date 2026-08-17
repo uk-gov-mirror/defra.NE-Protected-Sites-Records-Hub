@@ -127,7 +127,7 @@
       <AssemblyReference>netstandard</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Flowchart sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " sap:VirtualizedContainerService.HintSize="1468.8000000000002,658.84" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+  <Flowchart sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " sap:VirtualizedContainerService.HintSize="1050,684.84" sap2010:WorkflowViewState.IdRef="Flowchart_1">
     <Flowchart.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dtOwnerOccupiers" />
       <Variable x:TypeArguments="x:String" Name="strListID" />
@@ -978,10 +978,7 @@
                                             </scg:Dictionary>
                                           </sap:WorkflowViewStateService.ViewState>
                                           <FlowDecision.True>
-                                            <FlowDecision x:Name="__ReferenceID29" DisplayName="SNO?" sap:VirtualizedContainerService.HintSize="60,60" sap2010:WorkflowViewState.IdRef="FlowDecision_10">
-                                              <FlowDecision.Condition>
-                                                <VisualBasicValue x:TypeArguments="x:Boolean" DisplayName="Visual basic value" ExpressionText="dtFormQuestions(0)(&quot;Are you submitting an SNO alongside your advice?&quot;).ToString=&quot;true&quot;" />
-                                              </FlowDecision.Condition>
+                                            <FlowDecision x:Name="__ReferenceID29" Condition="[dtFormQuestions(0)(&quot;Are you submitting an SNO alongside your advice?&quot;).ToString=&quot;true&quot;]" DisplayName="SNO?" sap:VirtualizedContainerService.HintSize="60,60" sap2010:WorkflowViewState.IdRef="FlowDecision_10">
                                               <sap:WorkflowViewStateService.ViewState>
                                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1318,10 +1315,10 @@
                           <av:PointCollection x:Key="ConnectorLocation">1050,1245 1050,1265</av:PointCollection>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Check SPOL for Area Team folder" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_13" UnSafe="False" WorkflowFileName="Process\Process Subflows\SPOL Folder Match.xaml">
+                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Check SPOL for Area Team folder" sap:VirtualizedContainerService.HintSize="334,145.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_13" UnSafe="False" WorkflowFileName="Process\Process Subflows\SPOL Folder Match.xaml">
                         <ui:InvokeWorkflowFile.Arguments>
                           <InArgument x:TypeArguments="x:String" x:Key="in_strFolderName">[strAreaTeam]</InArgument>
-                          <InArgument x:TypeArguments="x:Boolean" x:Key="in_boolConfirmMatch">[g_jobCWTReceipt("Area_Team").ToString="Farming and Conservation Service (FCS)"]</InArgument>
+                          <InArgument x:TypeArguments="x:Boolean" x:Key="in_boolConfirmMatch">[g_jobCWTReceipt("Area_Team").ToString="Farm and Conservation Service (FCS)"]</InArgument>
                           <InArgument x:TypeArguments="x:String" x:Key="in_strListID">[strListID]</InArgument>
                           <InOutArgument x:TypeArguments="x:Boolean" x:Key="io_boolPreExistingParent">[boolPreExistingParent]</InOutArgument>
                           <InOutArgument x:TypeArguments="x:String" x:Key="io_strParentPath">[strUploadFolder]</InOutArgument>
@@ -1329,7 +1326,7 @@
                           <OutArgument x:TypeArguments="x:Boolean" x:Key="out_boolValidate" />
                           <InArgument x:TypeArguments="x:String" x:Key="in_strExtraSearchInfo">Area team as listed in CWT Receipt</InArgument>
                           <InArgument x:TypeArguments="x:String" x:Key="in_strLibraryName">[strLibraryName]</InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="in_strAdditionalFields" xml:space="preserve">["&lt;strong&gt;SSSI name:&lt;/strong&gt;&amp;ensp;"+g_jobCWTReceipt("SSSI_Name").First.ToString+"&lt;br&gt;"+
+                          <InArgument x:TypeArguments="x:String" x:Key="in_strAdditionalFields" xml:space="preserve">["&lt;strong&gt;SSSI name:&lt;/strong&gt;&amp;ensp;"+If(g_jobCWTReceipt("SSSI_Name").Count&gt;0,g_jobCWTReceipt("SSSI_Name").First.ToString,"(not provided)")+"&lt;br&gt;"+
 "&lt;strong&gt;Email header:&lt;/strong&gt;&amp;ensp;"+g_jobCWTReceipt("Email_Header").ToString+"&lt;br&gt;"+
 "&lt;strong&gt;Eastings/Northings:&lt;/strong&gt;&amp;ensp;"+if(not String.IsNullOrEmpty(strEastingsNorthings),strEastingsNorthings,"(not provided)")]</InArgument>
                         </ui:InvokeWorkflowFile.Arguments>
@@ -1556,7 +1553,7 @@
                       <av:PointCollection x:Key="ConnectorLocation">765,590 785,590</av:PointCollection>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Assign DisplayName="Append multiple SSSI special case" sap:VirtualizedContainerService.HintSize="434,82.4" sap2010:WorkflowViewState.IdRef="Assign_17">
+                  <Assign DisplayName="Append multiple SSSI special case" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="Assign_17">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:String">[strSpecialCaseActions]</OutArgument>
                     </Assign.To>

@@ -112,7 +112,7 @@
       <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Find_Column_Names_and_Values" sap:VirtualizedContainerService.HintSize="1451.6000000000001,3404.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Find_Column_Names_and_Values" sap:VirtualizedContainerService.HintSize="1451.6000000000001,3518.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:IEnumerable(x:String)" Name="ieColumnNames" />
     </Sequence.Variables>
@@ -260,7 +260,7 @@
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Assign DisplayName="Store phone column name" sap:VirtualizedContainerService.HintSize="434,82.4" sap2010:WorkflowViewState.IdRef="Assign_8">
+          <Assign DisplayName="Store phone column name" sap:VirtualizedContainerService.HintSize="434,114.4" sap2010:WorkflowViewState.IdRef="Assign_8">
             <Assign.To>
               <OutArgument x:TypeArguments="x:String">[strPhoneColumnName]</OutArgument>
             </Assign.To>
@@ -289,7 +289,7 @@
         </Sequence>
       </If.Else>
     </If>
-    <If Condition="[ieColumnNames.Contains(&quot;Easting and Northing coordinates&quot;)]" DisplayName="If eastings and northings column available" sap:VirtualizedContainerService.HintSize="502,554.8" sap2010:WorkflowViewState.IdRef="If_6">
+    <If Condition="[ieColumnNames.Contains(&quot;Easting and Northing coordinates&quot;)]" DisplayName="If eastings and northings column available" sap:VirtualizedContainerService.HintSize="502,669.2" sap2010:WorkflowViewState.IdRef="If_6">
       <If.Then>
         <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="468,165.6" sap2010:WorkflowViewState.IdRef="Sequence_12">
           <Sequence.Variables>
@@ -313,13 +313,21 @@
         </Sequence>
       </If.Then>
       <If.Else>
-        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,226.8" sap2010:WorkflowViewState.IdRef="Sequence_13">
+        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="468,341.2" sap2010:WorkflowViewState.IdRef="Sequence_13">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log Message - no coords column" sap:VirtualizedContainerService.HintSize="382,166.8" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Warn" Message="[&quot;Could not find eastings/northings column&quot;]" />
+          <Assign DisplayName="Output empty coords" sap:VirtualizedContainerService.HintSize="434,114.4" sap2010:WorkflowViewState.IdRef="Assign_14">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[out_strCoords]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">(none provided)</InArgument>
+            </Assign.Value>
+          </Assign>
+          <ui:LogMessage DisplayName="Log Message - no coords column" sap:VirtualizedContainerService.HintSize="434,166.8" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Warn" Message="[&quot;Could not find eastings/northings column&quot;]" />
         </Sequence>
       </If.Else>
     </If>
