@@ -141,8 +141,8 @@
       </sap:WorkflowViewStateService.ViewState>
       <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Update NE Tracker Link - Invoke Workflow File (Update NE Tracker Link.xaml)" sap:VirtualizedContainerService.HintSize="416,168.4" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Process\Process Subflows\Update NE Tracker Link.xaml">
         <ui:InvokeWorkflowFile.Arguments>
-          <InArgument x:TypeArguments="x:String" x:Key="in_strCaseworkFolderURL">https://google.com</InArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="in_strCaseworkFolderName">Test folder</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_strCaseworkFolderURL">["https://defra.sharepoint.com/sites/Community290/RobTest/A &amp; B".Replace("&amp;","%26")]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_strCaseworkFolderName">Test Folder</InArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
     </Sequence>

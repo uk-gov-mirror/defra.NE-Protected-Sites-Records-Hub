@@ -46,6 +46,8 @@
       <x:String>System.Numerics</x:String>
       <x:String>System.Globalization</x:String>
       <x:String>System.Web</x:String>
+      <x:String>UiPath.CSV</x:String>
+      <x:String>UiPath.CSV.Activities</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -125,9 +127,11 @@
       <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
       <AssemblyReference>System.Web.HttpUtility</AssemblyReference>
       <AssemblyReference>netstandard</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Flowchart sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " sap:VirtualizedContainerService.HintSize="1050,684.84" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+  <Flowchart sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " sap:VirtualizedContainerService.HintSize="1468.8000000000002,658.84" sap2010:WorkflowViewState.IdRef="Flowchart_1">
     <Flowchart.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dtOwnerOccupiers" />
       <Variable x:TypeArguments="x:String" Name="strListID" />
@@ -157,6 +161,8 @@
       <Variable x:TypeArguments="njl:JObject" Name="jobListInfo" />
       <Variable x:TypeArguments="x:String" Name="strEastingsNorthings" />
       <Variable x:TypeArguments="x:String" Name="strEuroSiteName" />
+      <Variable x:TypeArguments="x:String" Name="strEuroFolder" />
+      <Variable x:TypeArguments="x:Boolean" Name="boolCreateInGeneral" />
     </Flowchart.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -169,9 +175,9 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <Flowchart.StartNode>
-      <x:Reference>__ReferenceID53</x:Reference>
+      <x:Reference>__ReferenceID56</x:Reference>
     </Flowchart.StartNode>
-    <FlowDecision x:Name="__ReferenceID20" Condition="[{&quot;s28e consent&quot;,&quot;s28h assent&quot;,&quot;s28i advice&quot;,&quot;standalone hra reg 63&quot;}.Contains(g_jobCWTReceipt(&quot;Broad_Work_Type&quot;).ToString.Trim.ToLower)]" DisplayName="Statutory casework?" sap:VirtualizedContainerService.HintSize="60,60" sap2010:WorkflowViewState.IdRef="FlowDecision_2">
+    <FlowDecision x:Name="__ReferenceID21" Condition="[{&quot;s28e consent&quot;,&quot;s28h assent&quot;,&quot;s28i advice&quot;,&quot;standalone hra reg 63&quot;}.Contains(g_jobCWTReceipt(&quot;Broad_Work_Type&quot;).ToString.Trim.ToLower)]" DisplayName="Statutory casework?" sap:VirtualizedContainerService.HintSize="60,60" sap2010:WorkflowViewState.IdRef="FlowDecision_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -182,7 +188,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <FlowDecision.True>
-        <FlowStep x:Name="__ReferenceID36" sap2010:WorkflowViewState.IdRef="FlowStep_3">
+        <FlowStep x:Name="__ReferenceID37" sap2010:WorkflowViewState.IdRef="FlowStep_3">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <av:Point x:Key="ShapeLocation">645,905</av:Point>
@@ -204,17 +210,17 @@
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   <av:Point x:Key="ShapeLocation">670,1010</av:Point>
                   <av:Size x:Key="ShapeSize">60,60</av:Size>
-                  <av:PointCollection x:Key="TrueConnector">670,1040 500,1040 500,1125</av:PointCollection>
+                  <av:PointCollection x:Key="TrueConnector">670,1040 480,1040 480,1125</av:PointCollection>
                   <av:PointCollection x:Key="FalseConnector">730,1040 740,1040 740,1330</av:PointCollection>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <FlowDecision.True>
-                <FlowStep x:Name="__ReferenceID49">
+                <FlowStep x:Name="__ReferenceID49" sap2010:WorkflowViewState.IdRef="FlowStep_1">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <av:Point x:Key="ShapeLocation">445,1125</av:Point>
+                      <av:Point x:Key="ShapeLocation">425,1125</av:Point>
                       <av:Size x:Key="ShapeSize">110,70</av:Size>
-                      <av:PointCollection x:Key="ConnectorLocation">500,1195 500,1215</av:PointCollection>
+                      <av:PointCollection x:Key="ConnectorLocation">480,1195 480,1215</av:PointCollection>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                   <ui:LogMessage DisplayName="Log Message - standalone HRA" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Info" Message="[&quot;Broad work type is Standalone HRA Reg 63&quot;]">
@@ -225,12 +231,12 @@
                     </sap:WorkflowViewStateService.ViewState>
                   </ui:LogMessage>
                   <FlowStep.Next>
-                    <FlowStep x:Name="__ReferenceID50">
+                    <FlowStep x:Name="__ReferenceID50" sap2010:WorkflowViewState.IdRef="FlowStep_2">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <av:Point x:Key="ShapeLocation">445,1215</av:Point>
+                          <av:Point x:Key="ShapeLocation">425,1215</av:Point>
                           <av:Size x:Key="ShapeSize">110,70</av:Size>
-                          <av:PointCollection x:Key="ConnectorLocation">500,1285 500,1305</av:PointCollection>
+                          <av:PointCollection x:Key="ConnectorLocation">480,1285 480,1305</av:PointCollection>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                       <Sequence DisplayName="Protected Sites" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="Sequence_11">
@@ -239,23 +245,48 @@
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <If Condition="[g_jobCWTReceipt.ContainsKey(&quot;European_Site_Name&quot;)]" DisplayName="Contains European_Site_Name key?" sap:VirtualizedContainerService.HintSize="502,939.6" sap2010:WorkflowViewState.IdRef="If_3">
+                        <Assign DisplayName="Set list ID to Protected Sites" sap:VirtualizedContainerService.HintSize="502,114.4" sap2010:WorkflowViewState.IdRef="Assign_31">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[strListID]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">[g_Config("ProtectedSitesListID").ToString]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <If Condition="[g_jobCWTReceipt.ContainsKey(&quot;European_Site_Name&quot;)]" DisplayName="Contains European_Site_Name key?" sap:VirtualizedContainerService.HintSize="502,1557.2" sap2010:WorkflowViewState.IdRef="If_3">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
                           <If.Then>
-                            <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="468,602.8" sap2010:WorkflowViewState.IdRef="Sequence_12">
-                              <Sequence.Variables>
-                                <Variable x:TypeArguments="x:String" Name="strEuroFolder" />
-                              </Sequence.Variables>
+                            <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="468,540" sap2010:WorkflowViewState.IdRef="Sequence_12">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
+                              <Assign DisplayName="If multiple euro sites, append special case" sap:VirtualizedContainerService.HintSize="434,114.4" sap2010:WorkflowViewState.IdRef="Assign_32">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:String">[strSpecialCaseActions]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:String">[if(g_jobCWTReceipt("European_Site_Name").Count&gt;1,strSpecialCaseActions+"&lt;p&gt;&lt;strong&gt;Multiple European Sites&lt;/strong&gt;&lt;br&gt;The CWT receipt refers to multiple European Sites. The first of these ("+g_jobCWTReceipt("European_Site_Name").First.ToString+") has been processed by the robot. Please manually process the remaining European Sites:&lt;br&gt;"+String.Join("&lt;br&gt;",g_jobCWTReceipt("European_Site_Name").Skip(1))+"&lt;/p&gt;",strSpecialCaseActions)]</InArgument>
+                                </Assign.Value>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </Assign>
                               <Assign DisplayName="Extract Ramsar/SAC/SPA" sap:VirtualizedContainerService.HintSize="434,114.4" sap2010:WorkflowViewState.IdRef="Assign_23">
                                 <Assign.To>
                                   <OutArgument x:TypeArguments="x:String">[strEuroFolder]</OutArgument>
                                 </Assign.To>
                                 <Assign.Value>
-                                  <InArgument x:TypeArguments="x:String">[Regex.Match(g_jobCWTReceipt("European_Site_Name").ToString.Trim,"(?i)(ramsar|sac|spa)$").Value]</InArgument>
+                                  <InArgument x:TypeArguments="x:String">[Regex.Match(g_jobCWTReceipt("European_Site_Name").First.ToString.Trim,"(?i)(ramsar|sac|spa)$").Value]</InArgument>
                                 </Assign.Value>
                               </Assign>
                               <Assign DisplayName="Extract euro site name minus Ramsar/SAC/SPA" sap:VirtualizedContainerService.HintSize="434,114.4" sap2010:WorkflowViewState.IdRef="Assign_26">
@@ -263,10 +294,10 @@
                                   <OutArgument x:TypeArguments="x:String">[strEuroSiteName]</OutArgument>
                                 </Assign.To>
                                 <Assign.Value>
-                                  <InArgument x:TypeArguments="x:String">[Regex.Replace(g_jobCWTReceipt("European_Site_Name").ToString.Trim,"(?i)(ramsa|sac|spa)$","")]</InArgument>
+                                  <InArgument x:TypeArguments="x:String">[Regex.Replace(g_jobCWTReceipt("European_Site_Name").First.ToString.Trim,"(?i)(ramsa|sac|spa)$","")]</InArgument>
                                 </Assign.Value>
                               </Assign>
-                              <Assign sap2010:Annotation.AnnotationText="Ensure it's Ramsar, SAC or SPA (case sensitive)" DisplayName="Format text to match SPOL" sap:VirtualizedContainerService.HintSize="434,145.6" sap2010:WorkflowViewState.IdRef="Assign_25">
+                              <Assign sap2010:Annotation.AnnotationText="Ensure it's Ramsar, SAC or SPA (case sensitive)" DisplayName="Format text to match SPOL" sap:VirtualizedContainerService.HintSize="434,136.8" sap2010:WorkflowViewState.IdRef="Assign_25">
                                 <Assign.To>
                                   <OutArgument x:TypeArguments="x:String">[strEuroFolder]</OutArgument>
                                 </Assign.To>
@@ -279,41 +310,92 @@
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
                               </Assign>
-                              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Check SPOL for Ramsar/SPA/SAC" sap:VirtualizedContainerService.HintSize="434,168.4" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_27" UnSafe="False" WorkflowFileName="Process\Process Subflows\SPOL Folder Match.xaml">
-                                <ui:InvokeWorkflowFile.Arguments>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_strFolderName">[strEuroFolder]</InArgument>
-                                  <InArgument x:TypeArguments="x:Boolean" x:Key="in_boolConfirmMatch">False</InArgument>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_strListID">[g_Config("ProtectedSitesListID").ToString]</InArgument>
-                                  <InOutArgument x:TypeArguments="x:Boolean" x:Key="io_boolPreExistingParent">[boolPreExistingParent]</InOutArgument>
-                                  <InOutArgument x:TypeArguments="x:String" x:Key="io_strParentPath">[strUploadFolder]</InOutArgument>
-                                  <InArgument x:TypeArguments="x:Boolean" x:Key="in_boolIncludeValidateOption">False</InArgument>
-                                  <OutArgument x:TypeArguments="x:Boolean" x:Key="out_boolValidate" />
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_strExtraSearchInfo" />
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_strLibraryName">[if(CBool(g_Config("IsDev")),"RobTest","Protected Sites")]</InArgument>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_strAdditionalFields" />
-                                </ui:InvokeWorkflowFile.Arguments>
-                              </ui:InvokeWorkflowFile>
                             </Sequence>
                           </If.Then>
                           <If.Else>
-                            <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,174.4" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                            <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="468,846" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                              <Sequence.Variables>
+                                <Variable x:TypeArguments="sd:DataTable" Name="dtEuroSites" />
+                              </Sequence.Variables>
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <Throw DisplayName="Throw BRE - european site name missing" Exception="[new BusinessRuleException(&quot;Case with broad work type 'Standalone HRA Reg 63' is missing 'European_Site_Name' information.&quot;)]" sap:VirtualizedContainerService.HintSize="382,114.4" sap2010:WorkflowViewState.IdRef="Throw_3" />
+                              <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="434,85.2" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+                                <ui:CommentOut.Body>
+                                  <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="416,174.4" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <Throw DisplayName="Throw BRE - european site name missing" Exception="[new BusinessRuleException(&quot;Case with broad work type 'Standalone HRA Reg 63' is missing 'European_Site_Name' information.&quot;)]" sap:VirtualizedContainerService.HintSize="382,114.4" sap2010:WorkflowViewState.IdRef="Throw_3" />
+                                  </Sequence>
+                                </ui:CommentOut.Body>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </ui:CommentOut>
+                              <ui:LogMessage DisplayName="Log Message - european_site_name key missing" sap:VirtualizedContainerService.HintSize="434,175.6" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Warn" Message="[&quot;European_Site_Name key missingfrom CWT receipt. Retrieving site name from Defra form.&quot;]" />
+                              <ui:ReadCsvFile PathResource="{x:Null}" DataTable="[dtEuroSites]" Delimitator="Comma" DelimitatorForViewModel="Comma" DisplayName="Read CSV - european sites" FilePath="[g_Config(&quot;FormAttachmentsPath&quot;).ToString+&quot;/&quot;+strDefraFormsReference+&quot;_Additional Customer Info_European site.csv&quot;]" sap:VirtualizedContainerService.HintSize="434,190.8" sap2010:WorkflowViewState.IdRef="ReadCsvFile_1" />
+                              <Assign DisplayName="If multiple euro sites, append special case" sap:VirtualizedContainerService.HintSize="434,114.4" sap2010:WorkflowViewState.IdRef="Assign_33">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:String">[strSpecialCaseActions]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:String">[if(dtEuroSites.RowCount&gt;1,strSpecialCaseActions+"&lt;p&gt;&lt;strong&gt;Multiple European Sites&lt;/strong&gt;&lt;br&gt;The CWT receipt refers to multiple European Sites. The first of these ("+dtEuroSites(0)("What is the name of the European site?").ToString+") has been processed by the robot. Please manually process the remaining European Sites:&lt;br&gt;"+String.Join("&lt;br&gt;",dtEuroSites.AsEnumerable.Select(function(x) x("What is the name of the European site?").ToString).ToArray.Skip(1))+"&lt;/p&gt;",strSpecialCaseActions)]</InArgument>
+                                </Assign.Value>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </Assign>
+                              <Assign DisplayName="Store first european site name" sap:VirtualizedContainerService.HintSize="434,114.4" sap2010:WorkflowViewState.IdRef="Assign_29">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:String">[strEuroSiteName]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:String">[dtEuroSites(0)(0).ToString]</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                              <Assign DisplayName="Match euro folder" sap:VirtualizedContainerService.HintSize="434,105.6" sap2010:WorkflowViewState.IdRef="Assign_30">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:String">[strEuroFolder]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:String">[Regex.Match(strEuroSiteName,"(SPA|SAC|Ramsar)").Value]</InArgument>
+                                </Assign.Value>
+                              </Assign>
                             </Sequence>
                           </If.Else>
                         </If>
+                        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Check SPOL for Ramsar/SPA/SAC" sap:VirtualizedContainerService.HintSize="502,168.4" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_30" UnSafe="False" WorkflowFileName="Process\Process Subflows\SPOL Folder Match.xaml">
+                          <ui:InvokeWorkflowFile.Arguments>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_strFolderName">[strEuroFolder]</InArgument>
+                            <InArgument x:TypeArguments="x:Boolean" x:Key="in_boolConfirmMatch">False</InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_strListID">[strListID]</InArgument>
+                            <InOutArgument x:TypeArguments="x:Boolean" x:Key="io_boolPreExistingParent">[boolPreExistingParent]</InOutArgument>
+                            <InOutArgument x:TypeArguments="x:String" x:Key="io_strParentPath">[strUploadFolder]</InOutArgument>
+                            <InArgument x:TypeArguments="x:Boolean" x:Key="in_boolIncludeValidateOption">False</InArgument>
+                            <OutArgument x:TypeArguments="x:Boolean" x:Key="out_boolValidate" />
+                            <InArgument x:TypeArguments="x:String" x:Key="in_strExtraSearchInfo" />
+                            <InArgument x:TypeArguments="x:String" x:Key="in_strLibraryName">[if(CBool(g_Config("IsDev")),"RobTest","Protected Sites")]</InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_strAdditionalFields" />
+                          </ui:InvokeWorkflowFile.Arguments>
+                        </ui:InvokeWorkflowFile>
                       </Sequence>
                       <FlowStep.Next>
-                        <FlowStep x:Name="__ReferenceID51">
+                        <FlowStep x:Name="__ReferenceID51" sap2010:WorkflowViewState.IdRef="FlowStep_3">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <av:Point x:Key="ShapeLocation">445,1305</av:Point>
+                              <av:Point x:Key="ShapeLocation">425,1305</av:Point>
                               <av:Size x:Key="ShapeSize">110,70</av:Size>
-                              <av:PointCollection x:Key="ConnectorLocation">500,1375 500,1395</av:PointCollection>
+                              <av:PointCollection x:Key="ConnectorLocation">480,1375 480,1395</av:PointCollection>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Check SPOL for European Site NAme" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_28" UnSafe="False" WorkflowFileName="Process\Process Subflows\SPOL Folder Match.xaml">
@@ -336,12 +418,12 @@
                             </sap:WorkflowViewStateService.ViewState>
                           </ui:InvokeWorkflowFile>
                           <FlowStep.Next>
-                            <FlowStep x:Name="__ReferenceID52">
+                            <FlowStep x:Name="__ReferenceID52" sap2010:WorkflowViewState.IdRef="FlowStep_4">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <av:Point x:Key="ShapeLocation">445,1395</av:Point>
+                                  <av:Point x:Key="ShapeLocation">425,1395</av:Point>
                                   <av:Size x:Key="ShapeSize">110,70</av:Size>
-                                  <av:PointCollection x:Key="ConnectorLocation">500,1465 500,2840 905,2840</av:PointCollection>
+                                  <av:PointCollection x:Key="ConnectorLocation">480,1465 480,3000 905,3000</av:PointCollection>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
                               <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Check SPOL for Advice and Guidance folder" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_29" UnSafe="False" WorkflowFileName="Process\Process Subflows\SPOL Folder Match.xaml">
@@ -367,9 +449,9 @@
                                 <FlowStep x:Name="__ReferenceID1" sap2010:WorkflowViewState.IdRef="FlowStep_1">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <av:Point x:Key="ShapeLocation">905,2805</av:Point>
+                                      <av:Point x:Key="ShapeLocation">905,2965</av:Point>
                                       <av:Size x:Key="ShapeSize">110,70</av:Size>
-                                      <av:PointCollection x:Key="ConnectorLocation">960,2875 960,2895</av:PointCollection>
+                                      <av:PointCollection x:Key="ConnectorLocation">960,3035 960,3055</av:PointCollection>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
                                   <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Create Casework Folder - Invoke Workflow File (Process\Process Subflows\Create Casework Folder.xaml)" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_17" UnSafe="False" WorkflowFileName="Process\Process Subflows\Create Casework Folder and Upload.xaml">
@@ -393,8 +475,8 @@
                                     <FlowStep x:Name="__ReferenceID45" sap2010:WorkflowViewState.IdRef="FlowStep_1">
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                          <av:Point x:Key="ShapeLocation">905,2895</av:Point>
-                                          <av:PointCollection x:Key="ConnectorLocation">960,2965 960,2985</av:PointCollection>
+                                          <av:Point x:Key="ShapeLocation">905,3055</av:Point>
+                                          <av:PointCollection x:Key="ConnectorLocation">960,3125 960,3145</av:PointCollection>
                                           <av:Size x:Key="ShapeSize">110,70</av:Size>
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
@@ -410,15 +492,15 @@
                                         <FlowStep x:Name="__ReferenceID43" sap2010:WorkflowViewState.IdRef="FlowStep_1">
                                           <sap:WorkflowViewStateService.ViewState>
                                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                              <av:Point x:Key="ShapeLocation">905,2985</av:Point>
-                                              <av:PointCollection x:Key="ConnectorLocation">960,3055 960,3090</av:PointCollection>
+                                              <av:Point x:Key="ShapeLocation">905,3145</av:Point>
+                                              <av:PointCollection x:Key="ConnectorLocation">960,3215 960,3250</av:PointCollection>
                                               <av:Size x:Key="ShapeSize">110,70</av:Size>
                                             </scg:Dictionary>
                                           </sap:WorkflowViewStateService.ViewState>
                                           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Update NE Tracker Link - Invoke Workflow File (Process\Process Subflows\Update NE Tracker Link.xaml)" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_25" UnSafe="False" WorkflowFileName="Process\Process Subflows\Update NE Tracker Link.xaml">
                                             <ui:InvokeWorkflowFile.Arguments>
-                                              <InArgument x:TypeArguments="x:String" x:Key="in_strCaseworkFolderURL">[Regex.Replace(jobListInfo("webUrl").ToString+"/"+strCaseworkFolderPath,"(?&lt;!\:)\/{2,}","/")]</InArgument>
-                                              <InArgument x:TypeArguments="x:String" x:Key="in_strCaseworkFolderName">[strCaseworkFolderName]</InArgument>
+                                              <InArgument x:TypeArguments="x:String" x:Key="in_strCaseworkFolderURL">[Regex.Replace(jobListInfo("webUrl").ToString+"/"+strCaseworkFolderPath,"(?&lt;!\:)\/{2,}","/").Replace("&amp;amp;","%26")]</InArgument>
+                                              <InArgument x:TypeArguments="x:String" x:Key="in_strCaseworkFolderName">[strCaseworkFolderName.Replace("&amp;amp;","%26")]</InArgument>
                                             </ui:InvokeWorkflowFile.Arguments>
                                             <sap:WorkflowViewStateService.ViewState>
                                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -427,24 +509,24 @@
                                             </sap:WorkflowViewStateService.ViewState>
                                           </ui:InvokeWorkflowFile>
                                           <FlowStep.Next>
-                                            <FlowDecision x:Name="__ReferenceID31" sap2010:Annotation.AnnotationText="Multiple SSSIs or Felling Licence" Condition="[not String.IsNullOrEmpty(strSpecialCaseActions)]" DisplayName="Special case?" sap:VirtualizedContainerService.HintSize="60,60" sap2010:WorkflowViewState.IdRef="FlowDecision_11">
+                                            <FlowDecision x:Name="__ReferenceID32" sap2010:Annotation.AnnotationText="Multiple SSSIs or Felling Licence" Condition="[not String.IsNullOrEmpty(strSpecialCaseActions)]" DisplayName="Special case?" sap:VirtualizedContainerService.HintSize="60,60" sap2010:WorkflowViewState.IdRef="FlowDecision_11">
                                               <sap:WorkflowViewStateService.ViewState>
                                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                  <av:Point x:Key="ShapeLocation">930,3090</av:Point>
+                                                  <av:Point x:Key="ShapeLocation">930,3250</av:Point>
                                                   <av:Size x:Key="ShapeSize">60,60</av:Size>
                                                   <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
-                                                  <av:PointCollection x:Key="TrueConnector">930,3120 920,3120 920,3165</av:PointCollection>
-                                                  <av:PointCollection x:Key="FalseConnector">990,3120 1020,3120 1020,3290 975,3290</av:PointCollection>
+                                                  <av:PointCollection x:Key="TrueConnector">930,3280 920,3280 920,3325</av:PointCollection>
+                                                  <av:PointCollection x:Key="FalseConnector">990,3280 1020,3280 1020,3450 975,3450</av:PointCollection>
                                                 </scg:Dictionary>
                                               </sap:WorkflowViewStateService.ViewState>
                                               <FlowDecision.True>
-                                                <FlowStep x:Name="__ReferenceID32" sap2010:WorkflowViewState.IdRef="FlowStep_1">
+                                                <FlowStep x:Name="__ReferenceID33" sap2010:WorkflowViewState.IdRef="FlowStep_1">
                                                   <sap:WorkflowViewStateService.ViewState>
                                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                      <av:Point x:Key="ShapeLocation">865,3165</av:Point>
+                                                      <av:Point x:Key="ShapeLocation">865,3325</av:Point>
                                                       <av:Size x:Key="ShapeSize">110,70</av:Size>
-                                                      <av:PointCollection x:Key="ConnectorLocation">920,3235 920,3255</av:PointCollection>
+                                                      <av:PointCollection x:Key="ConnectorLocation">920,3395 920,3415</av:PointCollection>
                                                     </scg:Dictionary>
                                                   </sap:WorkflowViewStateService.ViewState>
                                                   <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Notify Special Cases - Invoke Workflow File (Notify Special Cases.xaml)" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_21" UnSafe="False" WorkflowFileName="Process\Process Subflows\Notify Special Cases.xaml">
@@ -462,7 +544,7 @@
                                                     <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_7">
                                                       <sap:WorkflowViewStateService.ViewState>
                                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                          <av:Point x:Key="ShapeLocation">865,3255</av:Point>
+                                                          <av:Point x:Key="ShapeLocation">865,3415</av:Point>
                                                           <av:Size x:Key="ShapeSize">110,70</av:Size>
                                                         </scg:Dictionary>
                                                       </sap:WorkflowViewStateService.ViewState>
@@ -500,7 +582,7 @@
                 </FlowStep>
               </FlowDecision.True>
               <FlowDecision.False>
-                <FlowDecision x:Name="__ReferenceID23" Condition="[CBool(g_Config(&quot;IsDev&quot;))]" DisplayName="Dev?" sap:VirtualizedContainerService.HintSize="60,60" sap2010:WorkflowViewState.IdRef="FlowDecision_6">
+                <FlowDecision x:Name="__ReferenceID24" Condition="[CBool(g_Config(&quot;IsDev&quot;))]" DisplayName="Dev?" sap:VirtualizedContainerService.HintSize="60,60" sap2010:WorkflowViewState.IdRef="FlowDecision_6">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -547,7 +629,7 @@
                         </sap:WorkflowViewStateService.ViewState>
                       </ui:MultipleAssign>
                       <FlowStep.Next>
-                        <FlowStep x:Name="__ReferenceID4" sap2010:WorkflowViewState.IdRef="FlowStep_1">
+                        <FlowStep x:Name="__ReferenceID6" sap2010:WorkflowViewState.IdRef="FlowStep_1">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <av:Point x:Key="ShapeLocation">725,1485</av:Point>
@@ -574,23 +656,23 @@
                             </sap:WorkflowViewStateService.ViewState>
                           </ui:InvokeWorkflowFile>
                           <FlowStep.Next>
-                            <FlowDecision x:Name="__ReferenceID5" Condition="[g_jobCWTReceipt(&quot;Broad_Work_Type&quot;).ToString.Trim.ToLower=&quot;s28e consent&quot;]" DisplayName="Consent?" sap:VirtualizedContainerService.HintSize="60,60" sap2010:WorkflowViewState.IdRef="FlowDecision_3">
+                            <FlowDecision x:Name="__ReferenceID7" Condition="[g_jobCWTReceipt(&quot;Broad_Work_Type&quot;).ToString.Trim.ToLower=&quot;s28e consent&quot;]" DisplayName="Consent?" sap:VirtualizedContainerService.HintSize="60,60" sap2010:WorkflowViewState.IdRef="FlowDecision_3">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                   <av:Point x:Key="ShapeLocation">750,1590</av:Point>
                                   <av:Size x:Key="ShapeSize">60,60</av:Size>
-                                  <av:PointCollection x:Key="TrueConnector">750,1620 720,1620 720,1645</av:PointCollection>
+                                  <av:PointCollection x:Key="TrueConnector">750,1620 680,1620 680,1645</av:PointCollection>
                                   <av:PointCollection x:Key="FalseConnector">810,1620 920,1620 920,1660</av:PointCollection>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
                               <FlowDecision.True>
-                                <FlowStep x:Name="__ReferenceID38" sap2010:WorkflowViewState.IdRef="FlowStep_4">
+                                <FlowStep x:Name="__ReferenceID39" sap2010:WorkflowViewState.IdRef="FlowStep_4">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <av:Point x:Key="ShapeLocation">665,1645</av:Point>
+                                      <av:Point x:Key="ShapeLocation">625,1645</av:Point>
                                       <av:Size x:Key="ShapeSize">110,70</av:Size>
-                                      <av:PointCollection x:Key="ConnectorLocation">720,1715 720,1735</av:PointCollection>
+                                      <av:PointCollection x:Key="ConnectorLocation">680,1715 680,1750</av:PointCollection>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
                                   <ui:LogMessage DisplayName="Log Message - consent" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;Case is S28E Consent&quot;]">
@@ -601,106 +683,146 @@
                                     </sap:WorkflowViewStateService.ViewState>
                                   </ui:LogMessage>
                                   <FlowStep.Next>
-                                    <FlowStep x:Name="__ReferenceID17" sap2010:WorkflowViewState.IdRef="FlowStep_2">
+                                    <FlowDecision x:Name="__ReferenceID53" Condition="[dtFormQuestions(0)(&quot;What type of customer are you?&quot;).ToString=&quot;Someone with permission to work on behalf of an owner or occupier of land within a SSSI&quot;]" DisplayName="Form completed by agent?" sap:VirtualizedContainerService.HintSize="60,60" sap2010:WorkflowViewState.IdRef="FlowDecision_13">
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                          <av:Point x:Key="ShapeLocation">665,1735</av:Point>
-                                          <av:Size x:Key="ShapeSize">110,70</av:Size>
-                                          <av:PointCollection x:Key="ConnectorLocation">720,1805 720,1825</av:PointCollection>
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          <av:Point x:Key="ShapeLocation">650,1750</av:Point>
+                                          <av:Size x:Key="ShapeSize">60,60</av:Size>
+                                          <av:PointCollection x:Key="TrueConnector">650,1780 610,1780 610,1825</av:PointCollection>
+                                          <av:PointCollection x:Key="FalseConnector">710,1780 740,1780 740,1925 680,1925 680,1955</av:PointCollection>
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
-                                      <Assign sap2010:Annotation.AnnotationText="In case we need to revert to the 03 folder, easier to return to this parent folder" DisplayName="Store SSSI folder" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="Assign_5">
-                                        <Assign.To>
-                                          <OutArgument x:TypeArguments="x:String">[strSSSIfolder]</OutArgument>
-                                        </Assign.To>
-                                        <Assign.Value>
-                                          <InArgument x:TypeArguments="x:String">[strUploadFolder]</InArgument>
-                                        </Assign.Value>
-                                        <sap:WorkflowViewStateService.ViewState>
-                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                            <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
-                                          </scg:Dictionary>
-                                        </sap:WorkflowViewStateService.ViewState>
-                                      </Assign>
-                                      <FlowStep.Next>
-                                        <FlowStep x:Name="__ReferenceID11" sap2010:WorkflowViewState.IdRef="FlowStep_1">
+                                      <FlowDecision.True>
+                                        <FlowStep x:Name="__ReferenceID54" sap2010:WorkflowViewState.IdRef="FlowStep_1">
                                           <sap:WorkflowViewStateService.ViewState>
                                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                              <av:Point x:Key="ShapeLocation">665,1825</av:Point>
+                                              <av:Point x:Key="ShapeLocation">555,1825</av:Point>
                                               <av:Size x:Key="ShapeSize">110,70</av:Size>
-                                              <av:PointCollection x:Key="ConnectorLocation">720,1895 720,1925</av:PointCollection>
+                                              <av:PointCollection x:Key="ConnectorLocation">610,1895 610,1925 680,1925 680,1955</av:PointCollection>
                                             </scg:Dictionary>
                                           </sap:WorkflowViewStateService.ViewState>
-                                          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Check SPOL for 04 Owner Occupier folder" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" UnSafe="False" WorkflowFileName="Process\Process Subflows\SPOL Folder Match.xaml">
-                                            <ui:InvokeWorkflowFile.Arguments>
-                                              <InArgument x:TypeArguments="x:String" x:Key="in_strFolderName">04 Owner Occupier</InArgument>
-                                              <InArgument x:TypeArguments="x:Boolean" x:Key="in_boolConfirmMatch">False</InArgument>
-                                              <InArgument x:TypeArguments="x:String" x:Key="in_strListID">[strListID]</InArgument>
-                                              <InOutArgument x:TypeArguments="x:Boolean" x:Key="io_boolPreExistingParent">[boolPreExistingParent]</InOutArgument>
-                                              <InOutArgument x:TypeArguments="x:String" x:Key="io_strParentPath">[strUploadFolder]</InOutArgument>
-                                              <InArgument x:TypeArguments="x:Boolean" x:Key="in_boolIncludeValidateOption">False</InArgument>
-                                              <OutArgument x:TypeArguments="x:Boolean" x:Key="out_boolValidate" />
-                                              <InArgument x:TypeArguments="x:String" x:Key="in_strExtraSearchInfo">Standard '04 Owner Occupier' folder</InArgument>
-                                              <InArgument x:TypeArguments="x:String" x:Key="in_strLibraryName" />
-                                            </ui:InvokeWorkflowFile.Arguments>
+                                          <Sequence DisplayName="Get Owner/Occupier from CSV" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                                            <Sequence.Variables>
+                                              <Variable x:TypeArguments="sd:DataTable" Name="dtOOFormDetails" />
+                                            </Sequence.Variables>
                                             <sap:WorkflowViewStateService.ViewState>
                                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                               </scg:Dictionary>
                                             </sap:WorkflowViewStateService.ViewState>
-                                          </ui:InvokeWorkflowFile>
+                                            <ui:ReadCsvFile PathResource="{x:Null}" DataTable="[dtOOFormDetails]" Delimitator="Comma" DelimitatorForViewModel="Comma" DisplayName="Read CSV - owner/occupier details" FilePath="[g_Config(&quot;FormAttachmentsPath&quot;).ToString+&quot;/&quot;+strDefraFormsReference+&quot;_Additional Customer Info_Land owner or occupier details.csv&quot;]" sap:VirtualizedContainerService.HintSize="479.6,190.8" sap2010:WorkflowViewState.IdRef="ReadCsvFile_2" />
+                                            <ui:MultipleAssign DisplayName="Overwrite contact details" sap:VirtualizedContainerService.HintSize="479.6,234.4" sap2010:WorkflowViewState.IdRef="MultipleAssign_4">
+                                              <ui:MultipleAssign.AssignOperations>
+                                                <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                                                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_8">
+                                                    <ui:AssignOperation.To>
+                                                      <OutArgument x:TypeArguments="x:String">[strFullName]</OutArgument>
+                                                    </ui:AssignOperation.To>
+                                                    <ui:AssignOperation.Value>
+                                                      <InArgument x:TypeArguments="x:String">[dtOOFormDetails(0)("First name").ToString.Trim+" "+dtOOFormDetails(0)("Last name").ToString.Trim]</InArgument>
+                                                    </ui:AssignOperation.Value>
+                                                  </ui:AssignOperation>
+                                                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_9">
+                                                    <ui:AssignOperation.To>
+                                                      <OutArgument x:TypeArguments="x:String">[strAddress]</OutArgument>
+                                                    </ui:AssignOperation.To>
+                                                    <ui:AssignOperation.Value>
+                                                      <InArgument x:TypeArguments="x:String">[dtOOFormDetails(0)("Address").ToString.Trim]</InArgument>
+                                                    </ui:AssignOperation.Value>
+                                                  </ui:AssignOperation>
+                                                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_10">
+                                                    <ui:AssignOperation.To>
+                                                      <OutArgument x:TypeArguments="x:String">[strEmail]</OutArgument>
+                                                    </ui:AssignOperation.To>
+                                                    <ui:AssignOperation.Value>
+                                                      <InArgument x:TypeArguments="x:String">[dtOOFormDetails(0)("Email address").ToString.Trim]</InArgument>
+                                                    </ui:AssignOperation.Value>
+                                                  </ui:AssignOperation>
+                                                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_11">
+                                                    <ui:AssignOperation.To>
+                                                      <OutArgument x:TypeArguments="x:String">[strPhone]</OutArgument>
+                                                    </ui:AssignOperation.To>
+                                                    <ui:AssignOperation.Value>
+                                                      <InArgument x:TypeArguments="x:String">[dtOOFormDetails(0)("Phone number").ToString.Trim]</InArgument>
+                                                    </ui:AssignOperation.Value>
+                                                  </ui:AssignOperation>
+                                                </scg:List>
+                                              </ui:MultipleAssign.AssignOperations>
+                                            </ui:MultipleAssign>
+                                          </Sequence>
                                           <FlowStep.Next>
-                                            <FlowStep x:Name="__ReferenceID33" sap2010:WorkflowViewState.IdRef="FlowStep_5">
+                                            <FlowStep x:Name="__ReferenceID4" sap2010:WorkflowViewState.IdRef="FlowStep_2">
                                               <sap:WorkflowViewStateService.ViewState>
                                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                  <av:Point x:Key="ShapeLocation">665,1925</av:Point>
+                                                  <av:Point x:Key="ShapeLocation">625,1955</av:Point>
                                                   <av:Size x:Key="ShapeSize">110,70</av:Size>
-                                                  <av:PointCollection x:Key="ConnectorLocation">720,1995 720,2240</av:PointCollection>
+                                                  <av:PointCollection x:Key="ConnectorLocation">680,2025 680,2045</av:PointCollection>
                                                 </scg:Dictionary>
                                               </sap:WorkflowViewStateService.ViewState>
-                                              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Check SPOL for Owner Occupier folder" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_23" UnSafe="False" WorkflowFileName="Process\Process Subflows\SPOL Folder Match.xaml">
-                                                <ui:InvokeWorkflowFile.Arguments>
-                                                  <InArgument x:TypeArguments="x:String" x:Key="in_strFolderName">[strFullName]</InArgument>
-                                                  <InArgument x:TypeArguments="x:Boolean" x:Key="in_boolConfirmMatch">False</InArgument>
-                                                  <InArgument x:TypeArguments="x:String" x:Key="in_strListID">[strListID]</InArgument>
-                                                  <InOutArgument x:TypeArguments="x:Boolean" x:Key="io_boolPreExistingParent">[boolPreExistingParent]</InOutArgument>
-                                                  <InOutArgument x:TypeArguments="x:String" x:Key="io_strParentPath">[strUploadFolder]</InOutArgument>
-                                                  <InArgument x:TypeArguments="x:Boolean" x:Key="in_boolIncludeValidateOption">True</InArgument>
-                                                  <OutArgument x:TypeArguments="x:Boolean" x:Key="out_boolValidate">[boolValidate]</OutArgument>
-                                                  <InArgument x:TypeArguments="x:String" x:Key="in_strExtraSearchInfo">Name of the owner/occupier</InArgument>
-                                                  <InArgument x:TypeArguments="x:String" x:Key="in_strLibraryName" />
-                                                </ui:InvokeWorkflowFile.Arguments>
+                                              <Assign sap2010:Annotation.AnnotationText="In case we need to revert to the 03 folder, easier to return to this parent folder" DisplayName="Store SSSI folder" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="Assign_5">
+                                                <Assign.To>
+                                                  <OutArgument x:TypeArguments="x:String">[strSSSIfolder]</OutArgument>
+                                                </Assign.To>
+                                                <Assign.Value>
+                                                  <InArgument x:TypeArguments="x:String">[strUploadFolder]</InArgument>
+                                                </Assign.Value>
                                                 <sap:WorkflowViewStateService.ViewState>
                                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                    <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
                                                   </scg:Dictionary>
                                                 </sap:WorkflowViewStateService.ViewState>
-                                              </ui:InvokeWorkflowFile>
+                                              </Assign>
                                               <FlowStep.Next>
-                                                <FlowDecision x:Name="__ReferenceID9" Condition="[boolValidate]" DisplayName="Validate Owner/Occupier?" sap:VirtualizedContainerService.HintSize="60,60" sap2010:WorkflowViewState.IdRef="FlowDecision_4">
+                                                <FlowStep x:Name="__ReferenceID13" sap2010:WorkflowViewState.IdRef="FlowStep_1">
                                                   <sap:WorkflowViewStateService.ViewState>
                                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                      <av:Point x:Key="ShapeLocation">690,2240</av:Point>
-                                                      <av:Size x:Key="ShapeSize">60,60</av:Size>
-                                                      <av:PointCollection x:Key="TrueConnector">690,2270 670,2270 670,2305</av:PointCollection>
-                                                      <av:PointCollection x:Key="FalseConnector">750,2270 960,2270 960,2715</av:PointCollection>
+                                                      <av:Point x:Key="ShapeLocation">625,2045</av:Point>
+                                                      <av:Size x:Key="ShapeSize">110,70</av:Size>
+                                                      <av:PointCollection x:Key="ConnectorLocation">680,2115 680,2135</av:PointCollection>
                                                     </scg:Dictionary>
                                                   </sap:WorkflowViewStateService.ViewState>
-                                                  <FlowDecision.True>
-                                                    <FlowStep x:Name="__ReferenceID6" sap2010:WorkflowViewState.IdRef="FlowStep_4">
+                                                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Check SPOL for 04 Owner Occupier folder" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" UnSafe="False" WorkflowFileName="Process\Process Subflows\SPOL Folder Match.xaml">
+                                                    <ui:InvokeWorkflowFile.Arguments>
+                                                      <InArgument x:TypeArguments="x:String" x:Key="in_strFolderName">04 Owner Occupier</InArgument>
+                                                      <InArgument x:TypeArguments="x:Boolean" x:Key="in_boolConfirmMatch">False</InArgument>
+                                                      <InArgument x:TypeArguments="x:String" x:Key="in_strListID">[strListID]</InArgument>
+                                                      <InOutArgument x:TypeArguments="x:Boolean" x:Key="io_boolPreExistingParent">[boolPreExistingParent]</InOutArgument>
+                                                      <InOutArgument x:TypeArguments="x:String" x:Key="io_strParentPath">[strUploadFolder]</InOutArgument>
+                                                      <InArgument x:TypeArguments="x:Boolean" x:Key="in_boolIncludeValidateOption">False</InArgument>
+                                                      <OutArgument x:TypeArguments="x:Boolean" x:Key="out_boolValidate" />
+                                                      <InArgument x:TypeArguments="x:String" x:Key="in_strExtraSearchInfo">Standard '04 Owner Occupier' folder</InArgument>
+                                                      <InArgument x:TypeArguments="x:String" x:Key="in_strLibraryName" />
+                                                    </ui:InvokeWorkflowFile.Arguments>
+                                                    <sap:WorkflowViewStateService.ViewState>
+                                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                      </scg:Dictionary>
+                                                    </sap:WorkflowViewStateService.ViewState>
+                                                  </ui:InvokeWorkflowFile>
+                                                  <FlowStep.Next>
+                                                    <FlowStep x:Name="__ReferenceID34" sap2010:WorkflowViewState.IdRef="FlowStep_5">
                                                       <sap:WorkflowViewStateService.ViewState>
                                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                          <av:Point x:Key="ShapeLocation">615,2305</av:Point>
+                                                          <av:Point x:Key="ShapeLocation">625,2135</av:Point>
                                                           <av:Size x:Key="ShapeSize">110,70</av:Size>
-                                                          <av:PointCollection x:Key="ConnectorLocation">670,2375 670,2395</av:PointCollection>
+                                                          <av:PointCollection x:Key="ConnectorLocation">680,2205 680,2240</av:PointCollection>
                                                         </scg:Dictionary>
                                                       </sap:WorkflowViewStateService.ViewState>
-                                                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Search Designated Sites - Invoke Workflow File (Process\Process Subflows\Search Designated Sites.xaml)" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Process\Process Subflows\Search Designated Sites.xaml">
+                                                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Check SPOL for Owner Occupier folder" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_23" UnSafe="False" WorkflowFileName="Process\Process Subflows\SPOL Folder Match.xaml">
                                                         <ui:InvokeWorkflowFile.Arguments>
-                                                          <InArgument x:TypeArguments="x:String" x:Key="in_strSiteName">[g_jobCWTReceipt("SSSI_Name").First.ToString.Replace("SSSI","").Replace("&amp;amp;","&amp;").Trim]</InArgument>
-                                                          <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dtOccupiersOwners">[dtOwnerOccupiers]</OutArgument>
+                                                          <InArgument x:TypeArguments="x:String" x:Key="in_strFolderName">[strFullName]</InArgument>
+                                                          <InArgument x:TypeArguments="x:Boolean" x:Key="in_boolConfirmMatch">False</InArgument>
+                                                          <InArgument x:TypeArguments="x:String" x:Key="in_strListID">[strListID]</InArgument>
+                                                          <InOutArgument x:TypeArguments="x:Boolean" x:Key="io_boolPreExistingParent">[boolPreExistingParent]</InOutArgument>
+                                                          <InOutArgument x:TypeArguments="x:String" x:Key="io_strParentPath">[strUploadFolder]</InOutArgument>
+                                                          <InArgument x:TypeArguments="x:Boolean" x:Key="in_boolIncludeValidateOption">True</InArgument>
+                                                          <OutArgument x:TypeArguments="x:Boolean" x:Key="out_boolValidate">[boolValidate]</OutArgument>
+                                                          <InArgument x:TypeArguments="x:String" x:Key="in_strExtraSearchInfo">Name of the owner/occupier</InArgument>
+                                                          <InArgument x:TypeArguments="x:String" x:Key="in_strLibraryName" />
+                                                          <InArgument x:TypeArguments="x:String" x:Key="in_strAdditionalFields" />
+                                                          <OutArgument x:TypeArguments="x:Boolean" x:Key="out_boolCreateInGeneral">[boolCreateInGeneral]</OutArgument>
                                                         </ui:InvokeWorkflowFile.Arguments>
                                                         <sap:WorkflowViewStateService.ViewState>
                                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -709,202 +831,76 @@
                                                         </sap:WorkflowViewStateService.ViewState>
                                                       </ui:InvokeWorkflowFile>
                                                       <FlowStep.Next>
-                                                        <FlowStep x:Name="__ReferenceID7" sap2010:WorkflowViewState.IdRef="FlowStep_2">
+                                                        <FlowDecision x:Name="__ReferenceID55" DisplayName="Create in General folder?" sap:VirtualizedContainerService.HintSize="60,60" sap2010:WorkflowViewState.IdRef="FlowDecision_14">
+                                                          <FlowDecision.Condition>
+                                                            <VisualBasicValue x:TypeArguments="x:Boolean" DisplayName="Visual basic value" ExpressionText="boolCreateInGeneral" />
+                                                          </FlowDecision.Condition>
                                                           <sap:WorkflowViewStateService.ViewState>
                                                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                              <av:Point x:Key="ShapeLocation">615,2395</av:Point>
-                                                              <av:Size x:Key="ShapeSize">110,70</av:Size>
-                                                              <av:PointCollection x:Key="ConnectorLocation">670,2465 670,2500</av:PointCollection>
+                                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                              <av:Point x:Key="ShapeLocation">650,2240</av:Point>
+                                                              <av:Size x:Key="ShapeSize">60,60</av:Size>
+                                                              <av:PointCollection x:Key="TrueConnector">650,2270 560,2270 560,2735</av:PointCollection>
+                                                              <av:PointCollection x:Key="FalseConnector">710,2270 730,2270 730,2370</av:PointCollection>
                                                             </scg:Dictionary>
                                                           </sap:WorkflowViewStateService.ViewState>
-                                                          <TryCatch DisplayName="Try Catch - Search for Owner Occupier in Designated Sites data" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="TryCatch_4">
-                                                            <TryCatch.Try>
-                                                              <Sequence DisplayName="Search for Designated Sites match" sap:VirtualizedContainerService.HintSize="468,342.8" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                                                          <FlowDecision.True>
+                                                            <FlowStep x:Name="__ReferenceID2" sap2010:WorkflowViewState.IdRef="FlowStep_6">
+                                                              <sap:WorkflowViewStateService.ViewState>
+                                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                  <av:Point x:Key="ShapeLocation">505,2735</av:Point>
+                                                                  <av:Size x:Key="ShapeSize">110,70</av:Size>
+                                                                  <av:PointCollection x:Key="ConnectorLocation">560,2805 560,2825</av:PointCollection>
+                                                                </scg:Dictionary>
+                                                              </sap:WorkflowViewStateService.ViewState>
+                                                              <ui:LogMessage DisplayName="Log Message - no matching owner-occupier" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[&quot;No matching owner-occupier identified&quot;]">
                                                                 <sap:WorkflowViewStateService.ViewState>
                                                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                                   </scg:Dictionary>
                                                                 </sap:WorkflowViewStateService.ViewState>
-                                                                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Search For Owner Occupier - Invoke Workflow File (Process\Process Subflows\Search For Owner Occupier.xaml)" sap:VirtualizedContainerService.HintSize="434,177.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Process\Process Subflows\Search For Owner Occupier.xaml">
-                                                                  <ui:InvokeWorkflowFile.Arguments>
-                                                                    <InArgument x:TypeArguments="x:String" x:Key="in_strFullName">[strFullName]</InArgument>
-                                                                    <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtOwnerOccupiers">[dtOwnerOccupiers]</InArgument>
-                                                                    <InArgument x:TypeArguments="x:String" x:Key="in_strPhone">[strPhone]</InArgument>
-                                                                    <InArgument x:TypeArguments="x:String" x:Key="in_strEmail">[strEmail]</InArgument>
-                                                                    <InArgument x:TypeArguments="x:String" x:Key="in_strAddress">[strAddress]</InArgument>
-                                                                    <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="out_dictOwnerOccupier">[dictOwnerOccupier]</OutArgument>
-                                                                  </ui:InvokeWorkflowFile.Arguments>
+                                                              </ui:LogMessage>
+                                                              <FlowStep.Next>
+                                                                <FlowStep x:Name="__ReferenceID20" sap2010:WorkflowViewState.IdRef="FlowStep_3">
                                                                   <sap:WorkflowViewStateService.ViewState>
                                                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                      <av:Point x:Key="ShapeLocation">505,2825</av:Point>
+                                                                      <av:Size x:Key="ShapeSize">110,70</av:Size>
+                                                                      <av:PointCollection x:Key="ConnectorLocation">560,2895 560,2915</av:PointCollection>
                                                                     </scg:Dictionary>
                                                                   </sap:WorkflowViewStateService.ViewState>
-                                                                </ui:InvokeWorkflowFile>
-                                                                <Assign DisplayName="Match found in designated sites data" sap:VirtualizedContainerService.HintSize="434,105.6" sap2010:WorkflowViewState.IdRef="Assign_10">
-                                                                  <Assign.To>
-                                                                    <OutArgument x:TypeArguments="x:Boolean">[boolDesignatedSitesMatch]</OutArgument>
-                                                                  </Assign.To>
-                                                                  <Assign.Value>
-                                                                    <InArgument x:TypeArguments="x:Boolean">True</InArgument>
-                                                                  </Assign.Value>
-                                                                </Assign>
-                                                              </Sequence>
-                                                            </TryCatch.Try>
-                                                            <TryCatch.Catches>
-                                                              <Catch x:TypeArguments="ui:BusinessRuleException" sap:VirtualizedContainerService.HintSize="471.6,23.6" sap2010:WorkflowViewState.IdRef="Catch`1_4">
-                                                                <sap:WorkflowViewStateService.ViewState>
-                                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                                                  </scg:Dictionary>
-                                                                </sap:WorkflowViewStateService.ViewState>
-                                                                <ActivityAction x:TypeArguments="ui:BusinessRuleException">
-                                                                  <ActivityAction.Argument>
-                                                                    <DelegateInArgument x:TypeArguments="ui:BusinessRuleException" Name="exception" />
-                                                                  </ActivityAction.Argument>
-                                                                  <Assign DisplayName="No match in designated sites" sap:VirtualizedContainerService.HintSize="434,81.6" sap2010:WorkflowViewState.IdRef="Assign_7">
+                                                                  <Assign DisplayName="Revert to SSSI parent folder" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="Assign_6">
                                                                     <Assign.To>
-                                                                      <OutArgument x:TypeArguments="x:Boolean">[boolDesignatedSitesMatch]</OutArgument>
+                                                                      <OutArgument x:TypeArguments="x:String">[strUploadFolder]</OutArgument>
                                                                     </Assign.To>
                                                                     <Assign.Value>
-                                                                      <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                                                                      <InArgument x:TypeArguments="x:String">[strSSSIFolder]</InArgument>
                                                                     </Assign.Value>
+                                                                    <sap:WorkflowViewStateService.ViewState>
+                                                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                      </scg:Dictionary>
+                                                                    </sap:WorkflowViewStateService.ViewState>
                                                                   </Assign>
-                                                                </ActivityAction>
-                                                              </Catch>
-                                                            </TryCatch.Catches>
-                                                          </TryCatch>
-                                                          <FlowStep.Next>
-                                                            <FlowDecision x:Name="__ReferenceID16" Condition="[not boolDesignatedSitesMatch]" DisplayName="No match in Designated Sites?" sap:VirtualizedContainerService.HintSize="60,60" sap2010:WorkflowViewState.IdRef="FlowDecision_5">
-                                                              <sap:WorkflowViewStateService.ViewState>
-                                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                                  <av:Point x:Key="ShapeLocation">640,2500</av:Point>
-                                                                  <av:Size x:Key="ShapeSize">60,60</av:Size>
-                                                                  <av:PointCollection x:Key="FalseConnector">700,2530 735,2530 735,2575</av:PointCollection>
-                                                                  <av:PointCollection x:Key="TrueConnector">640,2530 600,2530 600,2575</av:PointCollection>
-                                                                </scg:Dictionary>
-                                                              </sap:WorkflowViewStateService.ViewState>
-                                                              <FlowDecision.True>
-                                                                <FlowStep x:Name="__ReferenceID41" sap2010:WorkflowViewState.IdRef="FlowStep_6">
-                                                                  <sap:WorkflowViewStateService.ViewState>
-                                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                                      <av:Point x:Key="ShapeLocation">545,2575</av:Point>
-                                                                      <av:Size x:Key="ShapeSize">110,70</av:Size>
-                                                                      <av:PointCollection x:Key="ConnectorLocation">600,2645 600,2675</av:PointCollection>
-                                                                    </scg:Dictionary>
-                                                                  </sap:WorkflowViewStateService.ViewState>
-                                                                  <ui:LogMessage DisplayName="Log Message - no matching owner-occupier" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[&quot;No matching owner-occupier identified&quot;]">
-                                                                    <sap:WorkflowViewStateService.ViewState>
-                                                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                                      </scg:Dictionary>
-                                                                    </sap:WorkflowViewStateService.ViewState>
-                                                                  </ui:LogMessage>
                                                                   <FlowStep.Next>
-                                                                    <FlowStep x:Name="__ReferenceID19" sap2010:WorkflowViewState.IdRef="FlowStep_3">
+                                                                    <FlowStep x:Name="__ReferenceID19" sap2010:WorkflowViewState.IdRef="FlowStep_4">
                                                                       <sap:WorkflowViewStateService.ViewState>
                                                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                                          <av:Point x:Key="ShapeLocation">545,2675</av:Point>
+                                                                          <av:Point x:Key="ShapeLocation">505,2915</av:Point>
                                                                           <av:Size x:Key="ShapeSize">110,70</av:Size>
-                                                                          <av:PointCollection x:Key="ConnectorLocation">600,2745 600,2755</av:PointCollection>
+                                                                          <av:PointCollection x:Key="ConnectorLocation">560,2985 560,3000 905,3000</av:PointCollection>
                                                                         </scg:Dictionary>
                                                                       </sap:WorkflowViewStateService.ViewState>
-                                                                      <Assign DisplayName="Revert to SSSI parent folder" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="Assign_6">
-                                                                        <Assign.To>
-                                                                          <OutArgument x:TypeArguments="x:String">[strUploadFolder]</OutArgument>
-                                                                        </Assign.To>
-                                                                        <Assign.Value>
-                                                                          <InArgument x:TypeArguments="x:String">[strSSSIFolder]</InArgument>
-                                                                        </Assign.Value>
-                                                                        <sap:WorkflowViewStateService.ViewState>
-                                                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                                          </scg:Dictionary>
-                                                                        </sap:WorkflowViewStateService.ViewState>
-                                                                      </Assign>
-                                                                      <FlowStep.Next>
-                                                                        <FlowStep x:Name="__ReferenceID18" sap2010:WorkflowViewState.IdRef="FlowStep_4">
-                                                                          <sap:WorkflowViewStateService.ViewState>
-                                                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                                              <av:Point x:Key="ShapeLocation">545,2755</av:Point>
-                                                                              <av:Size x:Key="ShapeSize">110,70</av:Size>
-                                                                              <av:PointCollection x:Key="ConnectorLocation">600,2825 600,2840 905,2840</av:PointCollection>
-                                                                            </scg:Dictionary>
-                                                                          </sap:WorkflowViewStateService.ViewState>
-                                                                          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Check SPOL for 03 Owner Occupier General folder" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_16" UnSafe="False" WorkflowFileName="Process\Process Subflows\SPOL Folder Match.xaml">
-                                                                            <ui:InvokeWorkflowFile.Arguments>
-                                                                              <InArgument x:TypeArguments="x:String" x:Key="in_strFolderName">03 Owner Occupier General</InArgument>
-                                                                              <InArgument x:TypeArguments="x:Boolean" x:Key="in_boolConfirmMatch">False</InArgument>
-                                                                              <InArgument x:TypeArguments="x:String" x:Key="in_strListID">[strListID]</InArgument>
-                                                                              <InOutArgument x:TypeArguments="x:Boolean" x:Key="io_boolPreExistingParent">[boolPreExistingParent]</InOutArgument>
-                                                                              <InOutArgument x:TypeArguments="x:String" x:Key="io_strParentPath">[strUploadFolder]</InOutArgument>
-                                                                              <InArgument x:TypeArguments="x:Boolean" x:Key="in_boolIncludeValidateOption">False</InArgument>
-                                                                              <OutArgument x:TypeArguments="x:Boolean" x:Key="out_boolValidate" />
-                                                                              <InArgument x:TypeArguments="x:String" x:Key="in_strExtraSearchInfo">Standard '03 Owner Occupier General' folder</InArgument>
-                                                                              <InArgument x:TypeArguments="x:String" x:Key="in_strLibraryName" />
-                                                                            </ui:InvokeWorkflowFile.Arguments>
-                                                                            <sap:WorkflowViewStateService.ViewState>
-                                                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                                              </scg:Dictionary>
-                                                                            </sap:WorkflowViewStateService.ViewState>
-                                                                          </ui:InvokeWorkflowFile>
-                                                                          <FlowStep.Next>
-                                                                            <x:Reference>__ReferenceID1</x:Reference>
-                                                                          </FlowStep.Next>
-                                                                        </FlowStep>
-                                                                      </FlowStep.Next>
-                                                                    </FlowStep>
-                                                                  </FlowStep.Next>
-                                                                </FlowStep>
-                                                              </FlowDecision.True>
-                                                              <FlowDecision.False>
-                                                                <FlowStep x:Name="__ReferenceID10" sap2010:WorkflowViewState.IdRef="FlowStep_2">
-                                                                  <sap:WorkflowViewStateService.ViewState>
-                                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                                      <av:Point x:Key="ShapeLocation">680,2575</av:Point>
-                                                                      <av:Size x:Key="ShapeSize">110,70</av:Size>
-                                                                      <av:PointCollection x:Key="ConnectorLocation">790,2610 960,2610 960,2715</av:PointCollection>
-                                                                    </scg:Dictionary>
-                                                                  </sap:WorkflowViewStateService.ViewState>
-                                                                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Check SPOL for validated Owner Occupier folder" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="Process\Process Subflows\SPOL Folder Match.xaml">
-                                                                    <ui:InvokeWorkflowFile.Arguments>
-                                                                      <InArgument x:TypeArguments="x:String" x:Key="in_strFolderName">[dictOwnerOccupier("Contact name")]</InArgument>
-                                                                      <InArgument x:TypeArguments="x:Boolean" x:Key="in_boolConfirmMatch">False</InArgument>
-                                                                      <InArgument x:TypeArguments="x:String" x:Key="in_strListID">[strListID]</InArgument>
-                                                                      <InOutArgument x:TypeArguments="x:Boolean" x:Key="io_boolPreExistingParent">[boolPreExistingParent]</InOutArgument>
-                                                                      <InOutArgument x:TypeArguments="x:String" x:Key="io_strParentPath">[strUploadFolder]</InOutArgument>
-                                                                      <InArgument x:TypeArguments="x:Boolean" x:Key="in_boolIncludeValidateOption">False</InArgument>
-                                                                      <OutArgument x:TypeArguments="x:Boolean" x:Key="out_boolValidate" />
-                                                                      <InArgument x:TypeArguments="x:String" x:Key="in_strExtraSearchInfo">Name of owner/occupier, following Designated Sites validation</InArgument>
-                                                                      <InArgument x:TypeArguments="x:String" x:Key="in_strLibraryName" />
-                                                                    </ui:InvokeWorkflowFile.Arguments>
-                                                                    <sap:WorkflowViewStateService.ViewState>
-                                                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                                      </scg:Dictionary>
-                                                                    </sap:WorkflowViewStateService.ViewState>
-                                                                  </ui:InvokeWorkflowFile>
-                                                                  <FlowStep.Next>
-                                                                    <FlowStep x:Name="__ReferenceID2" sap2010:WorkflowViewState.IdRef="FlowStep_5">
-                                                                      <sap:WorkflowViewStateService.ViewState>
-                                                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                                          <av:Point x:Key="ShapeLocation">905,2715</av:Point>
-                                                                          <av:Size x:Key="ShapeSize">110,70</av:Size>
-                                                                          <av:PointCollection x:Key="ConnectorLocation">960,2785 960,2805</av:PointCollection>
-                                                                        </scg:Dictionary>
-                                                                      </sap:WorkflowViewStateService.ViewState>
-                                                                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Check SPOL for Consents_Assents folder" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="Process\Process Subflows\SPOL Folder Match.xaml">
+                                                                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Check SPOL for 03 Owner Occupier General folder" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_16" UnSafe="False" WorkflowFileName="Process\Process Subflows\SPOL Folder Match.xaml">
                                                                         <ui:InvokeWorkflowFile.Arguments>
-                                                                          <InArgument x:TypeArguments="x:String" x:Key="in_strFolderName">Consents_Assents</InArgument>
+                                                                          <InArgument x:TypeArguments="x:String" x:Key="in_strFolderName">03 Owner Occupier General</InArgument>
                                                                           <InArgument x:TypeArguments="x:Boolean" x:Key="in_boolConfirmMatch">False</InArgument>
                                                                           <InArgument x:TypeArguments="x:String" x:Key="in_strListID">[strListID]</InArgument>
                                                                           <InOutArgument x:TypeArguments="x:Boolean" x:Key="io_boolPreExistingParent">[boolPreExistingParent]</InOutArgument>
                                                                           <InOutArgument x:TypeArguments="x:String" x:Key="io_strParentPath">[strUploadFolder]</InOutArgument>
                                                                           <InArgument x:TypeArguments="x:Boolean" x:Key="in_boolIncludeValidateOption">False</InArgument>
                                                                           <OutArgument x:TypeArguments="x:Boolean" x:Key="out_boolValidate" />
-                                                                          <InArgument x:TypeArguments="x:String" x:Key="in_strExtraSearchInfo">Standard 'Consents_Assents' folder</InArgument>
+                                                                          <InArgument x:TypeArguments="x:String" x:Key="in_strExtraSearchInfo">Standard '03 Owner Occupier General' folder</InArgument>
                                                                           <InArgument x:TypeArguments="x:String" x:Key="in_strLibraryName" />
                                                                         </ui:InvokeWorkflowFile.Arguments>
                                                                         <sap:WorkflowViewStateService.ViewState>
@@ -919,28 +915,208 @@
                                                                     </FlowStep>
                                                                   </FlowStep.Next>
                                                                 </FlowStep>
+                                                              </FlowStep.Next>
+                                                            </FlowStep>
+                                                          </FlowDecision.True>
+                                                          <FlowDecision.False>
+                                                            <FlowDecision x:Name="__ReferenceID11" Condition="[boolValidate]" DisplayName="Validate Owner/Occupier?" sap:VirtualizedContainerService.HintSize="60,60" sap2010:WorkflowViewState.IdRef="FlowDecision_4">
+                                                              <sap:WorkflowViewStateService.ViewState>
+                                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                  <av:Point x:Key="ShapeLocation">700,2370</av:Point>
+                                                                  <av:Size x:Key="ShapeSize">60,60</av:Size>
+                                                                  <av:PointCollection x:Key="TrueConnector">700,2400 680,2400 680,2465</av:PointCollection>
+                                                                  <av:PointCollection x:Key="FalseConnector">760,2400 960,2400 960,2875</av:PointCollection>
+                                                                </scg:Dictionary>
+                                                              </sap:WorkflowViewStateService.ViewState>
+                                                              <FlowDecision.True>
+                                                                <FlowStep x:Name="__ReferenceID8" sap2010:WorkflowViewState.IdRef="FlowStep_4">
+                                                                  <sap:WorkflowViewStateService.ViewState>
+                                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                      <av:Point x:Key="ShapeLocation">625,2465</av:Point>
+                                                                      <av:Size x:Key="ShapeSize">110,70</av:Size>
+                                                                      <av:PointCollection x:Key="ConnectorLocation">680,2535 680,2555</av:PointCollection>
+                                                                    </scg:Dictionary>
+                                                                  </sap:WorkflowViewStateService.ViewState>
+                                                                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Search Designated Sites - Invoke Workflow File (Process\Process Subflows\Search Designated Sites.xaml)" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Process\Process Subflows\Search Designated Sites.xaml">
+                                                                    <ui:InvokeWorkflowFile.Arguments>
+                                                                      <InArgument x:TypeArguments="x:String" x:Key="in_strSiteName">[g_jobCWTReceipt("SSSI_Name").First.ToString.Replace("SSSI","").Replace("&amp;amp;","&amp;").Trim]</InArgument>
+                                                                      <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dtOccupiersOwners">[dtOwnerOccupiers]</OutArgument>
+                                                                    </ui:InvokeWorkflowFile.Arguments>
+                                                                    <sap:WorkflowViewStateService.ViewState>
+                                                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                      </scg:Dictionary>
+                                                                    </sap:WorkflowViewStateService.ViewState>
+                                                                  </ui:InvokeWorkflowFile>
+                                                                  <FlowStep.Next>
+                                                                    <FlowStep x:Name="__ReferenceID9" sap2010:WorkflowViewState.IdRef="FlowStep_2">
+                                                                      <sap:WorkflowViewStateService.ViewState>
+                                                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                          <av:Point x:Key="ShapeLocation">625,2555</av:Point>
+                                                                          <av:Size x:Key="ShapeSize">110,70</av:Size>
+                                                                          <av:PointCollection x:Key="ConnectorLocation">680,2625 680,2660</av:PointCollection>
+                                                                        </scg:Dictionary>
+                                                                      </sap:WorkflowViewStateService.ViewState>
+                                                                      <TryCatch DisplayName="Try Catch - Search for Owner Occupier in Designated Sites data" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="TryCatch_4">
+                                                                        <TryCatch.Try>
+                                                                          <Sequence DisplayName="Search for Designated Sites match" sap:VirtualizedContainerService.HintSize="468,342.4" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                                                                            <sap:WorkflowViewStateService.ViewState>
+                                                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                              </scg:Dictionary>
+                                                                            </sap:WorkflowViewStateService.ViewState>
+                                                                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Search For Owner Occupier - Invoke Workflow File (Process\Process Subflows\Search For Owner Occupier.xaml)" sap:VirtualizedContainerService.HintSize="434,177.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Process\Process Subflows\Search For Owner Occupier.xaml">
+                                                                              <ui:InvokeWorkflowFile.Arguments>
+                                                                                <InArgument x:TypeArguments="x:String" x:Key="in_strFullName">[strFullName]</InArgument>
+                                                                                <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtOwnerOccupiers">[dtOwnerOccupiers]</InArgument>
+                                                                                <InArgument x:TypeArguments="x:String" x:Key="in_strPhone">[strPhone]</InArgument>
+                                                                                <InArgument x:TypeArguments="x:String" x:Key="in_strEmail">[strEmail]</InArgument>
+                                                                                <InArgument x:TypeArguments="x:String" x:Key="in_strAddress">[strAddress]</InArgument>
+                                                                                <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="out_dictOwnerOccupier">[dictOwnerOccupier]</OutArgument>
+                                                                              </ui:InvokeWorkflowFile.Arguments>
+                                                                              <sap:WorkflowViewStateService.ViewState>
+                                                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                                </scg:Dictionary>
+                                                                              </sap:WorkflowViewStateService.ViewState>
+                                                                            </ui:InvokeWorkflowFile>
+                                                                            <Assign DisplayName="Match found in designated sites data" sap:VirtualizedContainerService.HintSize="434,105.2" sap2010:WorkflowViewState.IdRef="Assign_10">
+                                                                              <Assign.To>
+                                                                                <OutArgument x:TypeArguments="x:Boolean">[boolDesignatedSitesMatch]</OutArgument>
+                                                                              </Assign.To>
+                                                                              <Assign.Value>
+                                                                                <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                                                                              </Assign.Value>
+                                                                            </Assign>
+                                                                          </Sequence>
+                                                                        </TryCatch.Try>
+                                                                        <TryCatch.Catches>
+                                                                          <Catch x:TypeArguments="ui:BusinessRuleException" sap:VirtualizedContainerService.HintSize="471.6,23.2" sap2010:WorkflowViewState.IdRef="Catch`1_4">
+                                                                            <sap:WorkflowViewStateService.ViewState>
+                                                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                                              </scg:Dictionary>
+                                                                            </sap:WorkflowViewStateService.ViewState>
+                                                                            <ActivityAction x:TypeArguments="ui:BusinessRuleException">
+                                                                              <ActivityAction.Argument>
+                                                                                <DelegateInArgument x:TypeArguments="ui:BusinessRuleException" Name="exception" />
+                                                                              </ActivityAction.Argument>
+                                                                              <Assign DisplayName="No match in designated sites" sap:VirtualizedContainerService.HintSize="434,80.8" sap2010:WorkflowViewState.IdRef="Assign_7">
+                                                                                <Assign.To>
+                                                                                  <OutArgument x:TypeArguments="x:Boolean">[boolDesignatedSitesMatch]</OutArgument>
+                                                                                </Assign.To>
+                                                                                <Assign.Value>
+                                                                                  <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                                                                                </Assign.Value>
+                                                                              </Assign>
+                                                                            </ActivityAction>
+                                                                          </Catch>
+                                                                        </TryCatch.Catches>
+                                                                      </TryCatch>
+                                                                      <FlowStep.Next>
+                                                                        <FlowDecision x:Name="__ReferenceID18" Condition="[not boolDesignatedSitesMatch]" DisplayName="No match in Designated Sites?" sap:VirtualizedContainerService.HintSize="60,60" sap2010:WorkflowViewState.IdRef="FlowDecision_5" True="{x:Reference __ReferenceID2}">
+                                                                          <sap:WorkflowViewStateService.ViewState>
+                                                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                              <av:Point x:Key="ShapeLocation">650,2660</av:Point>
+                                                                              <av:Size x:Key="ShapeSize">60,60</av:Size>
+                                                                              <av:PointCollection x:Key="FalseConnector">710,2690 745,2690 745,2735</av:PointCollection>
+                                                                              <av:PointCollection x:Key="TrueConnector">650,2690 560,2690 560,2735</av:PointCollection>
+                                                                            </scg:Dictionary>
+                                                                          </sap:WorkflowViewStateService.ViewState>
+                                                                          <FlowDecision.False>
+                                                                            <FlowStep x:Name="__ReferenceID12" sap2010:WorkflowViewState.IdRef="FlowStep_2">
+                                                                              <sap:WorkflowViewStateService.ViewState>
+                                                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                                  <av:Point x:Key="ShapeLocation">690,2735</av:Point>
+                                                                                  <av:Size x:Key="ShapeSize">110,70</av:Size>
+                                                                                  <av:PointCollection x:Key="ConnectorLocation">800,2770 960,2770 960,2875</av:PointCollection>
+                                                                                </scg:Dictionary>
+                                                                              </sap:WorkflowViewStateService.ViewState>
+                                                                              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Check SPOL for validated Owner Occupier folder" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="Process\Process Subflows\SPOL Folder Match.xaml">
+                                                                                <ui:InvokeWorkflowFile.Arguments>
+                                                                                  <InArgument x:TypeArguments="x:String" x:Key="in_strFolderName">[dictOwnerOccupier("Contact name")]</InArgument>
+                                                                                  <InArgument x:TypeArguments="x:Boolean" x:Key="in_boolConfirmMatch">False</InArgument>
+                                                                                  <InArgument x:TypeArguments="x:String" x:Key="in_strListID">[strListID]</InArgument>
+                                                                                  <InOutArgument x:TypeArguments="x:Boolean" x:Key="io_boolPreExistingParent">[boolPreExistingParent]</InOutArgument>
+                                                                                  <InOutArgument x:TypeArguments="x:String" x:Key="io_strParentPath">[strUploadFolder]</InOutArgument>
+                                                                                  <InArgument x:TypeArguments="x:Boolean" x:Key="in_boolIncludeValidateOption">False</InArgument>
+                                                                                  <OutArgument x:TypeArguments="x:Boolean" x:Key="out_boolValidate" />
+                                                                                  <InArgument x:TypeArguments="x:String" x:Key="in_strExtraSearchInfo">Name of owner/occupier, following Designated Sites validation</InArgument>
+                                                                                  <InArgument x:TypeArguments="x:String" x:Key="in_strLibraryName" />
+                                                                                </ui:InvokeWorkflowFile.Arguments>
+                                                                                <sap:WorkflowViewStateService.ViewState>
+                                                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                                  </scg:Dictionary>
+                                                                                </sap:WorkflowViewStateService.ViewState>
+                                                                              </ui:InvokeWorkflowFile>
+                                                                              <FlowStep.Next>
+                                                                                <FlowStep x:Name="__ReferenceID3" sap2010:WorkflowViewState.IdRef="FlowStep_5">
+                                                                                  <sap:WorkflowViewStateService.ViewState>
+                                                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                                      <av:Point x:Key="ShapeLocation">905,2875</av:Point>
+                                                                                      <av:Size x:Key="ShapeSize">110,70</av:Size>
+                                                                                      <av:PointCollection x:Key="ConnectorLocation">960,2945 960,2965</av:PointCollection>
+                                                                                    </scg:Dictionary>
+                                                                                  </sap:WorkflowViewStateService.ViewState>
+                                                                                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Check SPOL for Consents_Assents folder" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="Process\Process Subflows\SPOL Folder Match.xaml">
+                                                                                    <ui:InvokeWorkflowFile.Arguments>
+                                                                                      <InArgument x:TypeArguments="x:String" x:Key="in_strFolderName">Consents_Assents</InArgument>
+                                                                                      <InArgument x:TypeArguments="x:Boolean" x:Key="in_boolConfirmMatch">False</InArgument>
+                                                                                      <InArgument x:TypeArguments="x:String" x:Key="in_strListID">[strListID]</InArgument>
+                                                                                      <InOutArgument x:TypeArguments="x:Boolean" x:Key="io_boolPreExistingParent">[boolPreExistingParent]</InOutArgument>
+                                                                                      <InOutArgument x:TypeArguments="x:String" x:Key="io_strParentPath">[strUploadFolder]</InOutArgument>
+                                                                                      <InArgument x:TypeArguments="x:Boolean" x:Key="in_boolIncludeValidateOption">False</InArgument>
+                                                                                      <OutArgument x:TypeArguments="x:Boolean" x:Key="out_boolValidate" />
+                                                                                      <InArgument x:TypeArguments="x:String" x:Key="in_strExtraSearchInfo">Standard 'Consents_Assents' folder</InArgument>
+                                                                                      <InArgument x:TypeArguments="x:String" x:Key="in_strLibraryName" />
+                                                                                    </ui:InvokeWorkflowFile.Arguments>
+                                                                                    <sap:WorkflowViewStateService.ViewState>
+                                                                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                                      </scg:Dictionary>
+                                                                                    </sap:WorkflowViewStateService.ViewState>
+                                                                                  </ui:InvokeWorkflowFile>
+                                                                                  <FlowStep.Next>
+                                                                                    <x:Reference>__ReferenceID1</x:Reference>
+                                                                                  </FlowStep.Next>
+                                                                                </FlowStep>
+                                                                              </FlowStep.Next>
+                                                                            </FlowStep>
+                                                                          </FlowDecision.False>
+                                                                        </FlowDecision>
+                                                                      </FlowStep.Next>
+                                                                    </FlowStep>
+                                                                  </FlowStep.Next>
+                                                                </FlowStep>
+                                                              </FlowDecision.True>
+                                                              <FlowDecision.False>
+                                                                <x:Reference>__ReferenceID3</x:Reference>
                                                               </FlowDecision.False>
                                                             </FlowDecision>
-                                                          </FlowStep.Next>
-                                                        </FlowStep>
+                                                          </FlowDecision.False>
+                                                        </FlowDecision>
                                                       </FlowStep.Next>
                                                     </FlowStep>
-                                                  </FlowDecision.True>
-                                                  <FlowDecision.False>
-                                                    <x:Reference>__ReferenceID2</x:Reference>
-                                                  </FlowDecision.False>
-                                                </FlowDecision>
+                                                  </FlowStep.Next>
+                                                </FlowStep>
                                               </FlowStep.Next>
                                             </FlowStep>
                                           </FlowStep.Next>
                                         </FlowStep>
-                                      </FlowStep.Next>
-                                    </FlowStep>
+                                      </FlowDecision.True>
+                                      <FlowDecision.False>
+                                        <x:Reference>__ReferenceID4</x:Reference>
+                                      </FlowDecision.False>
+                                    </FlowDecision>
                                   </FlowStep.Next>
                                 </FlowStep>
                               </FlowDecision.True>
                               <FlowDecision.False>
-                                <FlowDecision x:Name="__ReferenceID27" Condition="[g_jobCWTReceipt(&quot;Broad_Work_Type&quot;).ToString.Trim.ToLower=&quot;s28i advice&quot;]" DisplayName="Advice?" sap:VirtualizedContainerService.HintSize="60,60" sap2010:WorkflowViewState.IdRef="FlowDecision_8">
+                                <FlowDecision x:Name="__ReferenceID28" Condition="[g_jobCWTReceipt(&quot;Broad_Work_Type&quot;).ToString.Trim.ToLower=&quot;s28i advice&quot;]" DisplayName="Advice?" sap:VirtualizedContainerService.HintSize="60,60" sap2010:WorkflowViewState.IdRef="FlowDecision_8">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -951,7 +1127,7 @@
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
                                   <FlowDecision.True>
-                                    <FlowStep x:Name="__ReferenceID39" sap2010:WorkflowViewState.IdRef="FlowStep_8">
+                                    <FlowStep x:Name="__ReferenceID40" sap2010:WorkflowViewState.IdRef="FlowStep_8">
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                           <av:Point x:Key="ShapeLocation">825,1725</av:Point>
@@ -967,7 +1143,7 @@
                                         </sap:WorkflowViewStateService.ViewState>
                                       </ui:LogMessage>
                                       <FlowStep.Next>
-                                        <FlowDecision x:Name="__ReferenceID28" Condition="[{&quot;forestry commission&quot;,&quot;forestry england&quot;}.Contains(g_jobCWTReceipt(&quot;Authority_Name&quot;).ToString.ToLower)]" DisplayName="Forestry?" sap:VirtualizedContainerService.HintSize="60,60" sap2010:WorkflowViewState.IdRef="FlowDecision_9">
+                                        <FlowDecision x:Name="__ReferenceID29" Condition="[{&quot;forestry commission&quot;,&quot;forestry england&quot;}.Contains(g_jobCWTReceipt(&quot;Authority_Name&quot;).ToString.ToLower)]" DisplayName="Forestry?" sap:VirtualizedContainerService.HintSize="60,60" sap2010:WorkflowViewState.IdRef="FlowDecision_9">
                                           <sap:WorkflowViewStateService.ViewState>
                                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -978,7 +1154,7 @@
                                             </scg:Dictionary>
                                           </sap:WorkflowViewStateService.ViewState>
                                           <FlowDecision.True>
-                                            <FlowDecision x:Name="__ReferenceID29" Condition="[dtFormQuestions(0)(&quot;Are you submitting an SNO alongside your advice?&quot;).ToString=&quot;true&quot;]" DisplayName="SNO?" sap:VirtualizedContainerService.HintSize="60,60" sap2010:WorkflowViewState.IdRef="FlowDecision_10">
+                                            <FlowDecision x:Name="__ReferenceID30" Condition="[dtFormQuestions(0)(&quot;Are you submitting an SNO alongside your advice?&quot;).ToString=&quot;true&quot;]" DisplayName="SNO?" sap:VirtualizedContainerService.HintSize="60,60" sap2010:WorkflowViewState.IdRef="FlowDecision_10">
                                               <sap:WorkflowViewStateService.ViewState>
                                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -989,7 +1165,7 @@
                                                 </scg:Dictionary>
                                               </sap:WorkflowViewStateService.ViewState>
                                               <FlowDecision.True>
-                                                <FlowStep x:Name="__ReferenceID40" sap2010:WorkflowViewState.IdRef="FlowStep_9">
+                                                <FlowStep x:Name="__ReferenceID41" sap2010:WorkflowViewState.IdRef="FlowStep_9">
                                                   <sap:WorkflowViewStateService.ViewState>
                                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                       <av:Point x:Key="ShapeLocation">755,2005</av:Point>
@@ -1005,7 +1181,7 @@
                                                     </sap:WorkflowViewStateService.ViewState>
                                                   </ui:LogMessage>
                                                   <FlowStep.Next>
-                                                    <FlowStep x:Name="__ReferenceID30" sap2010:WorkflowViewState.IdRef="FlowStep_2">
+                                                    <FlowStep x:Name="__ReferenceID31" sap2010:WorkflowViewState.IdRef="FlowStep_2">
                                                       <sap:WorkflowViewStateService.ViewState>
                                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                           <av:Point x:Key="ShapeLocation">755,2095</av:Point>
@@ -1027,7 +1203,7 @@
                                                         </sap:WorkflowViewStateService.ViewState>
                                                       </Assign>
                                                       <FlowStep.Next>
-                                                        <FlowStep x:Name="__ReferenceID3" sap2010:WorkflowViewState.IdRef="FlowStep_3">
+                                                        <FlowStep x:Name="__ReferenceID5" sap2010:WorkflowViewState.IdRef="FlowStep_3">
                                                           <sap:WorkflowViewStateService.ViewState>
                                                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                               <av:Point x:Key="ShapeLocation">905,2095</av:Point>
@@ -1054,12 +1230,12 @@
                                                             </sap:WorkflowViewStateService.ViewState>
                                                           </ui:InvokeWorkflowFile>
                                                           <FlowStep.Next>
-                                                            <FlowStep x:Name="__ReferenceID8" sap2010:WorkflowViewState.IdRef="FlowStep_6">
+                                                            <FlowStep x:Name="__ReferenceID10" sap2010:WorkflowViewState.IdRef="FlowStep_6">
                                                               <sap:WorkflowViewStateService.ViewState>
                                                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                                   <av:Point x:Key="ShapeLocation">905,2185</av:Point>
                                                                   <av:Size x:Key="ShapeSize">110,70</av:Size>
-                                                                  <av:PointCollection x:Key="ConnectorLocation">1015,2220 1045,2220 1045,2840 1015,2840</av:PointCollection>
+                                                                  <av:PointCollection x:Key="ConnectorLocation">1015,2220 1045,2220 1045,3000 1015,3000</av:PointCollection>
                                                                 </scg:Dictionary>
                                                               </sap:WorkflowViewStateService.ViewState>
                                                               <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Confirm folder match only if Authority Name is empty or missing" DisplayName="Check SPOL for Authority Name folder" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="Process\Process Subflows\SPOL Folder Match.xaml">
@@ -1093,19 +1269,19 @@
                                                 </FlowStep>
                                               </FlowDecision.True>
                                               <FlowDecision.False>
-                                                <x:Reference>__ReferenceID3</x:Reference>
+                                                <x:Reference>__ReferenceID5</x:Reference>
                                               </FlowDecision.False>
                                             </FlowDecision>
                                           </FlowDecision.True>
                                           <FlowDecision.False>
-                                            <x:Reference>__ReferenceID3</x:Reference>
+                                            <x:Reference>__ReferenceID5</x:Reference>
                                           </FlowDecision.False>
                                         </FlowDecision>
                                       </FlowStep.Next>
                                     </FlowStep>
                                   </FlowDecision.True>
                                   <FlowDecision.False>
-                                    <x:Reference>__ReferenceID3</x:Reference>
+                                    <x:Reference>__ReferenceID5</x:Reference>
                                   </FlowDecision.False>
                                 </FlowDecision>
                               </FlowDecision.False>
@@ -1116,7 +1292,7 @@
                     </FlowStep>
                   </FlowDecision.True>
                   <FlowDecision.False>
-                    <FlowStep x:Name="__ReferenceID12" sap2010:WorkflowViewState.IdRef="FlowStep_1">
+                    <FlowStep x:Name="__ReferenceID14" sap2010:WorkflowViewState.IdRef="FlowStep_1">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <av:Point x:Key="ShapeLocation">725,1395</av:Point>
@@ -1126,37 +1302,82 @@
                       </sap:WorkflowViewStateService.ViewState>
                       <TryCatch DisplayName="Try Catch - get county list id" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="TryCatch_3">
                         <TryCatch.Try>
-                          <Sequence DisplayName="Get county list id" sap:VirtualizedContainerService.HintSize="468,652.8" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                          <Sequence DisplayName="Get county list id" sap:VirtualizedContainerService.HintSize="536,1282.8" sap2010:WorkflowViewState.IdRef="Sequence_8">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <ui:LogMessage DisplayName="Log Message - county" sap:VirtualizedContainerService.HintSize="434,175.6" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Getting SPOL list ID for county '&quot;+g_jobCWTReceipt(&quot;Location_County&quot;).ToString+&quot;'&quot;]" />
-                            <ds:Get_List_ID DisplayName="Get County List ID" sap:VirtualizedContainerService.HintSize="434,280.4" sap2010:WorkflowViewState.IdRef="Get_List_ID_3" in_strBearerToken="[g_BearerToken]" in_strListDisplayName="[g_jobCWTReceipt(&quot;Location_County&quot;).ToString]" in_strSiteID="[g_Config(&quot;SharepointSiteID&quot;).ToString]" out_strListID="[strListID]">
+                            <ui:LogMessage DisplayName="Log Message - county" sap:VirtualizedContainerService.HintSize="502,175.6" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Getting SPOL list ID for county '&quot;+g_jobCWTReceipt(&quot;Location_County&quot;).ToString+&quot;'&quot;]" />
+                            <Switch x:TypeArguments="x:String" sap2010:Annotation.AnnotationText="Currently only one county requires correction, but using Switch here in anticipation of more." DisplayName="Switch - correct specific counties" Expression="[g_jobCWTReceipt(&quot;Location_County&quot;).ToString]" sap:VirtualizedContainerService.HintSize="502,348.4" sap2010:WorkflowViewState.IdRef="Switch`1_2">
+                              <Switch.Default>
+                                <Assign sap2010:Annotation.AnnotationText="Used to create URL at end of process" DisplayName="Store county as library name" sap:VirtualizedContainerService.HintSize="434,113.6" sap2010:WorkflowViewState.IdRef="Assign_22">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:String">[strLibraryName]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:String">[g_jobCWTReceipt("Location_County").ToString]</InArgument>
+                                  </Assign.Value>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </Assign>
+                              </Switch.Default>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <Assign x:Key="Herefordshire" DisplayName="Library name is Hereford" sap:VirtualizedContainerService.HintSize="434,82.4" sap2010:WorkflowViewState.IdRef="Assign_27">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:String">[strLibraryName]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:String">Hereford</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                            </Switch>
+                            <ds:Get_List_ID DisplayName="Get County List ID" sap:VirtualizedContainerService.HintSize="502,280.4" sap2010:WorkflowViewState.IdRef="Get_List_ID_3" in_strBearerToken="[g_BearerToken]" in_strListDisplayName="[strLibraryName]" in_strSiteID="[g_Config(&quot;SharepointSiteID&quot;).ToString]" out_strListID="[strListID]">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
                             </ds:Get_List_ID>
-                            <Assign sap2010:Annotation.AnnotationText="Used to create URL at end of process" DisplayName="Store county as library name" sap:VirtualizedContainerService.HintSize="434,136.8" sap2010:WorkflowViewState.IdRef="Assign_22">
-                              <Assign.To>
-                                <OutArgument x:TypeArguments="x:String">[strLibraryName]</OutArgument>
-                              </Assign.To>
-                              <Assign.Value>
-                                <InArgument x:TypeArguments="x:String">[if(CBool(g_Config("IsDev")),"RobTest",g_jobCWTReceipt("Location_County").ToString)]</InArgument>
-                              </Assign.Value>
-                              <sap:WorkflowViewStateService.ViewState>
-                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                                </scg:Dictionary>
-                              </sap:WorkflowViewStateService.ViewState>
-                            </Assign>
+                            <If Condition="[CBool(g_Config(&quot;IsDev&quot;))]" DisplayName="If dev mode" sap:VirtualizedContainerService.HintSize="502,418.4" sap2010:WorkflowViewState.IdRef="If_4">
+                              <If.Then>
+                                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="468,165.6" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <Assign DisplayName="Library name is &quot;RobTest&quot;" sap:VirtualizedContainerService.HintSize="434,105.6" sap2010:WorkflowViewState.IdRef="Assign_28">
+                                    <Assign.To>
+                                      <OutArgument x:TypeArguments="x:String">[strLibraryName]</OutArgument>
+                                    </Assign.To>
+                                    <Assign.Value>
+                                      <InArgument x:TypeArguments="x:String">RobTest</InArgument>
+                                    </Assign.Value>
+                                  </Assign>
+                                </Sequence>
+                              </If.Then>
+                              <If.Else>
+                                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,90.4" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </Sequence>
+                              </If.Else>
+                            </If>
                           </Sequence>
                         </TryCatch.Try>
                         <TryCatch.Catches>
-                          <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="471.6,23.6" sap2010:WorkflowViewState.IdRef="Catch`1_3">
+                          <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="539.6,23.6" sap2010:WorkflowViewState.IdRef="Catch`1_3">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -1167,7 +1388,7 @@
                               <ActivityAction.Argument>
                                 <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                               </ActivityAction.Argument>
-                              <If Condition="[exception.Message.Contains(&quot;List does not exist&quot;)]" DisplayName="If list name does not exist" sap:VirtualizedContainerService.HintSize="334,153.6" sap2010:WorkflowViewState.IdRef="If_2">
+                              <If Condition="[exception.Message.Contains(&quot;List does not exist&quot;)]" DisplayName="If list name does not exist" sap:VirtualizedContainerService.HintSize="519.6,760.4" sap2010:WorkflowViewState.IdRef="If_2">
                                 <If.Then>
                                   <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="485.6,513.2" sap2010:WorkflowViewState.IdRef="Sequence_4">
                                     <sap:WorkflowViewStateService.ViewState>
@@ -1212,7 +1433,7 @@
                         </TryCatch.Catches>
                       </TryCatch>
                       <FlowStep.Next>
-                        <x:Reference>__ReferenceID4</x:Reference>
+                        <x:Reference>__ReferenceID6</x:Reference>
                       </FlowStep.Next>
                     </FlowStep>
                   </FlowDecision.False>
@@ -1223,7 +1444,7 @@
         </FlowStep>
       </FlowDecision.True>
       <FlowDecision.False>
-        <FlowStep x:Name="__ReferenceID37" sap2010:WorkflowViewState.IdRef="FlowStep_10">
+        <FlowStep x:Name="__ReferenceID38" sap2010:WorkflowViewState.IdRef="FlowStep_10">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <av:Point x:Key="ShapeLocation">995,895</av:Point>
@@ -1307,7 +1528,7 @@
                     </Assign>
                   </Sequence>
                   <FlowStep.Next>
-                    <FlowStep x:Name="__ReferenceID13" sap2010:WorkflowViewState.IdRef="FlowStep_8">
+                    <FlowStep x:Name="__ReferenceID15" sap2010:WorkflowViewState.IdRef="FlowStep_8">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <av:Point x:Key="ShapeLocation">995,1175</av:Point>
@@ -1315,7 +1536,7 @@
                           <av:PointCollection x:Key="ConnectorLocation">1050,1245 1050,1265</av:PointCollection>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Check SPOL for Area Team folder" sap:VirtualizedContainerService.HintSize="334,145.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_13" UnSafe="False" WorkflowFileName="Process\Process Subflows\SPOL Folder Match.xaml">
+                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Check SPOL for Area Team folder" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_13" UnSafe="False" WorkflowFileName="Process\Process Subflows\SPOL Folder Match.xaml">
                         <ui:InvokeWorkflowFile.Arguments>
                           <InArgument x:TypeArguments="x:String" x:Key="in_strFolderName">[strAreaTeam]</InArgument>
                           <InArgument x:TypeArguments="x:Boolean" x:Key="in_boolConfirmMatch">[g_jobCWTReceipt("Area_Team").ToString="Farm and Conservation Service (FCS)"]</InArgument>
@@ -1337,7 +1558,7 @@
                         </sap:WorkflowViewStateService.ViewState>
                       </ui:InvokeWorkflowFile>
                       <FlowStep.Next>
-                        <FlowStep x:Name="__ReferenceID14" sap2010:WorkflowViewState.IdRef="FlowStep_9">
+                        <FlowStep x:Name="__ReferenceID16" sap2010:WorkflowViewState.IdRef="FlowStep_9">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <av:Point x:Key="ShapeLocation">995,1265</av:Point>
@@ -1364,12 +1585,12 @@
                             </sap:WorkflowViewStateService.ViewState>
                           </ui:InvokeWorkflowFile>
                           <FlowStep.Next>
-                            <FlowStep x:Name="__ReferenceID15" sap2010:WorkflowViewState.IdRef="FlowStep_10">
+                            <FlowStep x:Name="__ReferenceID17" sap2010:WorkflowViewState.IdRef="FlowStep_10">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <av:Point x:Key="ShapeLocation">995,1355</av:Point>
                                   <av:Size x:Key="ShapeSize">110,70</av:Size>
-                                  <av:PointCollection x:Key="ConnectorLocation">1050,1425 1050,2840 1015,2840</av:PointCollection>
+                                  <av:PointCollection x:Key="ConnectorLocation">1050,1425 1050,3000 1015,3000</av:PointCollection>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
                               <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Check SPOL for month received folder" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_15" UnSafe="False" WorkflowFileName="Process\Process Subflows\SPOL Folder Match.xaml">
@@ -1406,16 +1627,14 @@
         </FlowStep>
       </FlowDecision.False>
     </FlowDecision>
-    <x:Reference>__ReferenceID5</x:Reference>
-    <x:Reference>__ReferenceID6</x:Reference>
     <x:Reference>__ReferenceID7</x:Reference>
-    <x:Reference>__ReferenceID3</x:Reference>
-    <x:Reference>__ReferenceID4</x:Reference>
     <x:Reference>__ReferenceID8</x:Reference>
     <x:Reference>__ReferenceID9</x:Reference>
-    <x:Reference>__ReferenceID2</x:Reference>
+    <x:Reference>__ReferenceID5</x:Reference>
+    <x:Reference>__ReferenceID6</x:Reference>
     <x:Reference>__ReferenceID10</x:Reference>
     <x:Reference>__ReferenceID11</x:Reference>
+    <x:Reference>__ReferenceID3</x:Reference>
     <x:Reference>__ReferenceID12</x:Reference>
     <x:Reference>__ReferenceID13</x:Reference>
     <x:Reference>__ReferenceID14</x:Reference>
@@ -1423,9 +1642,11 @@
     <x:Reference>__ReferenceID16</x:Reference>
     <x:Reference>__ReferenceID17</x:Reference>
     <x:Reference>__ReferenceID18</x:Reference>
+    <x:Reference>__ReferenceID4</x:Reference>
     <x:Reference>__ReferenceID19</x:Reference>
+    <x:Reference>__ReferenceID20</x:Reference>
     <x:Reference>__ReferenceID1</x:Reference>
-    <FlowStep x:Name="__ReferenceID22" sap2010:WorkflowViewState.IdRef="FlowStep_3">
+    <FlowStep x:Name="__ReferenceID23" sap2010:WorkflowViewState.IdRef="FlowStep_3">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <av:Point x:Key="ShapeLocation">785,555</av:Point>
@@ -1445,7 +1666,7 @@
         </sap:WorkflowViewStateService.ViewState>
       </ui:InvokeWorkflowFile>
       <FlowStep.Next>
-        <FlowStep x:Name="__ReferenceID21" sap2010:WorkflowViewState.IdRef="FlowStep_4">
+        <FlowStep x:Name="__ReferenceID22" sap2010:WorkflowViewState.IdRef="FlowStep_4">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <av:Point x:Key="ShapeLocation">785,645</av:Point>
@@ -1466,7 +1687,7 @@
             </sap:WorkflowViewStateService.ViewState>
           </ui:InvokeWorkflowFile>
           <FlowStep.Next>
-            <FlowStep x:Name="__ReferenceID34" sap2010:WorkflowViewState.IdRef="FlowStep_2">
+            <FlowStep x:Name="__ReferenceID35" sap2010:WorkflowViewState.IdRef="FlowStep_2">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <av:Point x:Key="ShapeLocation">785,735</av:Point>
@@ -1490,15 +1711,15 @@
                 </sap:WorkflowViewStateService.ViewState>
               </ui:InvokeWorkflowFile>
               <FlowStep.Next>
-                <x:Reference>__ReferenceID20</x:Reference>
+                <x:Reference>__ReferenceID21</x:Reference>
               </FlowStep.Next>
             </FlowStep>
           </FlowStep.Next>
         </FlowStep>
       </FlowStep.Next>
     </FlowStep>
-    <x:Reference>__ReferenceID21</x:Reference>
-    <FlowStep x:Name="__ReferenceID24" sap2010:WorkflowViewState.IdRef="FlowStep_2">
+    <x:Reference>__ReferenceID22</x:Reference>
+    <FlowStep x:Name="__ReferenceID25" sap2010:WorkflowViewState.IdRef="FlowStep_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <av:Point x:Key="ShapeLocation">745,275</av:Point>
@@ -1518,7 +1739,7 @@
         </sap:WorkflowViewStateService.ViewState>
       </ui:InvokeWorkflowFile>
       <FlowStep.Next>
-        <FlowDecision x:Name="__ReferenceID25" Condition="[g_jobCWTReceipt(&quot;SSSI_Name&quot;).Count&gt;1]" DisplayName="Multiple SSSIs?" sap:VirtualizedContainerService.HintSize="60,60" sap2010:WorkflowViewState.IdRef="FlowDecision_7">
+        <FlowDecision x:Name="__ReferenceID26" Condition="[g_jobCWTReceipt(&quot;SSSI_Name&quot;).Count&gt;1]" DisplayName="Multiple SSSIs?" sap:VirtualizedContainerService.HintSize="60,60" sap2010:WorkflowViewState.IdRef="FlowDecision_7">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1529,7 +1750,7 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <FlowDecision.True>
-            <FlowStep x:Name="__ReferenceID35" sap2010:WorkflowViewState.IdRef="FlowStep_1">
+            <FlowStep x:Name="__ReferenceID36" sap2010:WorkflowViewState.IdRef="FlowStep_1">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <av:Point x:Key="ShapeLocation">655,465</av:Point>
@@ -1545,7 +1766,7 @@
                 </sap:WorkflowViewStateService.ViewState>
               </ui:LogMessage>
               <FlowStep.Next>
-                <FlowStep x:Name="__ReferenceID26" sap2010:WorkflowViewState.IdRef="FlowStep_1">
+                <FlowStep x:Name="__ReferenceID27" sap2010:WorkflowViewState.IdRef="FlowStep_1">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <av:Point x:Key="ShapeLocation">655,555</av:Point>
@@ -1567,19 +1788,19 @@
                     </sap:WorkflowViewStateService.ViewState>
                   </Assign>
                   <FlowStep.Next>
-                    <x:Reference>__ReferenceID22</x:Reference>
+                    <x:Reference>__ReferenceID23</x:Reference>
                   </FlowStep.Next>
                 </FlowStep>
               </FlowStep.Next>
             </FlowStep>
           </FlowDecision.True>
           <FlowDecision.False>
-            <x:Reference>__ReferenceID22</x:Reference>
+            <x:Reference>__ReferenceID23</x:Reference>
           </FlowDecision.False>
         </FlowDecision>
       </FlowStep.Next>
     </FlowStep>
-    <x:Reference>__ReferenceID23</x:Reference>
+    <x:Reference>__ReferenceID24</x:Reference>
     <FlowStep x:Name="__ReferenceID47" sap2010:WorkflowViewState.IdRef="FlowStep_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -1612,7 +1833,7 @@
                 <OutArgument x:TypeArguments="x:String">[strDefraFormsReference]</OutArgument>
               </ui:AssignOperation.To>
               <ui:AssignOperation.Value>
-                <InArgument x:TypeArguments="x:String">[Regex.Match(g_TransactionItem("Body").ToString,"(?s)(?&lt;=Reference number\:).*?(?=What|Which)").Value.Trim]</InArgument>
+                <InArgument x:TypeArguments="x:String">[Regex.Match(g_TransactionItem("Body").ToString,"(?s)(?&lt;=Reference number\:).*?(?=What|Which|Can)").Value.Trim]</InArgument>
               </ui:AssignOperation.Value>
             </ui:AssignOperation>
           </scg:List>
@@ -1624,10 +1845,9 @@
         </sap:WorkflowViewStateService.ViewState>
       </ui:MultipleAssign>
       <FlowStep.Next>
-        <x:Reference>__ReferenceID24</x:Reference>
+        <x:Reference>__ReferenceID25</x:Reference>
       </FlowStep.Next>
     </FlowStep>
-    <x:Reference>__ReferenceID25</x:Reference>
     <x:Reference>__ReferenceID26</x:Reference>
     <x:Reference>__ReferenceID27</x:Reference>
     <x:Reference>__ReferenceID28</x:Reference>
@@ -1637,20 +1857,21 @@
     <x:Reference>__ReferenceID32</x:Reference>
     <x:Reference>__ReferenceID33</x:Reference>
     <x:Reference>__ReferenceID34</x:Reference>
-    <x:Reference>__ReferenceID0</x:Reference>
     <x:Reference>__ReferenceID35</x:Reference>
+    <x:Reference>__ReferenceID0</x:Reference>
     <x:Reference>__ReferenceID36</x:Reference>
     <x:Reference>__ReferenceID37</x:Reference>
     <x:Reference>__ReferenceID38</x:Reference>
     <x:Reference>__ReferenceID39</x:Reference>
     <x:Reference>__ReferenceID40</x:Reference>
     <x:Reference>__ReferenceID41</x:Reference>
+    <x:Reference>__ReferenceID2</x:Reference>
     <x:Reference>__ReferenceID42</x:Reference>
     <x:Reference>__ReferenceID43</x:Reference>
     <x:Reference>__ReferenceID44</x:Reference>
     <x:Reference>__ReferenceID45</x:Reference>
     <x:Reference>__ReferenceID46</x:Reference>
-    <FlowStep x:Name="__ReferenceID53" sap2010:WorkflowViewState.IdRef="FlowStep_1">
+    <FlowStep x:Name="__ReferenceID56" sap2010:WorkflowViewState.IdRef="FlowStep_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <av:Point x:Key="ShapeLocation">745,65</av:Point>
@@ -1682,5 +1903,8 @@
     <x:Reference>__ReferenceID50</x:Reference>
     <x:Reference>__ReferenceID51</x:Reference>
     <x:Reference>__ReferenceID52</x:Reference>
+    <x:Reference>__ReferenceID53</x:Reference>
+    <x:Reference>__ReferenceID54</x:Reference>
+    <x:Reference>__ReferenceID55</x:Reference>
   </Flowchart>
 </Activity>

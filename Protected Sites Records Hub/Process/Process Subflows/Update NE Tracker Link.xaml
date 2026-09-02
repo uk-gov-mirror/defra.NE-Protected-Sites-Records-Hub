@@ -124,7 +124,7 @@
       <AssemblyReference>netstandard</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Update_NE_Tracker_Link" sap:VirtualizedContainerService.HintSize="1451.6000000000001,1424.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Update_NE_Tracker_Link" sap:VirtualizedContainerService.HintSize="1451.6000000000001,1422.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="uwahm:HttpResponseSummary" Name="httpResponse" />
       <Variable x:TypeArguments="ss:SecureString" Name="sstrTrackerAPIKey" />
@@ -137,13 +137,13 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:GetRobotCredential TimeoutMS="{x:Null}" Username="{x:Null}" AssetName="TrackerAPIKey" CacheStrategy="None" DisplayName="Get Credential - tracker API key" FolderPath="NE Root/Protected Sites Records Hub" sap:VirtualizedContainerService.HintSize="450,176.4" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[sstrTrackerAPIKey]" />
-    <Assign DisplayName="Construct JSON" sap:VirtualizedContainerService.HintSize="450,117.2" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign DisplayName="Construct JSON" sap:VirtualizedContainerService.HintSize="450,115.6" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[strJSON]</OutArgument>
       </Assign.To>
       <Assign.Value>
         <InArgument x:TypeArguments="x:String" xml:space="preserve">["{ ""case_id"": "+g_jobCWTReceipt("CWT_case_ID").ToString+",
-	""link_url"":"""+in_strCaseworkFolderURL+""", 
+	""link_url"":"""+in_strCaseworkFolderURL.Replace("&amp;amp;","%26")+""", 
 	""link_description"":""Case folder on Records Hub"", 
 	""case_description"": """+in_strCaseworkFolderName+""" }"]</InArgument>
       </Assign.Value>

@@ -176,6 +176,11 @@
     <Sequence DisplayName="... When" sap:VirtualizedContainerService.HintSize="513.6,383.6" sap2010:WorkflowViewState.IdRef="Sequence_3">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:String" Name="strDestinationFolder" />
+        <Variable x:TypeArguments="x:Boolean" Name="boolPreExistingParent">
+          <Variable.Default>
+            <Literal x:TypeArguments="x:Boolean" Value="True" />
+          </Variable.Default>
+        </Variable>
       </Sequence.Variables>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -184,11 +189,16 @@
       </sap:WorkflowViewStateService.ViewState>
       <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="SPOL Folder Match - Invoke Workflow File (SPOL Folder Match.xaml)" sap:VirtualizedContainerService.HintSize="416,177.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Process\Process Subflows\SPOL Folder Match.xaml">
         <ui:InvokeWorkflowFile.Arguments>
-          <OutArgument x:TypeArguments="x:String" x:Key="out_strDestinationFolder">[strDestinationFolder]</OutArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="in_strParentFolder">184 testing</InArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="in_strFolderName">Miller, Rob</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_strFolderName">lalalala</InArgument>
           <InArgument x:TypeArguments="x:Boolean" x:Key="in_boolConfirmMatch">False</InArgument>
           <InArgument x:TypeArguments="x:String" x:Key="in_strListID">[g_Config("SharepointListID").ToString]</InArgument>
+          <InOutArgument x:TypeArguments="x:Boolean" x:Key="io_boolPreExistingParent">[boolPreExistingParent]</InOutArgument>
+          <InOutArgument x:TypeArguments="x:String" x:Key="io_strParentPath" />
+          <InArgument x:TypeArguments="x:Boolean" x:Key="in_boolIncludeValidateOption" />
+          <OutArgument x:TypeArguments="x:Boolean" x:Key="out_boolValidate" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_strExtraSearchInfo" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_strLibraryName">RobTest</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_strAdditionalFields" />
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
       <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="416,114.4" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[strDestinationFolder]" />
