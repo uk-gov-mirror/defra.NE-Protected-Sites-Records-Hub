@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="ejjvopuf7Eml3IYZFCyvNw" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="forms.defra.gov.uk/file-download/93191c7b-e5aa-4fbb-8884-03137ca37320" DesignTimeRectangle="176, 966, 2230, 100" DesignTimeScaleFactor="2.5" ElementType="InputBox" FullSelectorArgument="&lt;webctrl id='email' tag='INPUT' /&gt;" Guid="a09f4a32-28b1-4bf4-93eb-d4109446d55f" ScopeSelectorArgument="&lt;html app='msedge.exe' title='You have a file to download - Forms designer' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive">
+      <imageRef attrName="InformativeScreenshot" originalValue="f635cf8ef66f39cc671d36fcda013f90.png" xmlns="">0-4_Ts5jnb0Gv0hRf80h9Fg</imageRef>
+    </TargetAnchorable>
+    <x:String x:Key="ActivityType">TypeInto</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

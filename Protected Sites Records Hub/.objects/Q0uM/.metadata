@@ -1,0 +1,12 @@
+﻿{
+  "Name": "Edge Site Search",
+  "Type": "App",
+  "Id": "Q0uM1Cq3bUeVUQngkzgzlg",
+  "Reference": "u70FNKxx7EOHPBwkfez66Q/Q0uM1Cq3bUeVUQngkzgzlg",
+  "Created": "2026-07-13T08:24:48.5882751Z",
+  "Updated": "2026-07-13T08:24:48.5882751Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=24.10.16.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=25.6.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

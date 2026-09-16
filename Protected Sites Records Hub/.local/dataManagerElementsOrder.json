@@ -1,0 +1,871 @@
+{
+  "Workflows": [
+    {
+      "Path": null,
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "g_arrCaseID&",
+        "g_Config&",
+        "g_swProcessingTimer&",
+        "g_intExitPoint&",
+        "g_BearerToken&",
+        "g_TransactionItem&",
+        "g_browserDesignatedSites&",
+        "g_jobCWTReceipt&"
+      ],
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Main.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "g_arrCaseID&55eb52b7-15fa-4af7-acb6-46c6e91c6d89",
+        "g_Config&55eb52b7-15fa-4af7-acb6-46c6e91c6d89",
+        "g_swProcessingTimer&55eb52b7-15fa-4af7-acb6-46c6e91c6d89",
+        "g_intExitPoint&55eb52b7-15fa-4af7-acb6-46c6e91c6d89",
+        "g_BearerToken&55eb52b7-15fa-4af7-acb6-46c6e91c6d89",
+        "g_TransactionItem&55eb52b7-15fa-4af7-acb6-46c6e91c6d89",
+        "g_browserDesignatedSites&55eb52b7-15fa-4af7-acb6-46c6e91c6d89",
+        "g_jobCWTReceipt&55eb52b7-15fa-4af7-acb6-46c6e91c6d89",
+        "SystemException&StateMachine_1",
+        "BusinessException&StateMachine_1",
+        "TransactionNumber&StateMachine_1",
+        "RetryNumber&StateMachine_1",
+        "ConsecutiveSystemExceptions&StateMachine_1",
+        "boolRunProcess&StateMachine_1",
+        "Credentials&StateMachine_1",
+        "strWorkLogFilepath&StateMachine_1",
+        "boolContinue&StateMachine_1",
+        "boolLastTransaction&StateMachine_1",
+        "boolSkipEndConfirmation&StateMachine_1",
+        "strProcessType&StateMachine_1",
+        "intConSysEx&StateMachine_1",
+        "strAppID&Sequence_4",
+        "sstrSecret&Sequence_4",
+        "strUserFolder&Sequence_38",
+        "listConfigFilepaths&Sequence_40",
+        "arrFilePath&Sequence_40",
+        "strFullFilepath&Sequence_41",
+        "boolFolderExists&Sequence_42",
+        "boolShouldStop&Sequence_25",
+        "dateCaseStartTime&State_3",
+        "strCaseIDText&Sequence_28"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_boolUnattended"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Framework/GetTransactionData.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "g_arrCaseID&9b21d26e-5a59-4ebf-805e-bdf40e4af823",
+        "g_Config&9b21d26e-5a59-4ebf-805e-bdf40e4af823",
+        "g_swProcessingTimer&9b21d26e-5a59-4ebf-805e-bdf40e4af823",
+        "g_intExitPoint&9b21d26e-5a59-4ebf-805e-bdf40e4af823",
+        "g_BearerToken&9b21d26e-5a59-4ebf-805e-bdf40e4af823",
+        "g_TransactionItem&9b21d26e-5a59-4ebf-805e-bdf40e4af823",
+        "g_browserDesignatedSites&9b21d26e-5a59-4ebf-805e-bdf40e4af823",
+        "g_jobCWTReceipt&9b21d26e-5a59-4ebf-805e-bdf40e4af823",
+        "dtToProcess&Sequence_1",
+        "credNetworkCredentials&Sequence_2",
+        "rowCurrentMessage&Sequence_2",
+        "dtInProgress&Sequence_2",
+        "rowInProgressMessage&Sequence_2"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_TransactionNumber",
+        "out_boolLastTransaction",
+        "in_strProcessType",
+        "in_boolContinue"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Process/Process Subflows/SPOL Folder Match.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "g_arrCaseID&c156bd98-683b-4e30-9886-b093073e613c",
+        "g_Config&c156bd98-683b-4e30-9886-b093073e613c",
+        "g_swProcessingTimer&c156bd98-683b-4e30-9886-b093073e613c",
+        "g_intExitPoint&c156bd98-683b-4e30-9886-b093073e613c",
+        "g_BearerToken&c156bd98-683b-4e30-9886-b093073e613c",
+        "g_TransactionItem&c156bd98-683b-4e30-9886-b093073e613c",
+        "g_browserDesignatedSites&c156bd98-683b-4e30-9886-b093073e613c",
+        "g_jobCWTReceipt&c156bd98-683b-4e30-9886-b093073e613c",
+        "strPopUpText&Flowchart_1",
+        "listFolders&Flowchart_1",
+        "strJSONOutput&Sequence_1",
+        "jobOutput&Sequence_1",
+        "strCreatedFolder&Sequence_4",
+        "strButtonSelected&Flowchart_1",
+        "boolDismissed&Flowchart_1",
+        "strSelectedFolder&Flowchart_1",
+        "arrFolderMatches&Flowchart_1",
+        "dtContents&Flowchart_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "out_boolCreateInGeneral",
+        "in_strAdditionalFields",
+        "in_strLibraryName",
+        "in_strExtraSearchInfo",
+        "out_boolValidate",
+        "in_boolIncludeValidateOption",
+        "io_strParentPath",
+        "io_boolPreExistingParent",
+        "in_strListID",
+        "in_boolConfirmMatch",
+        "in_strFolderName"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Process/Process Subflows/tc01 SPOL Folder Match.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "boolPreExistingParent&Sequence_3",
+        "g_arrCaseID&72294e45-c55b-447c-9f38-58f78c65f968",
+        "g_Config&72294e45-c55b-447c-9f38-58f78c65f968",
+        "g_swProcessingTimer&72294e45-c55b-447c-9f38-58f78c65f968",
+        "g_intExitPoint&72294e45-c55b-447c-9f38-58f78c65f968",
+        "g_BearerToken&72294e45-c55b-447c-9f38-58f78c65f968",
+        "g_TransactionItem&72294e45-c55b-447c-9f38-58f78c65f968",
+        "g_browserDesignatedSites&72294e45-c55b-447c-9f38-58f78c65f968",
+        "g_jobCWTReceipt&72294e45-c55b-447c-9f38-58f78c65f968",
+        "strDestinationFolder&Sequence_3",
+        "sstrSecret&Sequence_2",
+        "strAppID&Sequence_2",
+        "strTenantID&Sequence_2"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Process/Process Subflows/Search Designated Sites.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "g_arrCaseID&49a1f379-9750-4ab5-a206-dfdcfb536dec",
+        "g_Config&49a1f379-9750-4ab5-a206-dfdcfb536dec",
+        "g_swProcessingTimer&49a1f379-9750-4ab5-a206-dfdcfb536dec",
+        "g_intExitPoint&49a1f379-9750-4ab5-a206-dfdcfb536dec",
+        "g_BearerToken&49a1f379-9750-4ab5-a206-dfdcfb536dec",
+        "g_TransactionItem&49a1f379-9750-4ab5-a206-dfdcfb536dec",
+        "g_browserDesignatedSites&49a1f379-9750-4ab5-a206-dfdcfb536dec",
+        "g_jobCWTReceipt&49a1f379-9750-4ab5-a206-dfdcfb536dec",
+        "dtOccupierContacts&Sequence_2",
+        "dtOwnerContacts&Sequence_2",
+        "strURL&Sequence_2",
+        "strSelected&Sequence_2",
+        "strSearchBox&Sequence_2",
+        "strResultsReturned&Sequence_2",
+        "intResultsReturned&Sequence_2",
+        "strContactCount&Sequence_2"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "out_dtOccupiersOwners",
+        "in_strSiteName"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Process/Process Subflows/Find Companion CWT Receipt.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "g_arrCaseID&49a1f379-9750-4ab5-a206-dfdcfb536dec",
+        "g_Config&49a1f379-9750-4ab5-a206-dfdcfb536dec",
+        "g_swProcessingTimer&49a1f379-9750-4ab5-a206-dfdcfb536dec",
+        "g_intExitPoint&49a1f379-9750-4ab5-a206-dfdcfb536dec",
+        "g_BearerToken&49a1f379-9750-4ab5-a206-dfdcfb536dec",
+        "g_TransactionItem&49a1f379-9750-4ab5-a206-dfdcfb536dec",
+        "g_browserDesignatedSites&49a1f379-9750-4ab5-a206-dfdcfb536dec",
+        "g_jobCWTReceipt&49a1f379-9750-4ab5-a206-dfdcfb536dec",
+        "strAppID&Sequence_1",
+        "sstrSecret&Sequence_1",
+        "sstrBearer&Sequence_1",
+        "dtEmails&Sequence_1",
+        "strTenant&Sequence_1",
+        "strFolderID&Sequence_1",
+        "strJSON&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "out_strCompanionEmailID",
+        "in_strDefraFormsID"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Process/Process Subflows/Extract Form Details.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "g_arrCaseID&2eb4fded-e211-430f-9aff-e0da23c45b63",
+        "g_Config&2eb4fded-e211-430f-9aff-e0da23c45b63",
+        "g_swProcessingTimer&2eb4fded-e211-430f-9aff-e0da23c45b63",
+        "g_intExitPoint&2eb4fded-e211-430f-9aff-e0da23c45b63",
+        "g_BearerToken&2eb4fded-e211-430f-9aff-e0da23c45b63",
+        "g_TransactionItem&2eb4fded-e211-430f-9aff-e0da23c45b63",
+        "g_browserDesignatedSites&2eb4fded-e211-430f-9aff-e0da23c45b63",
+        "g_jobCWTReceipt&2eb4fded-e211-430f-9aff-e0da23c45b63",
+        "strDateReceived&Flowchart_1",
+        "strLastName&Flowchart_1",
+        "strFirstName&Flowchart_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "out_strDefraFormsReference",
+        "out_dateReceived",
+        "out_strAddress",
+        "out_strEmail",
+        "out_strPhone",
+        "out_strFullName"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Process/Process Subflows/Search For Owner Occupier.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "g_arrCaseID&9b21d26e-5a59-4ebf-805e-bdf40e4af823",
+        "g_Config&9b21d26e-5a59-4ebf-805e-bdf40e4af823",
+        "g_swProcessingTimer&9b21d26e-5a59-4ebf-805e-bdf40e4af823",
+        "g_intExitPoint&9b21d26e-5a59-4ebf-805e-bdf40e4af823",
+        "g_BearerToken&9b21d26e-5a59-4ebf-805e-bdf40e4af823",
+        "g_TransactionItem&9b21d26e-5a59-4ebf-805e-bdf40e4af823",
+        "g_browserDesignatedSites&9b21d26e-5a59-4ebf-805e-bdf40e4af823",
+        "g_jobCWTReceipt&9b21d26e-5a59-4ebf-805e-bdf40e4af823",
+        "strOwnerOccupier&Sequence_1",
+        "strPopUpText&Sequence_1",
+        "strButtonSelected&Sequence_1",
+        "boolDismissed&Sequence_1",
+        "rowOwnerOccupier&Sequence_1",
+        "dtFiltered&Sequence_1",
+        "strNameVariation2&Sequence_1",
+        "arrNameParts&Sequence_1",
+        "strNameVariation1&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "out_dictOwnerOccupier",
+        "in_strAddress",
+        "in_strEmail",
+        "in_strPhone",
+        "in_dtOwnerOccupiers",
+        "in_strFullName"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Process/Process Subflows/tc01 Search For Owner Occupier.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "dtOwnerOccupiers&Sequence_1",
+        "dictOwnerOccupier&Sequence_3",
+        "g_arrCaseID&a700617f-1bc2-4995-b8d2-7cb8fac0fec2",
+        "g_Config&a700617f-1bc2-4995-b8d2-7cb8fac0fec2",
+        "g_swProcessingTimer&a700617f-1bc2-4995-b8d2-7cb8fac0fec2",
+        "g_intExitPoint&a700617f-1bc2-4995-b8d2-7cb8fac0fec2",
+        "g_BearerToken&a700617f-1bc2-4995-b8d2-7cb8fac0fec2",
+        "g_TransactionItem&a700617f-1bc2-4995-b8d2-7cb8fac0fec2",
+        "g_browserDesignatedSites&a700617f-1bc2-4995-b8d2-7cb8fac0fec2",
+        "g_jobCWTReceipt&a700617f-1bc2-4995-b8d2-7cb8fac0fec2"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Process/Process Transaction.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "g_arrCaseID&55eb52b7-15fa-4af7-acb6-46c6e91c6d89",
+        "g_Config&55eb52b7-15fa-4af7-acb6-46c6e91c6d89",
+        "g_swProcessingTimer&55eb52b7-15fa-4af7-acb6-46c6e91c6d89",
+        "g_intExitPoint&55eb52b7-15fa-4af7-acb6-46c6e91c6d89",
+        "g_BearerToken&55eb52b7-15fa-4af7-acb6-46c6e91c6d89",
+        "g_TransactionItem&55eb52b7-15fa-4af7-acb6-46c6e91c6d89",
+        "g_browserDesignatedSites&55eb52b7-15fa-4af7-acb6-46c6e91c6d89",
+        "g_jobCWTReceipt&55eb52b7-15fa-4af7-acb6-46c6e91c6d89",
+        "boolCreateInGeneral&Flowchart_1",
+        "strEuroFolder&Flowchart_1",
+        "dtOOFormDetails&Sequence_17",
+        "dtEuroSites&Sequence_13",
+        "strEuroSiteName&Flowchart_1",
+        "strEastingsNorthings&Flowchart_1",
+        "jobListInfo&Flowchart_1",
+        "strCaseworkFolderName&Flowchart_1",
+        "strCaseworkFolderPath&Flowchart_1",
+        "strLibraryName&Flowchart_1",
+        "strAreaTeam&Flowchart_1",
+        "dtOwnerOccupiers&Flowchart_1",
+        "strListID&Flowchart_1",
+        "strUploadFolder&Flowchart_1",
+        "dictOwnerOccupier&Flowchart_1",
+        "boolPreExistingParent&Flowchart_1",
+        "boolValidate&Flowchart_1",
+        "strSSSIFolder&Flowchart_1",
+        "boolDesignatedSitesMatch&Flowchart_1",
+        "ieFormAttachments&Flowchart_1",
+        "strFormQuestionsCSVPath&Flowchart_1",
+        "dtFormQuestions&Flowchart_1",
+        "strCompanionEmailID&Flowchart_1",
+        "strFolderDescription&Flowchart_1",
+        "strDefraFormsReference&Flowchart_1",
+        "dateReceived&Flowchart_1",
+        "strDateReceived&Flowchart_1",
+        "strSpecialCaseActions&Flowchart_1",
+        "strFullName&Flowchart_1",
+        "strEmail&Flowchart_1",
+        "strAddress&Flowchart_1",
+        "strPhone&Flowchart_1"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Create Casework Folder.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "g_arrCaseID&57147933-1145-4535-8dfd-3ddcd76f7518",
+        "g_Config&57147933-1145-4535-8dfd-3ddcd76f7518",
+        "g_swProcessingTimer&57147933-1145-4535-8dfd-3ddcd76f7518",
+        "g_intExitPoint&57147933-1145-4535-8dfd-3ddcd76f7518",
+        "g_BearerToken&57147933-1145-4535-8dfd-3ddcd76f7518",
+        "g_TransactionItem&57147933-1145-4535-8dfd-3ddcd76f7518",
+        "g_browserDesignatedSites&57147933-1145-4535-8dfd-3ddcd76f7518",
+        "g_jobCWTReceipt&57147933-1145-4535-8dfd-3ddcd76f7518"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Process/Process Subflows/Get Defra Forms Attachments.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "mcDownloadLinks&Sequence_1",
+        "timeNow&Sequence_1",
+        "intIndex&Sequence_1",
+        "strCurrentLink&Sequence_3",
+        "strCurrentFileName&Sequence_3",
+        "fiCurrentDownload&Sequence_3",
+        "strEmail&Sequence_2",
+        "arrDuplicates&Sequence_7",
+        "g_arrCaseID&b89029ed-c51e-4db9-a1cc-d90290e71460",
+        "g_Config&b89029ed-c51e-4db9-a1cc-d90290e71460",
+        "g_swProcessingTimer&b89029ed-c51e-4db9-a1cc-d90290e71460",
+        "g_intExitPoint&b89029ed-c51e-4db9-a1cc-d90290e71460",
+        "g_BearerToken&b89029ed-c51e-4db9-a1cc-d90290e71460",
+        "g_TransactionItem&b89029ed-c51e-4db9-a1cc-d90290e71460",
+        "g_browserDesignatedSites&b89029ed-c51e-4db9-a1cc-d90290e71460",
+        "g_jobCWTReceipt&b89029ed-c51e-4db9-a1cc-d90290e71460"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_strDefraFormsReference",
+        "out_ieFormAttachments"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Process/Process Subflows/Get Form Details CSV.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "g_arrCaseID&9b21d26e-5a59-4ebf-805e-bdf40e4af823",
+        "g_Config&9b21d26e-5a59-4ebf-805e-bdf40e4af823",
+        "g_swProcessingTimer&9b21d26e-5a59-4ebf-805e-bdf40e4af823",
+        "g_intExitPoint&9b21d26e-5a59-4ebf-805e-bdf40e4af823",
+        "g_BearerToken&9b21d26e-5a59-4ebf-805e-bdf40e4af823",
+        "g_TransactionItem&9b21d26e-5a59-4ebf-805e-bdf40e4af823",
+        "g_browserDesignatedSites&9b21d26e-5a59-4ebf-805e-bdf40e4af823",
+        "g_jobCWTReceipt&9b21d26e-5a59-4ebf-805e-bdf40e4af823",
+        "arrCSVs&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_ieFormAttachments",
+        "out_strFormQuestionsCSV",
+        "out_dtFormQuestions"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Process/Process Subflows/Create Casework Folder.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "strFormValues&Sequence_1",
+        "g_arrCaseID&1bb00c95-f1df-406d-b16b-1251f43dd84f",
+        "g_Config&1bb00c95-f1df-406d-b16b-1251f43dd84f",
+        "g_swProcessingTimer&1bb00c95-f1df-406d-b16b-1251f43dd84f",
+        "g_intExitPoint&1bb00c95-f1df-406d-b16b-1251f43dd84f",
+        "g_BearerToken&1bb00c95-f1df-406d-b16b-1251f43dd84f",
+        "g_TransactionItem&1bb00c95-f1df-406d-b16b-1251f43dd84f",
+        "g_browserDesignatedSites&1bb00c95-f1df-406d-b16b-1251f43dd84f",
+        "g_jobCWTReceipt&1bb00c95-f1df-406d-b16b-1251f43dd84f",
+        "strPopUpText&Sequence_1",
+        "boolDismissed&Sequence_1",
+        "strButtonSelected&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_strParentFolder",
+        "in_strListID",
+        "io_strFolderDescription",
+        "in_dtFormQuestions"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Process/Process Subflows/Create Casework Folder and Upload.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "g_arrCaseID&49a1f379-9750-4ab5-a206-dfdcfb536dec",
+        "g_Config&49a1f379-9750-4ab5-a206-dfdcfb536dec",
+        "g_swProcessingTimer&49a1f379-9750-4ab5-a206-dfdcfb536dec",
+        "g_intExitPoint&49a1f379-9750-4ab5-a206-dfdcfb536dec",
+        "g_BearerToken&49a1f379-9750-4ab5-a206-dfdcfb536dec",
+        "g_TransactionItem&49a1f379-9750-4ab5-a206-dfdcfb536dec",
+        "g_browserDesignatedSites&49a1f379-9750-4ab5-a206-dfdcfb536dec",
+        "g_jobCWTReceipt&49a1f379-9750-4ab5-a206-dfdcfb536dec",
+        "strEmailSavePath&Sequence_1",
+        "strPopUpText&Sequence_1",
+        "boolDismissed&Sequence_1",
+        "strButtonSelected&Sequence_1",
+        "strFormValues&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_strDefraFormsID",
+        "out_strCaseworkFolderName",
+        "out_strCaseworkFolderPath",
+        "in_dtFormQuestions",
+        "in_strListID",
+        "in_strParentFolder",
+        "in_ieFormAttachments",
+        "in_strFolderDescription"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Framework/SetTransactionStatus.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "g_arrCaseID&2eb4fded-e211-430f-9aff-e0da23c45b63",
+        "g_Config&2eb4fded-e211-430f-9aff-e0da23c45b63",
+        "g_swProcessingTimer&2eb4fded-e211-430f-9aff-e0da23c45b63",
+        "g_intExitPoint&2eb4fded-e211-430f-9aff-e0da23c45b63",
+        "g_BearerToken&2eb4fded-e211-430f-9aff-e0da23c45b63",
+        "g_TransactionItem&2eb4fded-e211-430f-9aff-e0da23c45b63",
+        "g_browserDesignatedSites&2eb4fded-e211-430f-9aff-e0da23c45b63",
+        "g_jobCWTReceipt&2eb4fded-e211-430f-9aff-e0da23c45b63",
+        "strLogNote&Flowchart_2",
+        "QueueRetry&Sequence_17",
+        "ScreenshotPath&Sequence_17"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_BusinessException",
+        "in_dateCaseStartTime",
+        "in_strWorkLogFilepath",
+        "in_SystemException",
+        "io_intConSysEx",
+        "io_RetryNumber",
+        "io_TransactionNumber"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Process/Process Subflows/tc01 Get Defra Forms Attachments.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "g_arrCaseID&b89029ed-c51e-4db9-a1cc-d90290e71460",
+        "g_Config&b89029ed-c51e-4db9-a1cc-d90290e71460",
+        "g_swProcessingTimer&b89029ed-c51e-4db9-a1cc-d90290e71460",
+        "g_intExitPoint&b89029ed-c51e-4db9-a1cc-d90290e71460",
+        "g_BearerToken&b89029ed-c51e-4db9-a1cc-d90290e71460",
+        "g_TransactionItem&b89029ed-c51e-4db9-a1cc-d90290e71460",
+        "g_browserDesignatedSites&b89029ed-c51e-4db9-a1cc-d90290e71460",
+        "g_jobCWTReceipt&b89029ed-c51e-4db9-a1cc-d90290e71460",
+        "ieFormAttachments&Sequence_3",
+        "dtEmails&Sequence_2",
+        "strFolderID&Sequence_2",
+        "strAppID&Sequence_2",
+        "sstrSecret&Sequence_2",
+        "strTenantID&Sequence_2"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Process/Process Subflows/tc01 Find Companion CWT Receipt.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "strAppID&Sequence_2",
+        "sstrSecret&Sequence_2",
+        "strTenantID&Sequence_2",
+        "g_arrCaseID&2eb4fded-e211-430f-9aff-e0da23c45b63",
+        "g_Config&2eb4fded-e211-430f-9aff-e0da23c45b63",
+        "g_swProcessingTimer&2eb4fded-e211-430f-9aff-e0da23c45b63",
+        "g_intExitPoint&2eb4fded-e211-430f-9aff-e0da23c45b63",
+        "g_BearerToken&2eb4fded-e211-430f-9aff-e0da23c45b63",
+        "g_TransactionItem&2eb4fded-e211-430f-9aff-e0da23c45b63",
+        "g_browserDesignatedSites&2eb4fded-e211-430f-9aff-e0da23c45b63",
+        "g_jobCWTReceipt&2eb4fded-e211-430f-9aff-e0da23c45b63"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Process/Process Subflows/tc01 Get Form Details CSV.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "ieFormAttachments&Sequence_1",
+        "g_arrCaseID&2eb4fded-e211-430f-9aff-e0da23c45b63",
+        "g_Config&2eb4fded-e211-430f-9aff-e0da23c45b63",
+        "g_swProcessingTimer&2eb4fded-e211-430f-9aff-e0da23c45b63",
+        "g_intExitPoint&2eb4fded-e211-430f-9aff-e0da23c45b63",
+        "g_BearerToken&2eb4fded-e211-430f-9aff-e0da23c45b63",
+        "g_TransactionItem&2eb4fded-e211-430f-9aff-e0da23c45b63",
+        "g_browserDesignatedSites&2eb4fded-e211-430f-9aff-e0da23c45b63",
+        "g_jobCWTReceipt&2eb4fded-e211-430f-9aff-e0da23c45b63"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Process/Process Subflows/tc01 Extract Form Details.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "strTenantID&Sequence_5",
+        "sstrSecret&Sequence_5",
+        "strAppID&Sequence_5",
+        "strFolderID&Sequence_5",
+        "dtEmails&Sequence_5",
+        "g_arrCaseID&2eb4fded-e211-430f-9aff-e0da23c45b63",
+        "g_Config&2eb4fded-e211-430f-9aff-e0da23c45b63",
+        "g_swProcessingTimer&2eb4fded-e211-430f-9aff-e0da23c45b63",
+        "g_intExitPoint&2eb4fded-e211-430f-9aff-e0da23c45b63",
+        "g_BearerToken&2eb4fded-e211-430f-9aff-e0da23c45b63",
+        "g_TransactionItem&2eb4fded-e211-430f-9aff-e0da23c45b63",
+        "g_browserDesignatedSites&2eb4fded-e211-430f-9aff-e0da23c45b63",
+        "g_jobCWTReceipt&2eb4fded-e211-430f-9aff-e0da23c45b63"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Framework/InitAllApplications.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "g_arrCaseID&9b21d26e-5a59-4ebf-805e-bdf40e4af823",
+        "g_Config&9b21d26e-5a59-4ebf-805e-bdf40e4af823",
+        "g_swProcessingTimer&9b21d26e-5a59-4ebf-805e-bdf40e4af823",
+        "g_intExitPoint&9b21d26e-5a59-4ebf-805e-bdf40e4af823",
+        "g_BearerToken&9b21d26e-5a59-4ebf-805e-bdf40e4af823",
+        "g_TransactionItem&9b21d26e-5a59-4ebf-805e-bdf40e4af823",
+        "g_browserDesignatedSites&9b21d26e-5a59-4ebf-805e-bdf40e4af823",
+        "g_jobCWTReceipt&9b21d26e-5a59-4ebf-805e-bdf40e4af823"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Process/Process Subflows/tc01 Search Designated Sites.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "g_arrCaseID&49a1f379-9750-4ab5-a206-dfdcfb536dec",
+        "g_Config&49a1f379-9750-4ab5-a206-dfdcfb536dec",
+        "g_swProcessingTimer&49a1f379-9750-4ab5-a206-dfdcfb536dec",
+        "g_intExitPoint&49a1f379-9750-4ab5-a206-dfdcfb536dec",
+        "g_BearerToken&49a1f379-9750-4ab5-a206-dfdcfb536dec",
+        "g_TransactionItem&49a1f379-9750-4ab5-a206-dfdcfb536dec",
+        "g_browserDesignatedSites&49a1f379-9750-4ab5-a206-dfdcfb536dec",
+        "g_jobCWTReceipt&49a1f379-9750-4ab5-a206-dfdcfb536dec",
+        "dtOccupierOwners&Sequence_3"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Process/Process Subflows/Calculate Character Count.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "strPathMinusCaseworkFolder&Sequence_1",
+        "strLongestFile&Sequence_1",
+        "g_arrCaseID&cf2d79a8-b6fe-40e9-a70a-c778d29ea7e4",
+        "g_Config&cf2d79a8-b6fe-40e9-a70a-c778d29ea7e4",
+        "g_swProcessingTimer&cf2d79a8-b6fe-40e9-a70a-c778d29ea7e4",
+        "g_intExitPoint&cf2d79a8-b6fe-40e9-a70a-c778d29ea7e4",
+        "g_BearerToken&cf2d79a8-b6fe-40e9-a70a-c778d29ea7e4",
+        "g_TransactionItem&cf2d79a8-b6fe-40e9-a70a-c778d29ea7e4",
+        "g_browserDesignatedSites&cf2d79a8-b6fe-40e9-a70a-c778d29ea7e4",
+        "g_jobCWTReceipt&cf2d79a8-b6fe-40e9-a70a-c778d29ea7e4"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_strNEref",
+        "in_strCWTref",
+        "out_intCharsRemaining",
+        "in_strUploadPath",
+        "in_strLibraryName",
+        "in_ieFormAttachments"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Process/Process Subflows/Notify Special Cases.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "g_arrCaseID&bfc086ea-51ae-48d1-a240-ba75205d07d2",
+        "g_Config&bfc086ea-51ae-48d1-a240-ba75205d07d2",
+        "g_swProcessingTimer&bfc086ea-51ae-48d1-a240-ba75205d07d2",
+        "g_intExitPoint&bfc086ea-51ae-48d1-a240-ba75205d07d2",
+        "g_BearerToken&bfc086ea-51ae-48d1-a240-ba75205d07d2",
+        "g_TransactionItem&bfc086ea-51ae-48d1-a240-ba75205d07d2",
+        "g_browserDesignatedSites&bfc086ea-51ae-48d1-a240-ba75205d07d2",
+        "g_jobCWTReceipt&bfc086ea-51ae-48d1-a240-ba75205d07d2"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_strDefraFormsReference",
+        "in_strSpecialCaseActions"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Framework/CloseAllApplications.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "g_arrCaseID&b89029ed-c51e-4db9-a1cc-d90290e71460",
+        "g_Config&b89029ed-c51e-4db9-a1cc-d90290e71460",
+        "g_swProcessingTimer&b89029ed-c51e-4db9-a1cc-d90290e71460",
+        "g_intExitPoint&b89029ed-c51e-4db9-a1cc-d90290e71460",
+        "g_BearerToken&b89029ed-c51e-4db9-a1cc-d90290e71460",
+        "g_TransactionItem&b89029ed-c51e-4db9-a1cc-d90290e71460",
+        "g_browserDesignatedSites&b89029ed-c51e-4db9-a1cc-d90290e71460",
+        "g_jobCWTReceipt&b89029ed-c51e-4db9-a1cc-d90290e71460"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Framework/KillAllProcesses.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "g_arrCaseID&8907177b-7d50-4c6e-89d7-9987deffc668",
+        "g_Config&8907177b-7d50-4c6e-89d7-9987deffc668",
+        "g_swProcessingTimer&8907177b-7d50-4c6e-89d7-9987deffc668",
+        "g_intExitPoint&8907177b-7d50-4c6e-89d7-9987deffc668",
+        "g_BearerToken&8907177b-7d50-4c6e-89d7-9987deffc668",
+        "g_TransactionItem&8907177b-7d50-4c6e-89d7-9987deffc668",
+        "g_browserDesignatedSites&8907177b-7d50-4c6e-89d7-9987deffc668",
+        "g_jobCWTReceipt&8907177b-7d50-4c6e-89d7-9987deffc668"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Process/Process Subflows/Find Column Names and Values.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "g_arrCaseID&b89029ed-c51e-4db9-a1cc-d90290e71460",
+        "g_Config&b89029ed-c51e-4db9-a1cc-d90290e71460",
+        "g_swProcessingTimer&b89029ed-c51e-4db9-a1cc-d90290e71460",
+        "g_intExitPoint&b89029ed-c51e-4db9-a1cc-d90290e71460",
+        "g_BearerToken&b89029ed-c51e-4db9-a1cc-d90290e71460",
+        "g_TransactionItem&b89029ed-c51e-4db9-a1cc-d90290e71460",
+        "g_browserDesignatedSites&b89029ed-c51e-4db9-a1cc-d90290e71460",
+        "g_jobCWTReceipt&b89029ed-c51e-4db9-a1cc-d90290e71460",
+        "strEmailColumnName&Sequence_12",
+        "strAddressColumnName&Sequence_12",
+        "strPhoneColumnName&Sequence_12",
+        "strPhoneColumnName&Sequence_7",
+        "strEmailColumnName&Sequence_7",
+        "strAddressColumnName&Sequence_7",
+        "strAddressColumnName&Sequence_6",
+        "strEmailColumnName&Sequence_6",
+        "strEmailColumnName&Sequence_2",
+        "ieColumnNames&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "out_strCoords",
+        "out_strFullName",
+        "out_strPhone",
+        "out_strAddress",
+        "out_strEmail",
+        "in_dtFormQuestions"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Process/Process Subflows/Update NE Tracker Link.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "g_arrCaseID&55eb52b7-15fa-4af7-acb6-46c6e91c6d89",
+        "g_Config&55eb52b7-15fa-4af7-acb6-46c6e91c6d89",
+        "g_swProcessingTimer&55eb52b7-15fa-4af7-acb6-46c6e91c6d89",
+        "g_intExitPoint&55eb52b7-15fa-4af7-acb6-46c6e91c6d89",
+        "g_BearerToken&55eb52b7-15fa-4af7-acb6-46c6e91c6d89",
+        "g_TransactionItem&55eb52b7-15fa-4af7-acb6-46c6e91c6d89",
+        "g_browserDesignatedSites&55eb52b7-15fa-4af7-acb6-46c6e91c6d89",
+        "g_jobCWTReceipt&55eb52b7-15fa-4af7-acb6-46c6e91c6d89",
+        "g_arrCaseID&c156bd98-683b-4e30-9886-b093073e613c",
+        "g_Config&c156bd98-683b-4e30-9886-b093073e613c",
+        "g_swProcessingTimer&c156bd98-683b-4e30-9886-b093073e613c",
+        "g_intExitPoint&c156bd98-683b-4e30-9886-b093073e613c",
+        "g_BearerToken&c156bd98-683b-4e30-9886-b093073e613c",
+        "g_TransactionItem&c156bd98-683b-4e30-9886-b093073e613c",
+        "g_browserDesignatedSites&c156bd98-683b-4e30-9886-b093073e613c",
+        "g_jobCWTReceipt&c156bd98-683b-4e30-9886-b093073e613c",
+        "jobResponse&Sequence_1",
+        "strJSON&Sequence_1",
+        "sstrTrackerAPIKey&Sequence_1",
+        "httpResponse&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_strCaseworkFolderName",
+        "in_strCaseworkFolderURL"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Process/Process Subflows/tc01 Update NE Tracker Link.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "g_arrCaseID&b89029ed-c51e-4db9-a1cc-d90290e71460",
+        "g_Config&b89029ed-c51e-4db9-a1cc-d90290e71460",
+        "g_swProcessingTimer&b89029ed-c51e-4db9-a1cc-d90290e71460",
+        "g_intExitPoint&b89029ed-c51e-4db9-a1cc-d90290e71460",
+        "g_BearerToken&b89029ed-c51e-4db9-a1cc-d90290e71460",
+        "g_TransactionItem&b89029ed-c51e-4db9-a1cc-d90290e71460",
+        "g_browserDesignatedSites&b89029ed-c51e-4db9-a1cc-d90290e71460",
+        "g_jobCWTReceipt&b89029ed-c51e-4db9-a1cc-d90290e71460",
+        "g_sstrTrackerAPIKey&Sequence_2"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Process/Process Subflows/Select County Library.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "g_arrCaseID&2ba17ef3-8c85-4a55-aa7d-b5ba142d6c06",
+        "g_Config&2ba17ef3-8c85-4a55-aa7d-b5ba142d6c06",
+        "g_swProcessingTimer&2ba17ef3-8c85-4a55-aa7d-b5ba142d6c06",
+        "g_intExitPoint&2ba17ef3-8c85-4a55-aa7d-b5ba142d6c06",
+        "g_BearerToken&2ba17ef3-8c85-4a55-aa7d-b5ba142d6c06",
+        "g_TransactionItem&2ba17ef3-8c85-4a55-aa7d-b5ba142d6c06",
+        "g_browserDesignatedSites&2ba17ef3-8c85-4a55-aa7d-b5ba142d6c06",
+        "g_jobCWTReceipt&2ba17ef3-8c85-4a55-aa7d-b5ba142d6c06",
+        "dtLists&Sequence_1",
+        "strPopUpText&Sequence_1",
+        "strSelectedList&Sequence_1",
+        "listFolders&Sequence_1",
+        "boolDismissed&Sequence_1",
+        "strJSONOutput&Sequence_1",
+        "strButtonSelected&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "out_strLibraryName",
+        "out_strListID",
+        "in_strCounty"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "tc01 Select County Library.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "strTenantID&Sequence_2",
+        "sstrSecret&Sequence_2",
+        "strAppID&Sequence_2",
+        "strListID&Sequence_3",
+        "g_arrCaseID&944f501b-177c-4645-99a1-92f1a0c83b4b",
+        "g_Config&944f501b-177c-4645-99a1-92f1a0c83b4b",
+        "g_swProcessingTimer&944f501b-177c-4645-99a1-92f1a0c83b4b",
+        "g_intExitPoint&944f501b-177c-4645-99a1-92f1a0c83b4b",
+        "g_BearerToken&944f501b-177c-4645-99a1-92f1a0c83b4b",
+        "g_TransactionItem&944f501b-177c-4645-99a1-92f1a0c83b4b",
+        "g_browserDesignatedSites&944f501b-177c-4645-99a1-92f1a0c83b4b",
+        "g_jobCWTReceipt&944f501b-177c-4645-99a1-92f1a0c83b4b"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Process/Process Subflows/Read CSV accounting for duplicate column names.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "intColumnNameCount&Sequence_3",
+        "g_arrCaseID&f77b532f-bc9b-4b9e-a396-46604a8fde03",
+        "g_Config&f77b532f-bc9b-4b9e-a396-46604a8fde03",
+        "g_swProcessingTimer&f77b532f-bc9b-4b9e-a396-46604a8fde03",
+        "g_intExitPoint&f77b532f-bc9b-4b9e-a396-46604a8fde03",
+        "g_BearerToken&f77b532f-bc9b-4b9e-a396-46604a8fde03",
+        "g_TransactionItem&f77b532f-bc9b-4b9e-a396-46604a8fde03",
+        "g_browserDesignatedSites&f77b532f-bc9b-4b9e-a396-46604a8fde03",
+        "g_jobCWTReceipt&f77b532f-bc9b-4b9e-a396-46604a8fde03"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_strCSVPath",
+        "out_dtCSV"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Process/Process Subflows/Get Owner Occupier Details CSV.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "g_arrCaseID&b89029ed-c51e-4db9-a1cc-d90290e71460",
+        "g_Config&b89029ed-c51e-4db9-a1cc-d90290e71460",
+        "g_swProcessingTimer&b89029ed-c51e-4db9-a1cc-d90290e71460",
+        "g_intExitPoint&b89029ed-c51e-4db9-a1cc-d90290e71460",
+        "g_BearerToken&b89029ed-c51e-4db9-a1cc-d90290e71460",
+        "g_TransactionItem&b89029ed-c51e-4db9-a1cc-d90290e71460",
+        "g_browserDesignatedSites&b89029ed-c51e-4db9-a1cc-d90290e71460",
+        "g_jobCWTReceipt&b89029ed-c51e-4db9-a1cc-d90290e71460",
+        "dtCurrentCSV&Sequence_4",
+        "g_arrCaseID&9b21d26e-5a59-4ebf-805e-bdf40e4af823",
+        "g_Config&9b21d26e-5a59-4ebf-805e-bdf40e4af823",
+        "g_swProcessingTimer&9b21d26e-5a59-4ebf-805e-bdf40e4af823",
+        "g_intExitPoint&9b21d26e-5a59-4ebf-805e-bdf40e4af823",
+        "g_BearerToken&9b21d26e-5a59-4ebf-805e-bdf40e4af823",
+        "g_TransactionItem&9b21d26e-5a59-4ebf-805e-bdf40e4af823",
+        "g_browserDesignatedSites&9b21d26e-5a59-4ebf-805e-bdf40e4af823",
+        "g_jobCWTReceipt&9b21d26e-5a59-4ebf-805e-bdf40e4af823",
+        "arrCSVs&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "out_strPhone",
+        "out_strEmail",
+        "out_strAddress",
+        "out_strFullName",
+        "in_ieFormAttachments"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="TDUSynbyx0ujKf-NusF3Eg" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="designatedsites.naturalengland.org.uk" DesignTimeRectangle="287, 337, 518, 67" DesignTimeScaleFactor="2.5" ElementType="Text" FullSelectorArgument="&lt;webctrl tag='SPAN' innerText='Designated Sites View' /&gt;" Guid="7ed90ffd-1917-473e-95b1-c3f93a6c8738" ImageBase64="" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Site Search' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive">
+      <imageRef attrName="InformativeScreenshot" originalValue="730f4378ff0c64121fc599573435a12e.png" xmlns="">0FognqmBQoEK-rcvosZ1u4Q</imageRef>
+    </TargetAnchorable>
+    <x:String x:Key="ActivityType">CheckState</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

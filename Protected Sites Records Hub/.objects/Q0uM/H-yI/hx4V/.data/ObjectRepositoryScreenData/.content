@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryScreenData ContentHash="yqRC88BTrkqzjqQrcMzPpg" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryScreenData.Data>
+    <TargetApp x:Key="TargetApp" Area="0, 0, 0, 0" Selector="&lt;html app='msedge.exe' title='Site list' /&gt;" Url="designatedsites.naturalengland.org.uk/SiteList.aspx" />
+  </ObjectRepositoryScreenData.Data>
+</ObjectRepositoryScreenData>

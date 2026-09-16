@@ -1,0 +1,14 @@
+﻿{
+  "Name": "Designated Sites View",
+  "Type": "Element",
+  "TaxonomyType": "Label",
+  "Id": "6CghyO8DWUi6_b1hltrKtQ",
+  "Reference": "u70FNKxx7EOHPBwkfez66Q/6CghyO8DWUi6_b1hltrKtQ",
+  "ParentRef": "u70FNKxx7EOHPBwkfez66Q/nB2I9oueQUKg-Rtxqunr4g",
+  "Created": "2026-08-17T09:21:59.590131Z",
+  "Updated": "2026-08-17T09:21:59.590131Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=24.10.16.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=25.6.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

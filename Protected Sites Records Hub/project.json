@@ -5,20 +5,20 @@
   "main": "Main.xaml",
   "dependencies": {
     "DRACOE.Logging.64": "[1.0.17]",
-    "DRACOE.Microsoft.Graph.64": "[1.0.51]",
+    "DRACOE.Microsoft.Graph.64": "[1.0.56]",
     "DRACOE.PopUps.64": "[1.0.9]",
     "UiPath.Excel.Activities": "[2.23.5]",
     "UiPath.Mail.Activities": "[1.23.11]",
     "UiPath.System.Activities": "[24.10.8]",
     "UiPath.Testing.Activities": "[23.10.1]",
     "UiPath.UIAutomation.Activities": "[24.10.16]",
-    "UiPath.WebAPI.Activities": "[2.3.2]"
+    "UiPath.WebAPI.Activities": "[2.5.1]"
   },
   "webServices": [],
   "entitiesStores": [],
   "schemaVersion": "4.0",
   "studioVersion": "24.10.15.0",
-  "projectVersion": "1.0.0",
+  "projectVersion": "1.0.1",
   "runtimeOptions": {
     "autoDispose": false,
     "netFrameworkLazyLoading": false,
@@ -47,7 +47,71 @@
     "processOptions": {
       "ignoredFiles": []
     },
-    "fileInfoCollection": [],
+    "fileInfoCollection": [
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "bf4933cd-7343-42a4-b324-2a5907b890f9",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "Process\\Process Subflows\\tc01 SPOL Folder Match.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "a489ca75-93b0-4d5e-bc00-42f63796502e",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "Process\\Process Subflows\\tc01 Search For Owner Occupier.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "b877d76a-1903-4c21-b0c1-4717f31c8923",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "Process\\Process Subflows\\tc01 Get Defra Forms Attachments.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "8cfacbcc-c260-4805-ba00-1ca521917c61",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "Process\\Process Subflows\\tc01 Find Companion CWT Receipt.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "25009ea4-af60-4c3e-8c3e-837b82ab353f",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "Process\\Process Subflows\\tc01 Get Form Details CSV.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "497810ea-68a1-4786-8907-d1885b2f51dd",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "Process\\Process Subflows\\tc01 Extract Form Details.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "1be6e84e-185a-473a-b0c9-592a1f0a1296",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "Process\\Process Subflows\\tc01 Search Designated Sites.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "c133c8a0-7cb0-4bb8-ae7d-dc363377d998",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "Process\\Process Subflows\\tc01 Update NE Tracker Link.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "084fdaa5-8797-4fa1-9529-4accce17f884",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "Process\\Process Subflows\\tc01 Select County Library.xaml"
+      }
+    ],
     "saveToCloud": false
   },
   "expressionLanguage": "VisualBasic",
